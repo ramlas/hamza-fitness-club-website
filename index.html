@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza Fitness Club</title>
+  <meta name="description" content="Hamza Fitness Club - Train hard, get stronger. Push your limits, build strength, and become the best version of yourself." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root { --brand-red: #d5100c; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Oswald', sans-serif; }
+
+    /* Buttons */
+    .btn-red{
+      background-color:var(--brand-red); color:#fff; padding:.6rem 1.5rem;
+      font-weight:800; border-radius:0; letter-spacing:.04em; transition:all .6s ease-in-out;
+    }
+    .btn-red:hover{ background:#a80c09; transform:translateY(-2px); }
+    .btn-outline-red{
+      background:transparent; border:2px solid var(--brand-red); color:var(--brand-red);
+      padding:.6rem 1.5rem; font-weight:800; border-radius:0; letter-spacing:.04em; transition:all .6s ease-in-out;
+    }
+    .btn-outline-red:hover{ background:var(--brand-red); color:#fff; transform:translateY(-2px); }
+
+    /* Text sizes */
+    .hero-text-subheading{ font-size:.95rem; }
+    @media (min-width:768px){ .hero-text-subheading{ font-size:1.05rem; } }
+    @media (min-width:1024px){ .hero-text-subheading{ font-size:1.15rem; } }
+    .hero-text-body{ font-size:1.05rem; }
+    @media (min-width:1024px){ .hero-text-body{ font-size:1.15rem; } }
+
+    /* Animation */
+    @keyframes fadeInUp{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+    .animate-fadeInUp{ animation:fadeInUp 1.2s ease-out forwards; }
+
+    /* Utility */
+    .section-pad{ padding: clamp(3rem, 5vw, 6rem) 0; }
+  </style>
+</head>
+<body class="bg-gray-900 text-white overflow-y-scroll">
+
+  <!-- Header -->
+  <header class="absolute top-0 left-0 w-full flex justify-between items-center px-6 md:px-16 py-6 z-30 bg-transparent">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20">
+        <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-full h-full object-contain" />
+      </div>
+      <span class="text-white font-extrabold text-xl tracking-wide uppercase">Hamza Fitness Club</span>
+    </div>
+
+    <div class="flex items-center gap-6">
+      <nav class="hidden md:block">
+        <ul class="flex gap-6 text-white font-semibold uppercase text-sm tracking-wider">
+          <li><a href="#home" class="hover:text-red-600 transition">Home</a></li>
+          <li><a href="#who" class="hover:text-red-600 transition">Who We Are</a></li>
+          <li><a href="#" class="hover:text-red-600 transition">Classes ▼</a></li>
+          <li><a href="#" class="hover:text-red-600 transition">Pages ▼</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="btn-red text-xs md:text-sm">REGISTER NOW</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative h-screen flex items-center">
+    <div class="absolute inset-0 w-full h-full bg-black">
+      <!-- update the path if needed -->
+      <img src="images/web banner.png" alt="Athletes training" class="absolute inset-0 w-full h-full object-cover opacity-60" />
+    </div>
+
+    <div class="relative z-20 w-full flex items-center px-6 md:px-24">
+      <div class="text-white w-full md:w-1/2 animate-fadeInUp">
+        <p class="hero-text-subheading tracking-widest uppercase text-[color:var(--brand-red)] font-black mb-4">
+          TRAIN HARD. GET STRONGER!
+        </p>
+
+        <h1 class="font-black leading-[0.95] my-4 text-[42px] sm:text-6xl md:text-7xl lg:text-8xl">
+          STRONGER<br/>EVERY DAY
+        </h1>
+
+        <p class="hero-text-body mb-10 text-gray-300 max-w-xl leading-relaxed">
+          At Hamza Fitness Club, every workout brings you closer to your goals. Push your limits, build strength, and become the best version of yourself!
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#who" class="btn-red text-base">GET STARTED</a>
+          <a href="#who" class="btn-outline-red text-base">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE (under banner) -->
+  <section id="who" class="section-pad bg-black">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-10 items-center">
+      <!-- Left: Copy -->
+      <div class="animate-fadeInUp">
+        <p class="uppercase text-[color:var(--brand-red)] font-black tracking-widest mb-3">Who We Are</p>
+
+        <h2 class="text-4xl md:text-5xl font-black leading-tight mb-4">
+          Your Ultimate Fitness and Wellness Destination.
+        </h2>
+
+        <p class="text-gray-300 leading-relaxed mb-6">
+          We build stronger bodies and stronger communities. Our expert coaches, supportive culture,
+          and top-tier facilities help beginners and athletes alike reach their potential.
+        </p>
+
+        <div class="border-t border-gray-700 pt-6 grid sm:grid-cols-2 gap-x-10 gap-y-3 text-gray-200">
+          <!-- column A -->
+          <p class="flex items-start gap-2">
+            <span class="mt-[2px] text-[color:var(--brand-red)]">✔</span> Personalized training programs
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="mt-[2px] text-[color:var(--brand-red)]">✔</span> Strength &amp; conditioning
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="mt-[2px] text-[color:var(--brand-red)]">✔</span> Nutrition guidance
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="mt-[2px] text-[color:var(--brand-red)]">✔</span> Flexible class schedules
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="mt-[2px] text-[color:var(--brand-red)]">✔</span> Community events
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="mt-[2px] text-[color:var(--brand-red)]">✔</span> Progress tracking
+          </p>
+        </div>
+
+        <!-- Support CTA -->
+        <div class="mt-8 flex items-center gap-4 p-4 bg-gray-800">
+          <div class="p-3 bg-[color:var(--brand-red)]">
+            <!-- phone icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a2 2 0 011.79 1.11l1.44 2.88a2 2 0 01-.45 2.3l-1.2 1.2a16 16 0 006.4 6.4l1.2-1.2a2 2 0 012.3-.45l2.88 1.44A2 2 0 0121 17.72V21a2 2 0 01-2 2h-1C8.163 23 1 15.837 1 7V6a1 1 0 011-1h1z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest text-gray-400">Customer Support</p>
+            <p class="text-xl font-bold">(888) 4000-2424</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="relative animate-fadeInUp">
+        <!-- update image path to your asset -->
+        <img src="images\man who are we.png" alt="Athlete in gym" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
