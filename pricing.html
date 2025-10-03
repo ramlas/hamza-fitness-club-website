@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing • Hamza Fitness Club</title>
+  <meta name="description" content="Transparent pricing for premium fitness and training access."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --accent: #d5100c;   /* brand red */
+      --accent-hover:#a80c09;
+      --smoke: #1e1f22;    /* smokey grey */
+      --dark:  #0c0c0d;    /* page bg */
+      --card:  #141516;    /* card bg */
+    }
+    body{ font-family:'Oswald',sans-serif; background:var(--dark); color:#fff; }
+    .btn{ border-radius:0; transition:background-color .25s ease,color .25s ease,transform .25s ease,border-color .25s ease;}
+    .btn:hover{ transform:translateY(-1px); }
+    .glass{ background:rgba(20,21,22,.55); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.10); }
+    .accent{ color:var(--accent); }
+    .bg-accent{ background:var(--accent); }
+    .ring-accent{ --tw-ring-color:var(--accent); }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideIn{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+    .anim-fadeUp{animation:fadeUp .8s ease-out both}
+    .anim-slideIn{animation:slideIn .8s ease-out both}
+
+    /* CSS-only price toggle */
+    .toggle input{ display:none; }
+    .toggle .dot{ transition:transform .25s ease,background-color .25s ease; }
+    .toggle input:checked ~ .track .dot{ transform:translateX(1.25rem); }
+    .price-yr{ display:none; }
+    .peer:checked ~ .prices .price-mo{ display:none; }
+    .peer:checked ~ .prices .price-yr{ display:block; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-black/70 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="images/hfc-logo.jpg" alt="HFC" class="w-9 h-9 object-contain"/>
+        <span class="font-extrabold tracking-wide uppercase text-white">Hamza Fitness Club</span>
+      </a>
+
+      <nav class="hidden md:block">
+        <ul class="flex items-center gap-8 uppercase tracking-wide text-sm text-white">
+          <li><a href="index.html" class="hover:text-[color:var(--accent)]">Homepage</a></li>
+          <li><a href="trainers.html" class="hover:text-[color:var(--accent)]">Trainers</a></li>
+          <li><a href="pricing.html" class="text-[color:var(--accent)]">Pricing</a></li>
+          <li><a href="#faq" class="hover:text-[color:var(--accent)]">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <a href="#" class="btn bg-[color:var(--accent)] text-white px-5 py-2 font-extrabold tracking-wide uppercase hover:bg-[color:var(--accent-hover)]">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative h-[56vh] md:h-[66vh] flex items-center">
+    <img src="images/hero-pricing.jpg" alt="Gym hero" class="absolute inset-0 w-full h-full object-cover opacity-70">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 w-full">
+      <div class="glass p-8 md:p-12 anim-slideIn">
+        <p class="uppercase tracking-widest text-[color:var(--accent)] font-extrabold text-sm md:text-base mb-2">Pricing Plan</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] mb-4">Affordable Memberships for Every Athlete</h1>
+        <p class="text-gray-300 max-w-3xl">Simple, transparent pricing with access to premium training, recovery tools, and real accountability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro + features -->
+  <section class="py-16" style="background:var(--smoke);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-3 gap-10 items-start">
+      <div class="lg:col-span-1 anim-fadeUp">
+        <p class="uppercase tracking-widest text-[color:var(--accent)] font-extrabold mb-2">Choose Package</p>
+        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Transparent Pricing for Premium Fitness Access</h2>
+      </div>
+
+      <div class="lg:col-span-2 anim-fadeUp [animation-delay:.1s]">
+        <ul class="grid sm:grid-cols-2 gap-6 text-gray-300">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-3 h-3 bg-[color:var(--accent)] block"></span>
+            Expert Trainers & Personalized Coaching
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-3 h-3 bg-[color:var(--accent)] block"></span>
+            Recovery, Mobility, and Nutrition Guidance
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-3 h-3 bg-[color:var(--accent)] block"></span>
+            Group Classes & Special Programs
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 w-3 h-3 bg-[color:var(--accent)] block"></span>
+            Supportive Community & Progress Tracking
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toggle + Pricing cards -->
+  <section class="py-16 bg-[#111112]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <!-- Toggle -->
+      <div class="flex items-center justify-center mb-10">
+        <label class="toggle flex items-center gap-4 text-sm text-gray-300">
+          <span>Monthly</span>
+          <input type="checkbox" id="billing" class="peer"/>
+          <div class="track w-10 h-6 bg-white/10 border border-white/10 relative cursor-pointer">
+            <span class="dot absolute top-0.5 left-0.5 w-5 h-5 bg-[color:var(--accent)]"></span>
+          </div>
+          <span>Yearly <span class="ml-1 text-[color:var(--accent)] font-bold">– Save 20%</span></span>
+        </label>
+      </div>
+
+      <!-- Cards -->
+      <div class="prices grid md:grid-cols-3 gap-8">
+        <!-- BASIC -->
+        <article class="bg-[color:var(--card)] border border-white/10">
+          <div class="p-6 border-b border-white/10 bg-black/30">
+            <p class="uppercase tracking-widest text-sm text-gray-300">Basic Plan</p>
+            <div class="mt-2">
+              <div class="price-mo text-5xl font-extrabold">$49</div>
+              <div class="price-yr text-5xl font-extrabold">$39</div>
+              <p class="text-gray-400 text-sm mt-1">per month</p>
+            </div>
+          </div>
+          <ul class="p-6 space-y-4 text-gray-300">
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Standard Gym Equipment</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Locker Room & Showers</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Fitness App Access</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Open Gym (All Day)</li>
+          </ul>
+          <div class="p-6 border-t border-white/10">
+            <a href="#" class="btn w-full text-center bg-[color:var(--accent)] hover:bg-[color:var(--accent-hover)] px-4 py-3 font-extrabold uppercase tracking-wide">Get Started</a>
+          </div>
+        </article>
+
+        <!-- PREMIUM (featured) -->
+        <article class="relative bg-[color:var(--card)] border-2 border-[color:var(--accent)] ring-1 ring-[color:var(--accent)]/30">
+          <div class="absolute -top-3 left-6 px-3 py-1 bg-[color:var(--accent)] text-black font-extrabold uppercase text-xs">Most Popular</div>
+          <div class="p-6 border-b border-white/10 bg-black/30">
+            <p class="uppercase tracking-widest text-sm text-gray-300">Premium Plan</p>
+            <div class="mt-2">
+              <div class="price-mo text-5xl font-extrabold">$99</div>
+              <div class="price-yr text-5xl font-extrabold">$79</div>
+              <p class="text-gray-400 text-sm mt-1">per month</p>
+            </div>
+          </div>
+          <ul class="p-6 space-y-4 text-gray-300">
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Everything in Basic</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> 4 PT Sessions / Month</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Mobility & Recovery Tools</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Small Group Classes</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Body Composition Scan</li>
+          </ul>
+          <div class="p-6 border-t border-white/10">
+            <a href="#" class="btn w-full text-center bg-[color:var(--accent)] hover:bg-[color:var(--accent-hover)] px-4 py-3 font-extrabold uppercase tracking-wide">Join Premium</a>
+          </div>
+        </article>
+
+        <!-- EXPERT -->
+        <article class="bg-[color:var(--card)] border border-white/10">
+          <div class="p-6 border-b border-white/10 bg-black/30">
+            <p class="uppercase tracking-widest text-sm text-gray-300">Expert Plan</p>
+            <div class="mt-2">
+              <div class="price-mo text-5xl font-extrabold">$199</div>
+              <div class="price-yr text-5xl font-extrabold">$159</div>
+              <p class="text-gray-400 text-sm mt-1">per month</p>
+            </div>
+          </div>
+          <ul class="p-6 space-y-4 text-gray-300">
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Unlimited PT Sessions</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Custom Nutrition Plan</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Priority Booking & Support</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Athlete Recovery Suite</li>
+            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Quarterly Lab Testing</li>
+          </ul>
+          <div class="p-6 border-t border-white/10">
+            <a href="#" class="btn w-full text-center bg-[color:var(--accent)] hover:bg-[color:var(--accent-hover)] px-4 py-3 font-extrabold uppercase tracking-wide">Go Expert</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats band -->
+  <section class="py-10" style="background:var(--smoke);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div><div class="text-4xl md:text-5xl font-extrabold">91K+</div><p class="text-gray-400 mt-1">Project Done</p></div>
+      <div><div class="text-4xl md:text-5xl font-extrabold">84K+</div><p class="text-gray-400 mt-1">Happy Clients</p></div>
+      <div><div class="text-4xl md:text-5xl font-extrabold">42+</div><p class="text-gray-400 mt-1">Company Support</p></div>
+      <div><div class="text-4xl md:text-5xl font-extrabold">4.7</div><p class="text-gray-400 mt-1">Client Reviews</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-16 bg-[#111112]">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10">
+      <p class="uppercase tracking-widest text-[color:var(--accent)] font-extrabold text-center mb-2">Common Questions</p>
+      <h3 class="text-center text-3xl md:text-5xl font-extrabold mb-10">Got Questions? Find Answers Here</h3>
+
+      <div class="space-y-4">
+        <!-- One item -->
+        <details class="group border border-white/10 bg-[color:var(--card)]">
+          <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
+            <span class="font-bold text-lg">Can I pause my membership?</span>
+            <span class="transition group-open:rotate-180">⌄</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300 border-t border-white/10">
+            Yes — you can pause up to 2 months per year with no extra fees.
+          </div>
+        </details>
+
+        <details class="group border border-white/10 bg-[color:var(--card)]">
+          <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
+            <span class="font-bold text-lg">Do plans include group classes?</span>
+            <span class="transition group-open:rotate-180">⌄</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300 border-t border-white/10">
+            Premium and Expert include unlimited classes. Basic members can buy class packs anytime.
+          </div>
+        </details>
+
+        <details class="group border border-white/10 bg-[color:var(--card)]">
+          <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
+            <span class="font-bold text-lg">Is there a joining fee?</span>
+            <span class="transition group-open:rotate-180">⌄</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300 border-t border-white/10">
+            There’s no joining fee during promotional periods; otherwise a small setup fee may apply.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-14 border-t border-white/10" style="background:#18191b;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-4 gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="images/hfc-logo.jpg" class="w-9 h-9 object-contain" alt="">
+          <span class="font-extrabold uppercase tracking-wide">Hamza Fitness Club</span>
+        </div>
+        <p class="text-gray-400">Your ultimate fitness destination. Join our community and level up your performance.</p>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold uppercase text-[color:var(--accent)] mb-4">Our Studio</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="#" class="hover:text-[color:var(--accent)]">About us</a></li>
+          <li><a href="#" class="hover:text-[color:var(--accent)]">Leadership</a></li>
+          <li><a href="#" class="hover:text-[color:var(--accent)]">Careers</a></li>
+          <li><a href="#" class="hover:text-[color:var(--accent)]">Articles & News</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold uppercase text-[color:var(--accent)] mb-4">Support</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="#" class="hover:text-[color:var(--accent)]">Send Ticket</a></li>
+          <li><a href="tel:+188840002424" class="hover:text-[color:var(--accent)]">Customer Support</a></li>
+          <li><a href="#" class="hover:text-[color:var(--accent)]">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-extrabold uppercase text-[color:var(--accent)] mb-4">Get in Touch</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li>Jln Cempaka Wangi No 22<br>Jakarta — Indonesia</li>
+          <li><a href="mailto:support@domain.tld" class="hover:text-[color:var(--accent)]">support@domain.tld</a></li>
+          <li><a href="tel:+188840002424" class="hover:text-[color:var(--accent)]">(888) 4000-2424</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-10 text-center text-gray-500 text-sm">© <span id="y"></span> Hamza Fitness Club. All rights reserved.</div>
+    <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>

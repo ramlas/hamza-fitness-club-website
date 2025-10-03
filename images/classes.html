@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hamza Fitness Club - Classes</title>
+  <!-- Tailwind build assumed -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .class-tab.active {
+        border-bottom: 2px solid var(--brand-red);
+        color: var(--brand-red);
+        }
+
+
+  </style>
+</head>
+
+<body class="bg-black text-white">
+  
+  <!-- ================== CLASSES SECTION ================== -->
+  <section id="classes" class="section-pad bg-black relative overflow-hidden py-20">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-14">
+        <p class="uppercase text-[color:var(--brand-red)] font-black tracking-widest mb-3">Our Classes</p>
+        <h2 class="text-4xl md:text-5xl font-black leading-tight mb-4">Diverse Fitness Programs</h2>
+        <p class="text-gray-300 max-w-2xl mx-auto">Choose from our wide range of fitness classes designed to challenge you and help you achieve your goals.</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex justify-center mb-12 overflow-x-auto">
+        <div class="flex border-b border-gray-700 gap-6">
+          <button class="class-tab active px-4 py-2 font-semibold text-sm tracking-wide" data-category="all">All</button>
+          <button class="class-tab px-4 py-2 font-semibold text-sm tracking-wide" data-category="strength">Strength</button>
+          <button class="class-tab px-4 py-2 font-semibold text-sm tracking-wide" data-category="cardio">Cardio</button>
+          <button class="class-tab px-4 py-2 font-semibold text-sm tracking-wide" data-category="group">Group</button>
+          <button class="class-tab px-4 py-2 font-semibold text-sm tracking-wide" data-category="specialized">Specialized</button>
+        </div>
+      </div>
+
+      <!-- Classes Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Example Card -->
+        <div class="class-card bg-neutral-900 rounded-xl overflow-hidden shadow-lg hover:shadow-[0_0_20px_rgba(255,0,0,0.3)] transition duration-300" data-category="strength">
+          <div class="relative h-52 overflow-hidden group">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=80" alt="Weightlifting" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+            <span class="absolute top-4 left-4 bg-[color:var(--brand-red)] text-white px-3 py-1 text-xs font-bold rounded-md">STRENGTH</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Weightlifting</h3>
+            <p class="text-gray-300 mb-4">Build raw power and muscle with our expert-led weightlifting sessions.</p>
+            <div class="flex justify-between text-sm text-gray-400">
+              <span>Mon, Wed, Fri</span>
+              <span>60 mins</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repeat: HIIT, Yoga, CrossFit, Cycling, Personal Training, Powerlifting, Boxing, Zumba, Pilates, Senior Fitness, Postnatal -->
+        <!-- You can reuse the above card structure for all classes (just swap image, text, and category) -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== OUR VALUE SECTION ================== -->
+  <section id="values" class="section-pad bg-black relative overflow-hidden py-20">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        
+        <!-- Left: Image -->
+        <div class="lg:w-1/2 w-full">
+          <div class="relative">
+            <div class="w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/10">
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Fitness Training" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute -bottom-6 -right-6 bg-black/90 text-white p-6 rounded-xl shadow-lg w-3/4">
+              <h3 class="text-xl font-bold mb-2">10+ Years of Excellence</h3>
+              <p class="text-sm text-gray-300">Helping thousands achieve their fitness goals</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="lg:w-1/2 w-full">
+          <div class="max-w-lg">
+            <p class="uppercase tracking-widest text-[color:var(--brand-red)] font-black mb-2">Our Value</p>
+            <h2 class="text-4xl font-black mb-4">Building a Stronger You</h2>
+            <h3 class="text-2xl font-semibold mb-6 text-[color:var(--brand-red)]">Commitment, Integrity & Results</h3>
+            <p class="text-gray-300 mb-10">Fames arcu ad aenean suscipit ut ipsum habitasse quisque lorem ornare efficitur. Blandit ultricies morbi mattis fermentum scelerisque eros.</p>
+            
+            <!-- Progress Bars -->
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">Commitment to Member Success</span>
+                  <span class="text-[color:var(--brand-red)] font-bold">90%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-700 rounded-full">
+                  <div class="progress-fill h-2 rounded-full bg-[color:var(--brand-red)] transition-all duration-1000" data-width="90"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">Professional Coaching</span>
+                  <span class="text-[color:var(--brand-red)] font-bold">80%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-700 rounded-full">
+                  <div class="progress-fill h-2 rounded-full bg-[color:var(--brand-red)]" data-width="80"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">Wellness Focus</span>
+                  <span class="text-[color:var(--brand-red)] font-bold">75%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-700 rounded-full">
+                  <div class="progress-fill h-2 rounded-full bg-[color:var(--brand-red)]" data-width="75"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">Facilities & Equipment</span>
+                  <span class="text-[color:var(--brand-red)] font-bold">85%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-700 rounded-full">
+                  <div class="progress-fill h-2 rounded-full bg-[color:var(--brand-red)]" data-width="85"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <a href="#programs" class="inline-flex mt-10 px-6 py-3 rounded-md font-bold text-white bg-gradient-to-r from-[color:var(--brand-red)] to-red-700 hover:opacity-90 transition">
+              Discover Our Programs
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== SCRIPT ================== -->
+  <script>
+    // Progress bar animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const progressBars = document.querySelectorAll('.progress-fill');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const width = entry.target.getAttribute('data-width');
+            entry.target.style.width = width + '%';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      progressBars.forEach(bar => observer.observe(bar));
+    });
+
+    // Class tab filtering
+    const tabs = document.querySelectorAll('.class-tab');
+    const cards = document.querySelectorAll('.class-card');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const category = tab.dataset.category;
+        cards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
