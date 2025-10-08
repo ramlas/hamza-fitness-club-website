@@ -1,0 +1,148 @@
+/* =========================
+   Hamza Fitness Club – Global Styles
+   Reuse across all pages
+   ========================= */
+
+   :root {
+    --brand-red: #d5100c;
+    --brand-dark: #0b0b0b;
+  }
+  
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Oswald', ui-sans-serif, system-ui, sans-serif;
+    background: var(--brand-dark);
+    color: #fff;
+  }
+  
+  /* Layout helpers */
+  .container-x { max-width: 1200px; margin-left: auto; margin-right: auto; }
+  .section-pad { padding: clamp(3rem, 5vw, 6rem) 0; }
+
+  
+  /* =========================
+     Buttons (works with Tailwind)
+     ========================= */
+  .btn-red {
+    background-color: var(--brand-red);
+    color: #fff;
+    padding: .65rem 1.4rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    transition: all .35s ease;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-red:hover { background: #a80c09; transform: translateY(-1px); }
+  
+  .btn-outline-red {
+    background: transparent;
+    border: 2px solid var(--brand-red);
+    color: var(--brand-red);
+    padding: .65rem 1.4rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    transition: all .35s ease;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-outline-red:hover { background: var(--brand-red); color: #fff; transform: translateY(-1px); }
+  
+  /* =========================
+     Type scale helpers
+     ========================= */
+  .hero-text-subheading { font-size: .95rem; }
+  @media (min-width: 768px) { .hero-text-subheading { font-size: 1.05rem; } }
+  @media (min-width: 1024px) { .hero-text-subheading { font-size: 1.15rem; } }
+  
+  .hero-text-body { font-size: 1.05rem; color: #d1d5db; }
+  @media (min-width: 1024px) { .hero-text-body { font-size: 1.15rem; } }
+  
+  /* =========================
+     Animations
+     ========================= */
+  @keyframes fadeInUp { from { opacity:0; transform: translateY(24px);} to { opacity:1; transform: translateY(0);} }
+  @keyframes fadeInDown { from { opacity:0; transform: translateY(-24px);} to { opacity:1; transform: translateY(0);} }
+  @keyframes slideInLeft { from { opacity:0; transform: translateX(-100px);} to { opacity:1; transform: translateX(0);} }
+  @keyframes slideInRight { from { opacity:0; transform: translateX(100px);} to { opacity:1; transform: translateX(0);} }
+  @keyframes zoomIn { from {opacity:0; transform: scale(.92);} to { opacity:1; transform: scale(1);} }
+  @keyframes floatY { 0%{ transform:translateY(0);} 50%{ transform:translateY(-8px);} 100%{ transform:translateY(0);} }
+  @keyframes slowPulse { 0%,100%{opacity:.8} 50%{opacity:1} }
+  
+  /* Reveal-on-scroll utility */
+  .reveal { opacity: 0; }
+  .reveal.show.fade-up { animation: fadeInUp 900ms ease-out forwards; }
+  .reveal.show.fade-down { animation: fadeInDown 900ms ease-out forwards; }
+  .reveal.show.slide-left { animation: slideInLeft 1100ms cubic-bezier(.22,.61,.36,1) forwards; }
+  .reveal.show.slide-right { animation: slideInRight 1100ms cubic-bezier(.22,.61,.36,1) forwards; }
+  .reveal.show.zoom-in { animation: zoomIn 900ms ease-out forwards; }
+  
+  /* Subtle looping motion helpers */
+  .float-loop { animation: floatY 6s ease-in-out infinite; }
+  .pulse-slow { animation: slowPulse 5s ease-in-out infinite; }
+  
+  /* =========================
+     Accessibility & Motion
+     ========================= */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* =========================
+     Components (optional)
+     ========================= */
+  
+  /* Rating stars – keep sizes consistent */
+  .hfc-stars svg { width: 1.1rem; height: 1.1rem; }
+  
+  /* Cards with subtle ring (pair with Tailwind: bg-neutral-900 rounded-xl p-8) */
+  .hfc-card { position: relative; border-radius: 0.75rem; }
+  .hfc-card--ring { box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset; }
+  
+  /* Carousel base – make it reusable */
+  .hfc-carousel {
+    overflow: hidden;
+    position: relative;
+  }
+  .hfc-carousel__track {
+    display: flex;
+    gap: 1.5rem; /* 24px to match gap-6 */
+    transition: transform 700ms;
+    will-change: transform;
+  }
+  .hfc-carousel__nav-btn {
+    width: 2.5rem; height: 2.5rem;
+    display: grid; place-items: center;
+    border-radius: 9999px;
+    background: rgba(255,255,255,.1);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.1) inset;
+    transition: background .2s ease;
+  }
+  .hfc-carousel__nav-btn:hover { background: rgba(255,255,255,.2); }
+  
+  .hfc-carousel__dot {
+    width: 10px; height: 10px; border-radius: 9999px;
+    background: rgba(255,255,255,.3);
+    transition: opacity .2s ease, transform .2s ease, background .2s ease;
+  }
+  .hfc-carousel__dot[aria-selected="true"] {
+    background: #fff; transform: scale(1.05);
+  }
+  
+  /* Footer link hover color */
+  a.hfc-link:hover { color: var(--brand-red); }
+  
+  /* Utility: remove outlines only when using focus-visible */
+  * :focus { outline: none; }
+  * :focus-visible { outline: 2px solid var(--brand-red); outline-offset: 2px; }
+  
