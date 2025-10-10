@@ -2,7 +2,7 @@
    Hamza Fitness Club – Global JS
    - Header include (robust paths)
    - Reveal on scroll
-   - Simple carousel (auto-detect)
+   - Simple carousel (auto-detect) hfc.js
    ========================================= */
 
 // Respect reduced motion
@@ -67,6 +67,35 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("show"); });
   }, { threshold: 0.14 });
   els.forEach(el => io.observe(el));
+})();
+
+/* ===== Footer include (works from subfolders & sets current year) ===== */
+(function loadHfcFooter(){
+  const mount = document.getElementById("footer");
+  // If there's no explicit mount, append at end of body.
+  const inject = (html) => {
+    if (mount) mount.innerHTML = html; else document.body.insertAdjacentHTML("beforeend", html);
+    const y = document.getElementById("y"); if (y) y.textContent = new Date().getFullYear();
+  };
+
+  const depth = (location.pathname.replace(/\/$/, "").match(/\//g) || []).length;
+  const ups = Array.from({ length: Math.max(0, depth) }, (_, i) => "../".repeat(i + 1));
+
+  const candidates = [
+    "/components/footer.html",
+    "components/footer.html",
+    ...ups.map(u => `${u}components/footer.html`)
+  ];
+
+  (async () => {
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (res.ok) { inject(await res.text()); return; }
+      } catch {}
+    }
+    console.error("HFC: Could not load footer from", candidates);
+  })();
 })();
 
 /* ===== Generic carousel (optional) =====
