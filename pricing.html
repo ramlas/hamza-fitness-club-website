@@ -3,64 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pricing • Hamza Fitness Club</title>
-  <meta name="description" content="Transparent pricing for premium fitness and training access."/>
+  <title>Pricing | Hamza Fitness Club</title>
+  <meta name="description" content="Explore Hamza Fitness Club membership plans — affordable pricing for premium fitness, wellness, and personal training." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind (project theme) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red: '#d5100c', dark: '#0b0b0b', smoke: '#151618' } },
+          fontFamily: { display: ['Oswald','ui-sans-serif','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    :root{
-      --accent: #d5100c;   /* brand red */
-      --accent-hover:#a80c09;
-      --smoke: #1e1f22;    /* smokey grey */
-      --dark:  #0c0c0d;    /* page bg */
-      --card:  #141516;    /* card bg */
-    }
-    body{ font-family:'Oswald',sans-serif; background:var(--dark); color:#fff; }
-    .btn{ border-radius:0; transition:background-color .25s ease,color .25s ease,transform .25s ease,border-color .25s ease;}
-    .btn:hover{ transform:translateY(-1px); }
-    .glass{ background:rgba(20,21,22,.55); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.10); }
-    .accent{ color:var(--accent); }
-    .bg-accent{ background:var(--accent); }
-    .ring-accent{ --tw-ring-color:var(--accent); }
-    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes slideIn{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
-    .anim-fadeUp{animation:fadeUp .8s ease-out both}
-    .anim-slideIn{animation:slideIn .8s ease-out both}
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="assets/hfc.css" />
 
-    /* CSS-only price toggle */
-    .toggle input{ display:none; }
-    .toggle .dot{ transition:transform .25s ease,background-color .25s ease; }
-    .toggle input:checked ~ .track .dot{ transform:translateX(1.25rem); }
-    .price-yr{ display:none; }
-    .peer:checked ~ .prices .price-mo{ display:none; }
-    .peer:checked ~ .prices .price-yr{ display:block; }
-  </style>
+  <!-- Preload the icon sprite -->
+  <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
 </head>
-<body>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-black/70 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="images/hfc-logo.jpg" alt="HFC" class="w-9 h-9 object-contain"/>
-        <span class="font-extrabold tracking-wide uppercase text-white">Hamza Fitness Club</span>
-      </a>
+<body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16">
 
-      <nav class="hidden md:block">
-        <ul class="flex items-center gap-8 uppercase tracking-wide text-sm text-white">
-          <li><a href="index.html" class="hover:text-[color:var(--accent)]">Homepage</a></li>
-          <li><a href="trainers.html" class="hover:text-[color:var(--accent)]">Trainers</a></li>
-          <li><a href="pricing.html" class="text-[color:var(--accent)]">Pricing</a></li>
-          <li><a href="#faq" class="hover:text-[color:var(--accent)]">FAQ</a></li>
-        </ul>
-      </nav>
-
-      <a href="#" class="btn bg-[color:var(--accent)] text-white px-5 py-2 font-extrabold tracking-wide uppercase hover:bg-[color:var(--accent-hover)]">Get Started</a>
-    </div>
-  </header>
+  <!-- ===== Global Header (injected) ===== -->
+  <div id="header"></div>
 
   <!-- Hero -->
   <section class="relative h-[56vh] md:h-[66vh] flex items-center">
