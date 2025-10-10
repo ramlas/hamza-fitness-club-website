@@ -145,4 +145,39 @@
   /* Utility: remove outlines only when using focus-visible */
   * :focus { outline: none; }
   * :focus-visible { outline: 2px solid var(--brand-red); outline-offset: 2px; }
+
+  /* ==== Pricing page helpers (minimal) ==== */
+:root {
+  /* Use brand red by default; you can override per-page with inline style if needed */
+  --accent: var(--brand-red);
+  --accent-hover: #b30e0b;
+  --card: #0f1012;
+  --smoke: #151618;
+}
+
+/* Glass panel used in hero */
+.glass {
+  background: linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.55));
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+/* Subtle reveal animations (works with your reduced-motion rules) */
+.anim-fadeUp { animation: fadeInUp 800ms ease-out both; }
+.anim-slideIn { animation: slideInRight 900ms ease-out both; }
+
+/* Toggle (Monthly/Yearly) */
+.toggle .track { border-radius: 9999px; position: relative; transition: background .25s ease; }
+.toggle .dot { border-radius: 9999px; position: absolute; transition: transform .25s ease, background .25s ease; }
+.toggle input:checked + .track .dot { transform: translateX(1rem); }
+.toggle input:checked + .track { background: rgba(255,255,255,.18); }
+
+/* Pricing card surface */
+.pricing-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: .75rem;
+  overflow: hidden;
+}
+
   

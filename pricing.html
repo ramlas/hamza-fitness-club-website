@@ -11,96 +11,80 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
 
-  <!-- Tailwind (project theme) -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { brand: { red: '#d5100c', dark: '#0b0b0b', smoke: '#151618' } },
-          fontFamily: { display: ['Oswald','ui-sans-serif','system-ui','sans-serif'] }
-        }
-      }
-    }
-  </script>
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Shared stylesheet -->
+  <!-- Theme -->
   <link rel="stylesheet" href="assets/hfc.css" />
 
-  <!-- Preload the icon sprite -->
-  <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
+  <!-- Optional: switch to lime like the screenshots -->
+  <!-- <style>:root{ --accent:#b6ff1f; --accent-hover:#9fe212; }</style> -->
 </head>
 
-<body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16">
+<body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
 
-  <!-- ===== Global Header (injected) ===== -->
+  <!-- Header (injected by hfc.js) -->
   <div id="header"></div>
 
-  <!-- Hero -->
-  <section class="relative h-[56vh] md:h-[66vh] flex items-center">
-    <img src="images/hero-pricing.jpg" alt="Gym hero" class="absolute inset-0 w-full h-full object-cover opacity-70">
-    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+  <!-- ========== HERO ========== -->
+  <section class="relative h-[52vh] md:h-[64vh] flex items-center">
+    <img src="images/hero-pricing.jpg" alt="Gym hero" class="absolute inset-0 w-full h-full object-cover opacity-75">
+    <div class="absolute inset-0 bg-black/55"></div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 w-full">
-      <div class="glass p-8 md:p-12 anim-slideIn">
-        <p class="uppercase tracking-widest text-[color:var(--accent)] font-extrabold text-sm md:text-base mb-2">Pricing Plan</p>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] mb-4">Affordable Memberships for Every Athlete</h1>
-        <p class="text-gray-300 max-w-3xl">Simple, transparent pricing with access to premium training, recovery tools, and real accountability.</p>
+      <div class="glass rounded-xl p-8 md:p-12 anim-slideIn">
+        <p class="uppercase tracking-[0.25em] text-[color:var(--accent)] font-extrabold text-sm md:text-base mb-3">Pricing Plan</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] mb-4">Affordable Membership Plans</h1>
+        <p class="hero-text-body">Transparent pricing with access to coaching, recovery tools, and classes — no surprises.</p>
       </div>
     </div>
   </section>
 
-  <!-- Intro + features -->
-  <section class="py-16" style="background:var(--smoke);">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-3 gap-10 items-start">
-      <div class="lg:col-span-1 anim-fadeUp">
-        <p class="uppercase tracking-widest text-[color:var(--accent)] font-extrabold mb-2">Choose Package</p>
-        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Transparent Pricing for Premium Fitness Access</h2>
+  <!-- ========== CHOOSE PACKAGE (copy image + bullets layout) ========== -->
+  <section class="section-pad" style="background:var(--smoke);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-3 gap-10 items-center">
+      <div class="lg:col-span-1">
+        <p class="uppercase tracking-[0.25em] text-[color:var(--accent)] font-extrabold mb-3">Choose Package</p>
+        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Transparent Pricing for Premium Fitness & Training Access</h2>
       </div>
 
-      <div class="lg:col-span-2 anim-fadeUp [animation-delay:.1s]">
-        <ul class="grid sm:grid-cols-2 gap-6 text-gray-300">
-          <li class="flex items-start gap-3">
-            <span class="mt-1 w-3 h-3 bg-[color:var(--accent)] block"></span>
-            Expert Trainers & Personalized Coaching
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1 w-3 h-3 bg-[color:var(--accent)] block"></span>
-            Recovery, Mobility, and Nutrition Guidance
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1 w-3 h-3 bg-[color:var(--accent)] block"></span>
-            Group Classes & Special Programs
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1 w-3 h-3 bg-[color:var(--accent)] block"></span>
-            Supportive Community & Progress Tracking
-          </li>
+      <div class="lg:col-span-1">
+        <img src="images/package-photo.jpg" alt="Training photo" class="rounded-xl w-full object-cover">
+      </div>
+
+      <div class="lg:col-span-1">
+        <p class="text-gray-300 mb-6">Tellus sapien viverra ullamcorper rutrum venenatis tristique vulputate. Metus nostra eleifend justo consequat vel quisque.</p>
+        <ul class="space-y-4 text-gray-200">
+          <li class="flex gap-3 items-start"><span class="mt-1 w-3 h-3 rounded-full bg-[color:var(--accent)]"></span> Expert Trainers & Personalized Coaching</li>
+          <li class="flex gap-3 items-start"><span class="mt-1 w-3 h-3 rounded-full bg-[color:var(--accent)]"></span> Comprehensive Wellness Approach</li>
+          <li class="flex gap-3 items-start"><span class="mt-1 w-3 h-3 rounded-full bg-[color:var(--accent)]"></span> Group Classes & Special Programs</li>
+          <li class="flex gap-3 items-start"><span class="mt-1 w-3 h-3 rounded-full bg-[color:var(--accent)]"></span> Proven Results & Member Success Stories</li>
+          <li class="flex gap-3 items-start"><span class="mt-1 w-3 h-3 rounded-full bg-[color:var(--accent)]"></span> Supportive Fitness Community</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Toggle + Pricing cards -->
-  <section class="py-16 bg-[#111112]">
+  <!-- ========== PRICING TOGGLE + CARDS (closer to screenshots) ========== -->
+  <section class="py-16 bg-[#0e0f10]">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
       <!-- Toggle -->
       <div class="flex items-center justify-center mb-10">
         <label class="toggle flex items-center gap-4 text-sm text-gray-300">
           <span>Monthly</span>
-          <input type="checkbox" id="billing" class="peer"/>
-          <div class="track w-10 h-6 bg-white/10 border border-white/10 relative cursor-pointer">
-            <span class="dot absolute top-0.5 left-0.5 w-5 h-5 bg-[color:var(--accent)]"></span>
+          <input type="checkbox" id="billing" class="peer sr-only"/>
+          <div class="track w-12 h-7 bg-white/10 border border-white/10">
+            <span class="dot top-0.5 left-0.5 w-6 h-6 bg-[color:var(--accent)]"></span>
           </div>
           <span>Yearly <span class="ml-1 text-[color:var(--accent)] font-bold">– Save 20%</span></span>
         </label>
       </div>
 
       <!-- Cards -->
-      <div class="prices grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-3 gap-8">
         <!-- BASIC -->
-        <article class="bg-[color:var(--card)] border border-white/10">
-          <div class="p-6 border-b border-white/10 bg-black/30">
+        <article class="pricing-card">
+          <div class="p-6 border-b border-white/10 bg-black/25">
             <p class="uppercase tracking-widest text-sm text-gray-300">Basic Plan</p>
             <div class="mt-2">
               <div class="price-mo text-5xl font-extrabold">$49</div>
@@ -109,20 +93,20 @@
             </div>
           </div>
           <ul class="p-6 space-y-4 text-gray-300">
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Standard Gym Equipment</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Locker Room & Showers</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Fitness App Access</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Open Gym (All Day)</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Standard Gym Equipment</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Locker Room & Showers</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Fitness App Access</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Open Gym (All Day)</li>
           </ul>
           <div class="p-6 border-t border-white/10">
-            <a href="#" class="btn w-full text-center bg-[color:var(--accent)] hover:bg-[color:var(--accent-hover)] px-4 py-3 font-extrabold uppercase tracking-wide">Get Started</a>
+            <a href="#" class="btn-red w-full text-center uppercase font-extrabold tracking-wide">Get Started</a>
           </div>
         </article>
 
-        <!-- PREMIUM (featured) -->
-        <article class="relative bg-[color:var(--card)] border-2 border-[color:var(--accent)] ring-1 ring-[color:var(--accent)]/30">
-          <div class="absolute -top-3 left-6 px-3 py-1 bg-[color:var(--accent)] text-black font-extrabold uppercase text-xs">Most Popular</div>
-          <div class="p-6 border-b border-white/10 bg-black/30">
+        <!-- PREMIUM (featured like screenshot) -->
+        <article class="pricing-card relative border-2 border-[color:var(--accent)] ring-1 ring-[color:var(--accent)]/30">
+          <div class="absolute -top-3 left-6 px-3 py-1 bg-[color:var(--accent)] text-black font-extrabold uppercase text-xs rounded">Most Popular</div>
+          <div class="p-6 border-b border-white/10 bg-black/25">
             <p class="uppercase tracking-widest text-sm text-gray-300">Premium Plan</p>
             <div class="mt-2">
               <div class="price-mo text-5xl font-extrabold">$99</div>
@@ -131,20 +115,20 @@
             </div>
           </div>
           <ul class="p-6 space-y-4 text-gray-300">
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Everything in Basic</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> 4 PT Sessions / Month</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Mobility & Recovery Tools</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Small Group Classes</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Body Composition Scan</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Everything in Basic</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> 4 PT Sessions / Month</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Mobility & Recovery Tools</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Small Group Classes</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Body Composition Scan</li>
           </ul>
           <div class="p-6 border-t border-white/10">
-            <a href="#" class="btn w-full text-center bg-[color:var(--accent)] hover:bg-[color:var(--accent-hover)] px-4 py-3 font-extrabold uppercase tracking-wide">Join Premium</a>
+            <a href="#" class="btn-red w-full text-center uppercase font-extrabold tracking-wide">Join Premium</a>
           </div>
         </article>
 
         <!-- EXPERT -->
-        <article class="bg-[color:var(--card)] border border-white/10">
-          <div class="p-6 border-b border-white/10 bg-black/30">
+        <article class="pricing-card">
+          <div class="p-6 border-b border-white/10 bg-black/25">
             <p class="uppercase tracking-widest text-sm text-gray-300">Expert Plan</p>
             <div class="mt-2">
               <div class="price-mo text-5xl font-extrabold">$199</div>
@@ -153,21 +137,21 @@
             </div>
           </div>
           <ul class="p-6 space-y-4 text-gray-300">
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Unlimited PT Sessions</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Custom Nutrition Plan</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Priority Booking & Support</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Athlete Recovery Suite</li>
-            <li class="flex gap-3"><span class="w-3 h-3 bg-[color:var(--accent)] mt-2"></span> Quarterly Lab Testing</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Unlimited PT Sessions</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Custom Nutrition Plan</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Priority Booking & Support</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Athlete Recovery Suite</li>
+            <li class="flex gap-3"><span class="w-3 h-3 rounded-full bg-[color:var(--accent)] mt-2"></span> Quarterly Lab Testing</li>
           </ul>
           <div class="p-6 border-t border-white/10">
-            <a href="#" class="btn w-full text-center bg-[color:var(--accent)] hover:bg-[color:var(--accent-hover)] px-4 py-3 font-extrabold uppercase tracking-wide">Go Expert</a>
+            <a href="#" class="btn-red w-full text-center uppercase font-extrabold tracking-wide">Go Expert</a>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Stats band -->
+  <!-- ========== STATS BAND ========== -->
   <section class="py-10" style="background:var(--smoke);">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
       <div><div class="text-4xl md:text-5xl font-extrabold">91K+</div><p class="text-gray-400 mt-1">Project Done</p></div>
@@ -177,15 +161,14 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="py-16 bg-[#111112]">
+  <!-- ========== FAQ ========== -->
+  <section id="faq" class="py-16 bg-[#101113]">
     <div class="max-w-5xl mx-auto px-6 lg:px-10">
-      <p class="uppercase tracking-widest text-[color:var(--accent)] font-extrabold text-center mb-2">Common Questions</p>
+      <p class="uppercase tracking-[0.25em] text-[color:var(--accent)] font-extrabold text-center mb-2">Common Questions</p>
       <h3 class="text-center text-3xl md:text-5xl font-extrabold mb-10">Got Questions? Find Answers Here</h3>
 
       <div class="space-y-4">
-        <!-- One item -->
-        <details class="group border border-white/10 bg-[color:var(--card)]">
+        <details class="group pricing-card">
           <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
             <span class="font-bold text-lg">Can I pause my membership?</span>
             <span class="transition group-open:rotate-180">⌄</span>
@@ -195,7 +178,7 @@
           </div>
         </details>
 
-        <details class="group border border-white/10 bg-[color:var(--card)]">
+        <details class="group pricing-card">
           <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
             <span class="font-bold text-lg">Do plans include group classes?</span>
             <span class="transition group-open:rotate-180">⌄</span>
@@ -205,7 +188,7 @@
           </div>
         </details>
 
-        <details class="group border border-white/10 bg-[color:var(--card)]">
+        <details class="group pricing-card">
           <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
             <span class="font-bold text-lg">Is there a joining fee?</span>
             <span class="transition group-open:rotate-180">⌄</span>
@@ -218,47 +201,10 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-14 border-t border-white/10" style="background:#18191b;">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-4 gap-10">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <img src="images/hfc-logo.jpg" class="w-9 h-9 object-contain" alt="">
-          <span class="font-extrabold uppercase tracking-wide">Hamza Fitness Club</span>
-        </div>
-        <p class="text-gray-400">Your ultimate fitness destination. Join our community and level up your performance.</p>
-      </div>
+  <!-- Footer (from components/footer.html via hfc.js) -->
+  <div id="footer"></div>
 
-      <div>
-        <h4 class="font-extrabold uppercase text-[color:var(--accent)] mb-4">Our Studio</h4>
-        <ul class="space-y-2 text-gray-300">
-          <li><a href="#" class="hover:text-[color:var(--accent)]">About us</a></li>
-          <li><a href="#" class="hover:text-[color:var(--accent)]">Leadership</a></li>
-          <li><a href="#" class="hover:text-[color:var(--accent)]">Careers</a></li>
-          <li><a href="#" class="hover:text-[color:var(--accent)]">Articles & News</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-extrabold uppercase text-[color:var(--accent)] mb-4">Support</h4>
-        <ul class="space-y-2 text-gray-300">
-          <li><a href="#" class="hover:text-[color:var(--accent)]">Send Ticket</a></li>
-          <li><a href="tel:+188840002424" class="hover:text-[color:var(--accent)]">Customer Support</a></li>
-          <li><a href="#" class="hover:text-[color:var(--accent)]">FAQ</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-extrabold uppercase text-[color:var(--accent)] mb-4">Get in Touch</h4>
-        <ul class="space-y-2 text-gray-300">
-          <li>Jln Cempaka Wangi No 22<br>Jakarta — Indonesia</li>
-          <li><a href="mailto:support@domain.tld" class="hover:text-[color:var(--accent)]">support@domain.tld</a></li>
-          <li><a href="tel:+188840002424" class="hover:text-[color:var(--accent)]">(888) 4000-2424</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="mt-10 text-center text-gray-500 text-sm">© <span id="y"></span> Hamza Fitness Club. All rights reserved.</div>
-    <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-  </footer>
+  <!-- Global script (loads header & footer; toggle logic added above) -->
+  <script src="assets/hfc.js" defer></script>
 </body>
 </html>

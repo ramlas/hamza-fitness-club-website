@@ -98,6 +98,21 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 })();
 
+/* ===== Pricing toggle (Monthly <-> Yearly) ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const billing = document.getElementById('billing');
+  if (!billing) return;
+
+  const update = () => {
+    const yearly = billing.checked;
+    document.querySelectorAll('.price-mo').forEach(el => el.style.display = yearly ? 'none' : '');
+    document.querySelectorAll('.price-yr').forEach(el => el.style.display = yearly ? '' : 'none');
+  };
+  billing.addEventListener('change', update);
+  update();
+});
+
+
 /* ===== Generic carousel (optional) =====
 Markup:
 <div data-carousel>
