@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>About Us | Hamza Fitness Club</title>
+  <meta name="description" content="About Hamza Fitness Club — certified coaching for strength, endurance, and total wellness."/>
+  <meta name="theme-color" content="#d5100c"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind (project theme) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red: '#d5100c', dark: '#0b0b0b', smoke: '#151618' } },
+          fontFamily: { display: ['Oswald','ui-sans-serif','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="assets/hfc.css" />
+  <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
+</head>
+
+<body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
+
+<!-- components/header.html -->
+<header id="header" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="/index.html#hero-index" class="flex items-center gap-3">
+        <img src="/images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+        <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
+      </a>
+  
+      <!-- Desktop Nav -->
+      <nav class="hidden md:block" aria-label="Primary">
+        <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
+          <li>
+            <a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a>
+          </li>
+          <li>
+            <a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a>
+          </li>
+  
+          <!-- CLASSES dropdown -->
+          <li class="relative group">
+            <button class="flex items-center gap-2 hover:text-[color:var(--brand-red)] uppercase"
+                    aria-haspopup="true" aria-expanded="false" aria-controls="menu-classes">
+              CLASSES <span class="text-lg leading-none">▾</span>
+            </button>
+  
+            <div id="menu-classes" data-menu
+                 class="absolute left-0 mt-4 bg-neutral-900 border border-white/10 w-52 shadow-lg
+                        invisible opacity-0 translate-y-1 transition duration-250 ease-out
+                        group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
+              <a href="/classes.html"  class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Detail Class</a>
+              <a href="/pricing.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Pricing Plan</a>
+            </div>
+          </li>
+  
+          <li>
+            <a href="/aboutus.html#footer" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a>
+          </li>
+  
+          <!-- TRAINERS (direct link) -->
+          <li>
+            <a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a>
+          </li>
+        </ul>
+      </nav>
+  
+      <!-- Mobile Menu Button -->
+      <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+  
+      <!-- CTA -->
+      <a href="/index.html#contact" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
+        Book Free Appointment
+      </a>
+    </div>
+  
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
+      <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
+        <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
+        <li><a href="/aboutus.html"        class="block py-2">About Us</a></li>
+        <li><a href="/classes.html"          class="block py-2">Classes</a></li>
+        <li><a href="/index.html#contact"    class="block py-2">Contact Us</a></li>
+        <li><a href="/trainers.html"         class="block py-2">Trainers</a></li>
+        <li><a href="/booking.html"    class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <!-- Header interactivity -->
+  <script src="assets/header.js" defer></script>
+  
+  <!-- ===== HERO (About Us) ===== -->
+    <header class="relative">
+    <div class="absolute inset-0">
+      <!-- Swap to any team/club photo if you like -->
+      <img src="images/gym-floor.jpg" alt="Hamza Fitness Club team and facility" class="h-full w-full object-cover opacity-60" />
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+  
+    <div class="relative container-x px-4 lg:px-6 py-10">
+      <div class="glass rounded-xl p-6">
+        <p class="text-sm md:text-base tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-extrabold mb-1.5">
+          About Us
+        </p>
+        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Stronger Together at Hamza Fitness Club</h1>
+        <p class="hero-text-body mt-2">
+          We’re a community-first gym in Faisalabad focused on smart training, real results, and a supportive culture.
+          Meet our coaches, explore our philosophy, and see how we help members transform—one session at a time.
+        </p>
+  
+        <!-- Optional CTAs -->
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href="#our-story" class="btn-red px-5 py-2 text-sm uppercase font-extrabold">Our Story</a>
+          <a href="#team" class="inline-flex items-center px-5 py-2 text-sm uppercase font-extrabold border border-white/20 rounded-md hover:bg-white/5">
+            Meet the Team
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  
+      <!-- ===== Who We Are ===== -->
+      <section id="who" class="py-1 bg-black relative">
+        <div class="w-11/12 xl:max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+  
+          <!-- LEFT -->
+          <div class="reveal fade-up max-w-[640px]">
+            <p class="uppercase font-black tracking-widest mb-2 text-[color:var(--brand-red)] text-sm md:text-base">
+              Who We Are
+            </p>
+            <h2 class="text-3xl md:text-4xl font-black leading-tight mb-3">
+              Your Ultimate Fitness and Wellness Destination.
+            </h2>
+            <p class="text-gray-300 leading-relaxed text-sm md:text-base mb-6">
+              We build stronger bodies and stronger communities. Our expert coaches, supportive culture, and
+              top-tier facilities help beginners and athletes alike reach their potential.
+            </p>
+  
+            <div class="h-px bg-white/10 md:w-3/4 w-full mb-6"></div>
+  
+            <!-- Feature list -->
+            <div class="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-gray-200 text-sm md:text-base">
+              <p class="flex items-start gap-3">
+                <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-check-circle"></use>
+                </svg>
+                Personalized training programs
+              </p>
+              <p class="flex items-start gap-3">
+                <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-check-circle"></use>
+                </svg>
+                Strength &amp; conditioning
+              </p>
+              <p class="flex items-start gap-3">
+                <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-check-circle"></use>
+                </svg>
+                Nutrition guidance
+              </p>
+              <p class="flex items-start gap-3">
+                <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-check-circle"></use>
+                </svg>
+                Flexible class schedules
+              </p>
+              <p class="flex items-start gap-3">
+                <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-check-circle"></use>
+                </svg>
+                Community events
+              </p>
+              <p class="flex items-start gap-3">
+                <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-check-circle"></use>
+                </svg>
+                Progress tracking
+              </p>
+            </div>
+  
+            <div class="h-px bg-white/10 md:w-3/4 w-full my-6"></div>
+  
+            <!-- Support tile -->
+            <a href="tel:+188840002424" class="inline-flex items-center gap-4 transition">
+              <div class="grid place-items-center w-14 h-14 bg-[color:var(--brand-red)] text-white">
+                <svg class="w-10 h-10" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-phone-arrow"></use>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-widest text-gray-400">Customer Support</p>
+                <p class="text-lg md:text-xl font-extrabold">(888) 4000-2424</p>
+              </div>
+            </a>
+          </div>
+  
+          <!-- RIGHT -->
+          <div class="relative reveal slide-right">
+            <img src="images/man%20who%20we%20are.svg" alt="Athlete" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+<!-- ===== Vision / Mission / Motto ===== -->
+<section id="vmm" class="section-pad relative bg-[#1a1a1a] overflow-hidden">
+    <!-- Background decorative text -->
+    <div class="pointer-events-none select-none absolute -bottom-2 left-1/2 -translate-x-1/2 w-full text-center">
+      <span class="whitespace-nowrap text-white/10 uppercase font-bold tracking-[0.2em] leading-none text-[5vw] md:text-[4vw] lg:text-[3.5vw]">
+        PROFESSIONAL FITNESS
+      </span>
+    </div>
+  
+    <!-- Content -->
+    <div class="relative z-10 container-x px-6 lg:px-8 grid md:grid-cols-3 gap-6">
+  
+      <!-- Vision -->
+      <article class="reveal zoom-in bg-[#262626] p-8 ring-1 ring-white/5 rounded-xl">
+        <div class="w-12 h-12 grid place-items-center bg-[#333] text-white mb-5 rounded">
+          <svg class="w-8 h-8" aria-hidden="true">
+            <use href="assets/icons.svg#icon-eye"></use>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-black mb-2">Our Vision</h3>
+        <p class="text-gray-300">
+          To inspire healthier lifestyles by building stronger bodies and empowering minds through fitness.
+        </p>
+        <a href="#" class="mt-6 inline-block btn-outline-red">Learn More</a>
+      </article>
+  
+      <!-- Mission -->
+      <article class="reveal zoom-in bg-[color:var(--brand-red)] p-8 text-black rounded-xl">
+        <div class="w-12 h-12 grid place-items-center bg-black/20 mb-5 rounded">
+          <svg class="w-8 h-8" aria-hidden="true">
+            <use href="assets/icons.svg#icon-grid"></use>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-black mb-2">Our Mission</h3>
+        <p>
+          To provide expert training, personalized programs, and a supportive community that helps every member achieve their fitness goals.
+        </p>
+        <a href="#" class="mt-6 inline-block btn-outline-red border-black text-black hover:text-white">
+          Learn More
+        </a>
+      </article>
+  
+      <!-- Motto -->
+      <article class="reveal zoom-in bg-[#262626] p-8 ring-1 ring-white/5 rounded-xl">
+        <div class="w-12 h-12 grid place-items-center bg-[#333] text-white mb-5 rounded">
+          <svg class="w-8 h-8" aria-hidden="true">
+            <use href="assets/icons.svg#icon-globe"></use>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-black mb-2">Our Motto</h3>
+        <p class="text-gray-300">
+          Train hard, stay consistent, and become stronger every day — inside and out.
+        </p>
+        <a href="#" class="mt-6 inline-block btn-outline-red">Learn More</a>
+      </article>
+  
+    </div>
+  </section>
+  
+
+  <!-- ===== Stats Strip ===== -->
+<section id="statsstrip" class="bg-[color:var(--brand-red)] text-white border-y border-black">
+    <div class="max-w-4xl mx-auto px-5 lg:px-7 py-5 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      
+      <div class="reveal fade-up">
+        <p class="text-3xl md:text-4xl font-black leading-none">91K+</p>
+        <p class="mt-2 text-base md:text-lg font-semibold">Projects Done</p>
+      </div>
+  
+      <div class="reveal fade-up delay-100">
+        <p class="text-3xl md:text-4xl font-black leading-none">84K+</p>
+        <p class="mt-2 text-base md:text-lg font-semibold">Happy Clients</p>
+      </div>
+  
+      <div class="reveal fade-up delay-200">
+        <p class="text-3xl md:text-4xl font-black leading-none">42+</p>
+        <p class="mt-2 text-base md:text-lg font-semibold">Company Support</p>
+      </div>
+  
+      <div class="reveal fade-up delay-300">
+        <p class="text-3xl md:text-4xl font-black leading-none">4.7+</p>
+        <p class="mt-2 text-base md:text-lg font-semibold">Client Reviews</p>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+  
+      <!-- Brand + Newsletter -->
+      <section class="md:col-span-5">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+          <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
+        </div>
+        <p class="mb-5 text-gray-400 leading-relaxed">
+          Hamza Fitness Club is your destination for strength, dedication, and transformation.
+          Join our community today!
+        </p>
+  
+        <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
+          <label for="newsletter-email" class="sr-only">Email</label>
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+            class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
+                   focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
+          />
+          <button
+            type="submit"
+            class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
+          >
+            Sign Up
+          </button>
+          <!-- Inline feedback (toggle via JS if you want) -->
+          <p id="newsletter-msg" class="col-span-full text-[13px] text-gray-400"></p>
+        </form>
+      </section>
+  
+      <!-- Our Studio -->
+      <nav class="md:col-span-2">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Our Studio
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/aboutus.html"          class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
+          <li><a href="trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
+          <li><a href="classes.html"  class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
+          <li><a href="pricing.html"  class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Support -->
+      <nav class="md:col-span-2">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Support
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Contact + Hours -->
+      <section id="contact" class="md:col-span-3">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Get in Touch
+        </h3>
+  
+        <address class="not-italic space-y-3 text-sm">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-map-pin"></use>
+            </svg>
+            <a
+              href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
+              target="_blank" rel="noopener"
+              class="hover:text-[color:var(--brand-red)] transition"
+            >
+              Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
+            </a>
+          </div>
+  
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-mail"></use>
+            </svg>
+            <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">
+              support@hamzafitnessclub.com
+            </a>
+          </div>
+  
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-phone"></use>
+            </svg>
+            <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
+          </div>
+        </address>
+  
+        <!-- Socials -->
+        <ul class="flex items-center gap-3 mt-5">
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Facebook">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-facebook"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Instagram">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-instagram"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="X (Twitter)">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-x"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="YouTube">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-youtube"></use></svg>
+            </a>
+          </li>
+        </ul>
+  
+        <!-- Hours -->
+        <div class="mt-6">
+          <h4 class="font-semibold text-white mb-3 border-b border-white/10 pb-1">Hours</h4>
+          <dl id="hours" class="space-y-1 text-sm leading-relaxed">
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Monday – Saturday</dt>
+              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            </div>
+        
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Sunday</dt>
+              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            </div>
+        
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Friday</dt>
+              <dd class="text-gray-500 italic text-right">Closed</dd>
+            </div>
+          </dl>
+        </div>
+        
+        
+      </section>
+    </div>
+  
+    <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
+      © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
+      All rights reserved. Designed by
+      <span class="text-[color:var(--brand-red)] font-bold">Ramla & Pakeeza</span>.
+    </div>
+  </footer>
+  
+  <script src="assets/footer.js" defer></script>
+  
+  <!-- Scripts -->
+  <script src="assets/hfc.js" defer></script>
+  <script src="assets/about.js" defer></script>
+</body>
+</html>

@@ -1,207 +1,308 @@
-/* =========================================
-   Hamza Fitness Club – Global JS
-   - Header include (robust paths)
-   - Reveal on scroll
-   - Simple carousel (auto-detect) hfc.js
-   ========================================= */
+/*
+ * Hamza Fitness Club – UI Interactions
+ * - Reveal-on-scroll animations (accessible & reduced-motion aware)
+ * - Testimonials carousel (keyboard, touch, autoplay, a11y)
+ * - Ratings summary animation (bars + counters)
+ *
+ * Drop this file at assets/hfc.js and include with:
+ *   <script src="assets/hfc.js" defer></script>
+ */
+(() => {
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Respect reduced motion
-const HFC_PREFERS_REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ------------------------------
+   * 1) Reveal-on-scroll animations
+   * ------------------------------ */
+  const Reveal = (() => {
+    const defaults = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.1
+    };
 
-/* ===== Header include (works from subfolders & different dev servers) ===== */
-document.addEventListener("DOMContentLoaded", () => {
-  const mount = document.getElementById("header");
-  if (!mount) return;
+    // Apply base pre-animate state based on flavor classes
+    function prime(el) {
+      el.style.willChange = 'transform, opacity';
+      el.style.opacity = '0';
+      el.style.transition = 'opacity 700ms cubic-bezier(.22,.61,.36,1), transform 800ms cubic-bezier(.22,.61,.36,1)';
 
-  // Build fallback paths based on current page depth
-  const depth = (location.pathname.replace(/\/$/, "").match(/\//g) || []).length;
-  const ups = Array.from({ length: Math.max(0, depth) }, (_, i) => "../".repeat(i + 1));
-
-  const candidates = [
-    "/components/header.html",           // root-relative
-    "/components/header.html",            // same folder
-    ...ups.map(u => `${u}/components/header.html`) // ../components/, ../../components/, ...
-  ];
-
-  (async function loadHeader() {
-    let html = null, used = null;
-
-    for (const url of candidates) {
-      try {
-        const res = await fetch(url, { cache: "no-store" });
-        if (res.ok) { html = await res.text(); used = url; break; }
-      } catch { /* try next */ }
-    }
-
-    if (!html) {
-      console.error("HFC: failed to load header from", candidates);
-      return;
-    }
-
-    mount.innerHTML = html;
-
-    // Mobile nav toggle inside injected header
-    const btn = mount.querySelector("[data-nav-toggle]");
-    const panel = mount.querySelector("[data-nav-panel]");
-    btn?.addEventListener("click", () => panel?.classList.toggle("hidden"));
-
-    // Optional: auto top padding if page didn't add pt-*
-    const headerEl = mount.querySelector("header");
-    if (headerEl) {
-      const h = headerEl.getBoundingClientRect().height;
-      document.documentElement.style.setProperty("--header-h", `${h}px`);
-      if (!/\bpt-/.test(document.body.className)) {
-        document.body.style.paddingTop = `${h}px`;
+      if (el.classList.contains('fade-up')) {
+        el.style.transform = 'translate3d(0,20px,0)';
+      } else if (el.classList.contains('fade-down')) {
+        el.style.transform = 'translate3d(0,-20px,0)';
+      } else if (el.classList.contains('slide-right')) {
+        el.style.transform = 'translate3d(24px,0,0)';
+      } else if (el.classList.contains('slide-left')) {
+        el.style.transform = 'translate3d(-24px,0,0)';
+      } else if (el.classList.contains('zoom-in')) {
+        el.style.transform = 'scale(.96)';
+      } else {
+        el.style.transform = 'translate3d(0,12px,0)';
       }
     }
 
-    console.log("HFC header loaded from:", used);
+    function reveal(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.classList.add('revealed');
+      // remove will-change after the animation completes to save memory
+      setTimeout(() => (el.style.willChange = ''), 1000);
+    }
+
+    function init() {
+      const targets = $$('.reveal:not(.revealed)');
+      if (!targets.length) return;
+
+      // If user prefers reduced motion, reveal everything at once
+      if (prefersReduced) {
+        targets.forEach(el => reveal(el));
+        return;
+      }
+
+      targets.forEach(prime);
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(({ isIntersecting, target }) => {
+          if (!isIntersecting) return;
+          reveal(target);
+          obs.unobserve(target);
+        });
+      }, defaults);
+
+      targets.forEach(t => io.observe(t));
+    }
+
+    return { init };
   })();
-});
 
-/* ===== Reveal-on-scroll (.reveal + animation class, e.g. .fade-up) ===== */
-(() => {
-  const els = document.querySelectorAll(".reveal");
-  if (!("IntersectionObserver" in window) || !els.length) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("show"); });
-  }, { threshold: 0.14 });
-  els.forEach(el => io.observe(el));
-})();
+  /* ------------------------------
+   * 2) Testimonials carousel
+   * ------------------------------ */
+  const Carousel = (() => {
+    const SEL = {
+      root: '#reviewsCarousel',
+      track: '.reel__track',
+      card: '.reel__card',
+      prev: '[data-reel-prev]',
+      next: '[data-reel-next]'
+    };
 
-/* ===== Footer include (works from subfolders & sets current year) ===== */
-(function loadHfcFooter(){
-  const mount = document.getElementById("footer");
-  // If there's no explicit mount, append at end of body.
-  const inject = (html) => {
-    if (mount) mount.innerHTML = html; else document.body.insertAdjacentHTML("beforeend", html);
-    const y = document.getElementById("y"); if (y) y.textContent = new Date().getFullYear();
-  };
+    let root, track, cards, btnPrev, btnNext, autoplayTimer, pause = false;
 
-  const depth = (location.pathname.replace(/\/$/, "").match(/\//g) || []).length;
-  const ups = Array.from({ length: Math.max(0, depth) }, (_, i) => "../".repeat(i + 1));
-
-  const candidates = [
-    "/components/footer.html",
-    "components/footer.html",
-    ...ups.map(u => `${u}components/footer.html`)
-  ];
-
-  (async () => {
-    for (const url of candidates) {
-      try {
-        const res = await fetch(url, { cache: "no-store" });
-        if (res.ok) { inject(await res.text()); return; }
-      } catch {}
+    function gapPx() {
+      const cs = getComputedStyle(track);
+      const colGap = parseFloat(cs.columnGap) || 0;
+      const rowGap = parseFloat(cs.rowGap) || 0;
+      return Math.max(colGap, rowGap, 24); // fallback gap
     }
-    console.error("HFC: Could not load footer from", candidates);
+
+    function cardsPerView() {
+      return window.matchMedia('(min-width: 768px)').matches ? 3 : 1;
+    }
+
+    function stepDir(dir = 1) {
+      const firstCard = cards[0];
+      if (!firstCard) return;
+      const delta = (firstCard.clientWidth + gapPx()) * cardsPerView();
+      const maxX = track.scrollWidth - track.clientWidth - 4; // small buffer
+
+      let target = track.scrollLeft + dir * delta;
+      if (target < 0) target = 0;
+      if (target > maxX) target = 0; // wrap to beginning for a simple loop
+
+      track.scrollTo({ left: target, behavior: prefersReduced ? 'auto' : 'smooth' });
+      updateSelected();
+    }
+
+    function updateSelected() {
+      // Pick the card whose left is closest to track.scrollLeft
+      const scrollLeft = track.scrollLeft;
+      let closestIdx = 0;
+      let closestDist = Infinity;
+      cards.forEach((c, i) => {
+        const { left } = c.getBoundingClientRect();
+        const { left: tLeft } = track.getBoundingClientRect();
+        const dist = Math.abs((left - tLeft) - 0);
+        if (dist < closestDist) { closestDist = dist; closestIdx = i; }
+      });
+
+      cards.forEach((c, i) => {
+        const selected = i >= closestIdx && i < closestIdx + cardsPerView();
+        c.setAttribute('aria-selected', String(selected));
+        c.tabIndex = selected ? 0 : -1;
+      });
+    }
+
+    // Keyboard navigation on track
+    function onKeydown(e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stepDir(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); stepDir(-1); }
+      if (e.key === 'Home')       { e.preventDefault(); track.scrollTo({ left: 0, behavior: 'smooth' }); updateSelected(); }
+      if (e.key === 'End')        { e.preventDefault(); track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' }); updateSelected(); }
+    }
+
+    // Touch/drag support
+    function enableDrag() {
+      let startX = 0, startLeft = 0, dragging = false;
+
+      track.addEventListener('pointerdown', e => {
+        dragging = true; track.setPointerCapture(e.pointerId);
+        startX = e.clientX; startLeft = track.scrollLeft; pause = true; // pause autoplay while dragging
+      });
+      track.addEventListener('pointermove', e => {
+        if (!dragging) return; const dx = e.clientX - startX; track.scrollLeft = startLeft - dx;
+      });
+      const end = e => { dragging = false; pause = false; try { track.releasePointerCapture(e.pointerId); } catch(_){} };
+      track.addEventListener('pointerup', end);
+      track.addEventListener('pointercancel', end);
+      track.addEventListener('mouseleave', () => dragging = false);
+    }
+
+    // Autoplay with pause on hover/focus
+    function startAutoplay() {
+      if (prefersReduced) return;
+      stopAutoplay();
+      autoplayTimer = setInterval(() => { if (!pause) stepDir(1); }, 5000);
+    }
+    function stopAutoplay() { if (autoplayTimer) clearInterval(autoplayTimer); }
+
+    function init() {
+      root = $(SEL.root); if (!root) return;
+      track = $(SEL.track, root); cards = $$(SEL.card, root);
+      btnPrev = $(SEL.prev, root.closest('section')) || $(SEL.prev);
+      btnNext = $(SEL.next, root.closest('section')) || $(SEL.next);
+      if (!track || !cards.length) return;
+
+      // Buttons
+      btnPrev && btnPrev.addEventListener('click', () => stepDir(-1));
+      btnNext && btnNext.addEventListener('click', () => stepDir(1));
+
+      // Keyboard
+      track.addEventListener('keydown', onKeydown);
+
+      // Hover/focus pause
+      const container = root.closest('.container-x') || root;
+      container.addEventListener('mouseenter', () => (pause = true));
+      container.addEventListener('mouseleave', () => (pause = false));
+      container.addEventListener('focusin', () => (pause = true));
+      container.addEventListener('focusout', () => (pause = false));
+
+      // Drag
+      enableDrag();
+
+      // Resize -> correct selection
+      window.addEventListener('resize', () => updateSelected(), { passive: true });
+      updateSelected();
+
+      // Autoplay
+      startAutoplay();
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopAutoplay(); else startAutoplay();
+      });
+    }
+
+    return { init };
   })();
-})();
 
-/* ===== Pricing toggle (Monthly <-> Yearly) ===== */
-document.addEventListener('DOMContentLoaded', () => {
-  const billing = document.getElementById('billing');
-  if (!billing) return;
+  /* ----------------------------------
+   * 3) Ratings bars + counters animation
+   * ---------------------------------- */
+  const Ratings = (() => {
+    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
 
-  const update = () => {
-    const yearly = billing.checked;
-    document.querySelectorAll('.price-mo').forEach(el => el.style.display = yearly ? 'none' : '');
-    document.querySelectorAll('.price-yr').forEach(el => el.style.display = yearly ? '' : 'none');
-  };
-  billing.addEventListener('change', update);
-  update();
-});
-
-
-/* ===== Generic carousel (optional) =====
-Markup:
-<div data-carousel>
-  <div data-carousel-track>...slides...</div>
-  <button data-carousel-prev>‹</button>
-  <button data-carousel-next>›</button>
-  <div data-carousel-dots>
-    <button aria-selected="true"></button>
-    ...
-  </div>
-</div>
-*/
-(() => {
-  const carousels = document.querySelectorAll("[data-carousel]");
-  if (!carousels.length) return;
-
-  carousels.forEach((root) => {
-    const track = root.querySelector("[data-carousel-track]");
-    if (!track) return;
-    const slides = Array.from(track.children);
-    const dotsWrap = root.querySelector("[data-carousel-dots]");
-    const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll("button")) : [];
-    const prev = root.querySelector("[data-carousel-prev]");
-    const next = root.querySelector("[data-carousel-next]");
-
-    let index = 0;
-    const perView = () => (window.matchMedia("(min-width: 768px)").matches ? Math.min(3, slides.length) : 1);
-
-    function clampIndex() {
-      const max = Math.max(0, slides.length - perView());
-      index = Math.max(0, Math.min(index, max));
+    function parseStar(label) { // expects '5★' etc
+      const m = (label || '').trim().match(/^(\d)/);
+      return m ? Number(m[1]) : 0;
     }
 
-    function slideTo(i) {
-      index = i;
-      clampIndex();
-      const cardW = slides[0].getBoundingClientRect().width;
-      const gap = parseFloat(getComputedStyle(track).gap || 24);
-      const offset = -(index * (cardW + gap));
-      track.style.transform = `translateX(${offset}px)`;
-      slides.forEach((s, si) => s.setAttribute("aria-selected", si === index ? "true" : "false"));
-      dots.forEach((d, di) => d.setAttribute("aria-selected", di === index ? "true" : "false"));
+    function animateValue(el, to, dur = 900) {
+      if (!el) return;
+      const from = Number(el.textContent || 0);
+      const start = performance.now();
+      function frame(now) {
+        const p = Math.min(1, (now - start) / dur);
+        const v = Math.round(from + (to - from) * easeOutCubic(p));
+        el.textContent = String(v);
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
     }
 
-    const nextSlide = () => slideTo(index + 1);
-    const prevSlide = () => slideTo(index - 1);
-
-    // Dots
-    dots.forEach((d, di) => d.addEventListener("click", () => { slideTo(di); stopAuto(); }));
-
-    // Buttons
-    prev?.addEventListener("click", () => { prevSlide(); stopAuto(); });
-    next?.addEventListener("click", () => { nextSlide(); stopAuto(); });
-
-    // Keyboard
-    track.setAttribute("tabindex", "0");
-    track.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") { nextSlide(); stopAuto(); }
-      if (e.key === "ArrowLeft") { prevSlide(); stopAuto(); }
-    });
-
-    // Touch
-    let startX = 0, dx = 0;
-    track.addEventListener("touchstart", e => { startX = e.touches[0].clientX; dx = 0; stopAuto(); }, { passive: true });
-    track.addEventListener("touchmove", e => { dx = e.touches[0].clientX - startX; }, { passive: true });
-    track.addEventListener("touchend", () => { if (Math.abs(dx) > 40) (dx < 0 ? nextSlide() : prevSlide()); });
-
-    // Autoplay
-    let timer = null;
-    function startAuto() {
-      if (HFC_PREFERS_REDUCED) return;
-      timer = setInterval(() => { slideTo(index + 1); }, 3500);
+    function animateWidth(el, toPct, dur = 900) {
+      if (!el) return;
+      const from = parseFloat(el.style.width) || 0;
+      const start = performance.now();
+      function frame(now) {
+        const p = Math.min(1, (now - start) / dur);
+        const v = from + (toPct - from) * easeOutCubic(p);
+        el.style.width = v + '%';
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
     }
-    function stopAuto() { if (timer) clearInterval(timer); timer = null; }
 
-    root.addEventListener("mouseenter", stopAuto);
-    root.addEventListener("mouseleave", () => { if (!timer) startAuto(); });
-    window.addEventListener("resize", () => slideTo(index));
+    function computeAndAnimate() {
+      const rows = $$('[data-row]');
+      if (!rows.length) return;
 
-    // init
-    slideTo(0);
-    startAuto();
-  });
-})();
+      // Compute totals
+      let total = 0; const buckets = [];
+      rows.forEach(r => {
+        const count = Number(r.getAttribute('data-value') || 0);
+        const label = r.getAttribute('data-label') || '';
+        total += count;
+        buckets.push({ star: parseStar(label), count, row: r });
+      });
 
-/* ===== Generic mobile-nav toggle (for static headers, if any) ===== */
-(() => {
-  const btn = document.querySelector("[data-nav-toggle]");
-  const panel = document.querySelector("[data-nav-panel]");
-  if (!btn || !panel) return;
-  btn.addEventListener("click", () => panel.classList.toggle("hidden"));
+      // Average
+      const sum = buckets.reduce((acc, b) => acc + (b.star * b.count), 0);
+      const avg = total ? (sum / total) : 0;
+      const avgEl = $('#avg-number');
+      const totalEl = $('#total-reviews');
+      if (avgEl) avgEl.textContent = avg.toFixed(1);
+      if (totalEl) animateValue(totalEl, total, prefersReduced ? 0 : 700);
+
+      // Animate each row's bar + % now
+      buckets.forEach(b => {
+        const pct = total ? Math.round((b.count / total) * 100) : 0;
+        const nowEl = $('.now', b.row);
+        const barFill = $('.pg__fill', b.row);
+        if (barFill) {
+          barFill.style.width = '0%';
+          animateWidth(barFill, pct, prefersReduced ? 0 : 900);
+        }
+        if (nowEl) animateValue(nowEl, pct, prefersReduced ? 0 : 900);
+      });
+    }
+
+    function init() { computeAndAnimate(); }
+    return { init };
+  })();
+
+  /* ------------------------------
+   * 4) Minimal nav toggle (optional)
+   * ------------------------------ */
+  function initMobileNav() {
+    const btn = $('[data-nav-toggle]');
+    const panel = $('[data-nav-panel]');
+    if (!btn || !panel) return;
+    btn.addEventListener('click', () => panel.classList.toggle('hidden'));
+  }
+
+  /* ------------------------------
+   * Boot
+   * ------------------------------ */
+  function init() {
+    initMobileNav();
+    Reveal.init();
+    Carousel.init();
+    Ratings.init();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

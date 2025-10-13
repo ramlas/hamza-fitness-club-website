@@ -19,7 +19,8 @@
   .container-x { max-width: 1200px; margin-left: auto; margin-right: auto; }
   .section-pad { padding: clamp(3rem, 5vw, 6rem) 0; }
 
-  
+  :root{ --accent:#d5100c; /* or use your brand red: #d5100c */ }
+
   /* =========================
      Buttons (works with Tailwind)
      ========================= */
@@ -178,6 +179,130 @@
   border: 1px solid rgba(255,255,255,.10);
   border-radius: .75rem;
   overflow: hidden;
+}
+
+/* Quick Methods – pill buttons with icons */
+.quick-btn{
+  display:inline-flex; align-items:center; gap:.6rem;
+  width:100%;
+  padding:.9rem 1rem;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.06);
+  border-radius: 1rem;
+  font-weight: 700;
+  letter-spacing:.01em;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.quick-btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); transform: translateY(-1px); }
+.quick-btn:active{ transform: translateY(0); }
+.quick-btn:focus-visible{ outline:2px solid var(--brand-red); outline-offset:3px; }
+
+.quick-btn .icon-wrap{
+  display:grid; place-items:center;
+  width:2.5rem; height:2.5rem;
+  border-radius: .9rem;
+  background: rgba(0,0,0,.35);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.quick-btn .icon{
+  width:1.15rem; height:1.15rem;
+  fill: currentColor; color:#fff;
+}
+
+.quick-btn .label{ font-size:.95rem; }
+
+/* Full-width calendar CTA */
+.quick-btn--full{
+  justify-content:center;
+  margin-top:.25rem;
+  padding:1rem 1.1rem;
+  border-radius: 1.25rem;
+}
+
+/* === Ratings Card Animation === */
+.pg {
+  position: relative;
+  height: 0.5rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pg__fill {
+  height: 100%;
+  width: 0%; /* animated later via JS */
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.0) 0 10px,
+      rgba(0, 0, 0, 0.10) 10px 20px
+    ),
+    currentColor;
+  color: #facc15; /* tailwind yellow-400 */
+  background-size: 40px 40px, auto;
+  animation: barberpole 1s linear infinite;
+}
+
+@keyframes barberpole {
+  to {
+    background-position: 40px 0, 0 0;
+  }
+}
+
+.pg__fill.run {
+  transition: width 1.2s cubic-bezier(.2, .8, .2, 1);
+}
+
+/* === Reviews Carousel (12 cards / step by 3) === */
+.reel {
+  overflow: hidden;
+  position: relative;
+}
+
+.reel__track {
+  display: flex;
+  gap: 1.5rem;              /* matches Tailwind gap-6 */
+  will-change: transform;
+  transition: transform 700ms cubic-bezier(.22,.72,.24,.99);
+}
+
+.reel__card {
+  flex: 0 0 auto;           /* no shrinking */
+}
+
+/* Glass circle buttons */
+.glass-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow:
+    0 4px 16px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  transition: transform .2s ease, background .2s ease;
+}
+.glass-btn:hover { background: rgba(255,255,255,.18); transform: translateY(-1px); }
+.glass-btn:active { transform: translateY(0); }
+
+/* Disable state */
+.glass-btn[disabled] {
+  opacity: .35;
+  pointer-events: none;
+}
+
+/* Optional: subtle scale-in for cards when entering view */
+.reel__card.animate-in {
+  animation: cardIn .45s ease both;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
   

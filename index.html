@@ -1,317 +1,645 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hamza Fitness Club</title>
-  <meta name="description" content="Hamza Fitness Club - Train hard, get stronger. Push your limits, build strength, and become the best version of yourself." />
+  <meta name="description" content="Train hard, get stronger — classes, coaching, and a supportive community at Hamza Fitness Club." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind -->
+  <!-- Tailwind config + CDN -->
+  <script>
+    window.tailwind = window.tailwind || {};
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red: '#d5100c', dark: '#0b0b0b', smoke: '#151618' } },
+          fontFamily: { display: ['Oswald','ui-sans-serif','system-ui','sans-serif'] }
+        }
+      }
+    };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    :root { --brand-red: #d5100c; --brand-dark: #0b0b0b; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Oswald', sans-serif; background:#0b0b0b; }
-    .container-x { max-width: 1200px; margin-left:auto; margin-right:auto; }
-
-    /* Buttons */
-    .btn-red { background-color: var(--brand-red); color: #fff; padding:.65rem 1.4rem; font-weight:800; letter-spacing:.04em; transition: all .35s ease; border-radius: 0; }
-    .btn-red:hover { background:#a80c09; transform: translateY(-1px); }
-    .btn-outline-red { background:transparent; border:2px solid var(--brand-red); color:var(--brand-red); padding:.65rem 1.4rem; font-weight:800; letter-spacing:.04em; transition: all .35s ease; border-radius:0; }
-    .btn-outline-red:hover { background:var(--brand-red); color:#fff; transform:translateY(-1px); }
-
-    /* Type scale helpers */
-    .hero-text-subheading{ font-size:.95rem; }
-    @media (min-width:768px){ .hero-text-subheading{ font-size:1.05rem; } }
-    @media (min-width:1024px){ .hero-text-subheading{ font-size:1.15rem; } }
-    .hero-text-body{ font-size:1.05rem; }
-    @media (min-width:1024px){ .hero-text-body{ font-size:1.15rem; } }
-
-    /* ========= Animations ========= */
-    @keyframes fadeInUp { from { opacity:0; transform: translateY(24px);} to { opacity:1; transform: translateY(0);} }
-    @keyframes fadeInDown { from { opacity:0; transform: translateY(-24px);} to { opacity:1; transform: translateY(0);} }
-    @keyframes slideInLeft { from { opacity:0; transform: translateX(-100px);} to { opacity:1; transform: translateX(0);} }
-    @keyframes slideInRight { from { opacity:0; transform: translateX(100px);} to { opacity:1; transform: translateX(0);} }
-    @keyframes zoomIn { from {opacity:0; transform: scale(.92);} to { opacity:1; transform: scale(1);} }
-    @keyframes floatY { 0%{ transform:translateY(0);} 50%{ transform:translateY(-8px);} 100%{ transform:translateY(0);} }
-    @keyframes slowPulse { 0%,100%{opacity:.8} 50%{opacity:1} }
-
-    .reveal { opacity: 0; }
-    .reveal.show.fade-up { animation: fadeInUp 900ms ease-out forwards; }
-    .reveal.show.fade-down { animation: fadeInDown 900ms ease-out forwards; }
-    .reveal.show.slide-left { animation: slideInLeft 1100ms cubic-bezier(.22,.61,.36,1) forwards; }
-    .reveal.show.slide-right { animation: slideInRight 1100ms cubic-bezier(.22,.61,.36,1) forwards; }
-    .reveal.show.zoom-in { animation: zoomIn 900ms ease-out forwards; }
-
-    /* subtle looping motion for decorative bits */
-    .float-loop { animation: floatY 6s ease-in-out infinite; }
-    .pulse-slow { animation: slowPulse 5s ease-in-out infinite; }
-
-    /* Utility */
-    .section-pad{ padding: clamp(3rem, 5vw, 6rem) 0; }
-  </style>
+  <!-- Site styles -->
+  <link rel="stylesheet" href="assets/hfc.css" />
+  <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin />
 </head>
-<body class="text-white overflow-x-hidden">
-  <!-- ===== Header ===== -->
-  <header class="fixed top-0 left-0 w-full z-40">
-    <div class="container-x px-5 lg:px-8 py-4 flex items-center">
-      <a href="#home" class="flex items-center gap-4">
-        <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club logo" class="w-12 h-12 md:w-14 md:h-14 object-contain" />
-        <span class="font-extrabold text-xl tracking-wide uppercase">Hamza Fitness Club</span>
-      </a>
-  
-      <!-- Nav sits to the left of the button -->
-      <nav class="ml-auto hidden md:block mr-4">
-        <ul class="flex gap-7 text-sm uppercase tracking-wider font-semibold">
-          <li><a href="#home" class="hover:text-[color:var(--brand-red)]">Home</a></li>
-          <li><a href="#who" class="hover:text-[color:var(--brand-red)]">Who We Are</a></li>
-          <li><a href="#classes" class="hover:text-[color:var(--brand-red)]">Classes</a></li>
-          <li><a href="#reviews" class="hover:text-[color:var(--brand-red)]">Reviews</a></li>
-          <li><a href="#why" class="hover:text-[color:var(--brand-red)]">Why Us</a></li>
-        </ul>
-      </nav>
-  
-      <a href="#contact" class="btn-red text-xs md:text-sm">Register Now</a>
-    </div>
-  </header>
-  
+<body class="bg-black text-white font-display">
+
+<!-- components/header.html -->
+<header id="header" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="/index.html#hero-index" class="flex items-center gap-3">
+      <img src="/images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+      <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:block" aria-label="Primary">
+      <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
+        <li>
+          <a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a>
+        </li>
+        <li>
+          <a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a>
+        </li>
+
+        <!-- CLASSES dropdown -->
+        <li class="relative group">
+          <button class="flex items-center gap-2 hover:text-[color:var(--brand-red)] uppercase"
+                  aria-haspopup="true" aria-expanded="false" aria-controls="menu-classes">
+            CLASSES <span class="text-lg leading-none">▾</span>
+          </button>
+
+          <div id="menu-classes" data-menu
+               class="absolute left-0 mt-4 bg-neutral-900 border border-white/10 w-52 shadow-lg
+                      invisible opacity-0 translate-y-1 transition duration-250 ease-out
+                      group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
+            <a href="/classes.html"  class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Detail Class</a>
+            <a href="/pricing.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Pricing Plan</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="/index.html#contact" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a>
+        </li>
+
+        <!-- TRAINERS (direct link) -->
+        <li>
+          <a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+
+    <!-- CTA -->
+    <a href="/booking.html" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
+      Book Free Appointment
+    </a>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
+    <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
+      <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
+      <li><a href="/aboutus.html"        class="block py-2">About Us</a></li>
+      <li><a href="/classes.html"          class="block py-2">Classes</a></li>
+      <li><a href="/index.html#contact"    class="block py-2">Contact Us</a></li>
+      <li><a href="/trainers.html"         class="block py-2">Trainers</a></li>
+      <li><a href="/booking.html"    class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Header interactivity -->
+<script src="assets/header.js" defer></script>
+
+
+  <!-- Spacer for fixed header -->
+  <div class="h-16"></div>
+
   <!-- ===== Hero ===== -->
-  <section id="home" class="relative min-h-[100svh] grid items-center">
+  <section id="hero-index" class="relative min-h-[100svh] grid items-center">
+    <!-- Background -->
     <div class="absolute inset-0">
-      <!-- Update with your banner image path -->
-      <img src="images\web banner.svg" alt="Gym background" class="w-full h-full object-cover"/>
+      <img src="images/web-banner.svg" alt="Gym background" class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-black/10"></div>
-      <!-- subtle floating shapes -->
+
+      <!-- soft blobs -->
       <div class="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-[color:var(--brand-red)]/10 blur-3xl float-loop"></div>
       <div class="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-white/10 blur-2xl float-loop" style="animation-delay:1s"></div>
     </div>
 
+    <!-- Content -->
     <div class="relative z-10 w-full pl-10 pr-6 lg:pl-24 lg:pr-12 flex justify-start">
       <div class="max-w-2xl reveal fade-up text-left">
-        <p class="hero-text-subheading tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-black mb-3 text-sm sm:text-base lg:text-lg">
-          Train Hard · Get Stronger
-        </p>
-        
-        <h1 class="font-black leading-tight my-4 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-          STRONGER<br/>EVERY DAY
-        </h1>
-        
-        <p class="hero-text-body mb-8 text-gray-300 max-w-xl leading-relaxed text-sm sm:text-base md:text-lg">
-          At Hamza Fitness Club, every workout brings you closer to your goals. Push your limits, build strength, and become the best version of yourself!
-        </p>        
+        <p class="tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-black mb-3 text-sm sm:text-base lg:text-lg">Train Hard · Get Stronger</p>
+        <h1 class="font-black leading-tight my-4 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">STRONGER<br />EVERY DAY</h1>
+        <p class="mb-8 hero-text-body max-w-xl">At Hamza Fitness Club, every workout brings you closer to your goals. Push your limits, build strength, and become the best version of yourself!</p>
         <div class="flex flex-wrap gap-4">
-          <a href="#who" class="btn-red text-base">Get Started</a>
-          <a href="#who" class="btn-outline-red text-base">Learn More</a>
+          <a href="/booking.html" class="btn-red text-base">Book Free Appointment</a>
+          <a href="/aboutus.html" class="btn-outline-red text-base">Learn More</a>
         </div>
       </div>
     </div>
-    
   </section>
 
   <!-- ===== Who We Are ===== -->
   <section id="who" class="py-1 bg-black relative">
     <div class="w-11/12 xl:max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
 
-      <!-- LEFT COLUMN -->
+      <!-- LEFT -->
       <div class="reveal fade-up max-w-[640px]">
-        <!-- red label -->
-        <p class="uppercase font-black tracking-widest mb-2 text-[color:var(--brand-red)] text-sm md:text-base">
-          Who We Are
-        </p>
-  
-        <!-- headline -->
-        <h2 class="text-3xl md:text-4xl font-black leading-tight mb-3">
-          Your Ultimate Fitness and Wellness Destination.
-        </h2>
-  
-        <!-- intro -->
-        <p class="text-gray-300 leading-relaxed text-sm md:text-base mb-6">
-          We build stronger bodies and stronger communities. Our expert coaches, supportive culture, and
-          top-tier facilities help beginners and athletes alike reach their potential.
-        </p>
-  
-        <!-- top separator -->
+        <p class="uppercase font-black tracking-widest mb-2 text-[color:var(--brand-red)] text-sm md:text-base">Who We Are</p>
+        <h2 class="text-3xl md:text-4xl font-black leading-tight mb-3">Your Ultimate Fitness and Wellness Destination.</h2>
+        <p class="text-gray-300 leading-relaxed text-sm md:text-base mb-6">We build stronger bodies and stronger communities. Our expert coaches, supportive culture, and top-tier facilities help beginners and athletes alike reach their potential.</p>
+
         <div class="h-px bg-white/10 md:w-3/4 w-full mb-6"></div>
-  
-        <!-- features with red check-in-a-circle icons -->
+
+        <!-- Feature list -->
         <div class="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-gray-200 text-sm md:text-base">
           <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0" width="18" height="18" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" fill="var(--brand-red)"/>
-              <path d="M8 12.5l2.5 2.5L16 9.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
             Personalized training programs
           </p>
           <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0" width="18" height="18" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" fill="var(--brand-red)"/>
-              <path d="M8 12.5l2.5 2.5L16 9.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
             Strength &amp; conditioning
           </p>
           <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0" width="18" height="18" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" fill="var(--brand-red)"/>
-              <path d="M8 12.5l2.5 2.5L16 9.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
             Nutrition guidance
           </p>
           <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0" width="18" height="18" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" fill="var(--brand-red)"/>
-              <path d="M8 12.5l2.5 2.5L16 9.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
             Flexible class schedules
           </p>
           <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0" width="18" height="18" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" fill="var(--brand-red)"/>
-              <path d="M8 12.5l2.5 2.5L16 9.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
             Community events
           </p>
           <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0" width="18" height="18" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" fill="var(--brand-red)"/>
-              <path d="M8 12.5l2.5 2.5L16 9.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
             Progress tracking
           </p>
         </div>
-  
-        <!-- line separator -->
+
         <div class="h-px bg-white/10 md:w-3/4 w-full my-6"></div>
-  
-        <!-- Customer Support compact tile -->
+
+        <!-- Support tile -->
         <a href="tel:+188840002424" class="inline-flex items-center gap-4 transition">
           <div class="grid place-items-center w-14 h-14 bg-[color:var(--brand-red)] text-white">
-            <!-- phone with arrow icon -->
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 class="w-10 h-10" 
-                 viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="1"
-                 stroke-linecap="round" stroke-linejoin="round">
-              <!-- phone base -->
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
-                       19.86 19.86 0 0 1-8.63-3.07 
-                       19.5 19.5 0 0 1-6-6 
-                       19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3
-                       a2 2 0 0 1 2 1.72c.12.81.37 1.6.72 2.34a2 2 0 0 1-.45 2.18L8.09 9.91a16 16 0 0 0 6 6l1.67-1.33a2 2 0 0 1 2.18-.45c.74.35 1.53.6 2.34.72A2 2 0 0 1 22 16.92z"/>
-              <!-- outward arrow -->
-              <path d="M15 3h6v6"/>
-              <path d="M15 9l6-6"/>
-            </svg>
+            <svg class="w-10 h-10" aria-hidden="true"><use href="assets/icons.svg#icon-phone-arrow"></use></svg>
           </div>
-          
           <div>
             <p class="text-xs uppercase tracking-widest text-gray-400">Customer Support</p>
             <p class="text-lg md:text-xl font-extrabold">(888) 4000-2424</p>
           </div>
         </a>
       </div>
-  
-      <!-- RIGHT IMAGE -->
+
+      <!-- RIGHT -->
       <div class="relative reveal slide-right">
-        <img src="images\man who we are.svg" alt="Athlete"
-              class="w-full h-full object-cover" />
+        <img src="images/man%20who%20we%20are.svg" alt="Athlete" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why Choose Us ===== -->
+  <section id="whychooseus" class="section-pad relative bg-black overflow-hidden">
+    <!-- soft background glow -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-40 right-1/4 w-[900px] h-[900px] rounded-full bg-[color:var(--brand-red)]/10 blur-3xl"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_60%)]"></div>
+    </div>
+
+    <div class="container-x px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+
+        <!-- Image -->
+        <div class="lg:w-1/2 w-full reveal fade-up">
+          <figure class="relative">
+            <div class="w-full h-80 sm:h-96 lg:h-[520px] rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl">
+              <img src="images/classes.avif" alt="Coach guiding a client through strength training" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0"></div>
+            </div>
+          </figure>
+        </div>
+
+        <!-- Content -->
+        <div class="lg:w-1/2 w-full reveal slide-right">
+          <div class="max-w-lg">
+            <p class="uppercase tracking-widest text-[color:var(--brand-red)] font-black mb-2">Why Choose Us</p>
+            <h2 class="text-4xl font-black leading-tight mb-3">Elevate Your Workout with Expert-Led Fitness Classes</h2>
+            <p class="text-gray-300 mb-8">Science-backed programming, real accountability, and a community that keeps you moving forward.</p>
+
+            <ul class="space-y-5" role="list">
+              <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
+                <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
+                  <svg class="w-[22px] h-[22px]" aria-hidden="true"><use href="assets/icons.svg#icon-heart"></use></svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Holistic Health Approach</h3>
+                  <p class="text-gray-400 text-sm">Balanced training across strength, mobility, and cardio for long-term results.</p>
+                </div>
+              </li>
+
+              <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
+                <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
+                  <svg class="w-[22px] h-[22px]" aria-hidden="true"><use href="assets/icons.svg#icon-layers"></use></svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Wide Range of Classes</h3>
+                  <p class="text-gray-400 text-sm">HIIT, lifting, mobility, conditioning, and mindfulness—mix &amp; match to your goals.</p>
+                </div>
+              </li>
+
+              <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
+                <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
+                  <svg class="w-[22px] h-[22px]" aria-hidden="true"><use href="assets/icons.svg#icon-clock"></use></svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Flexible Membership Plans</h3>
+                  <p class="text-gray-400 text-sm">Plans that adapt—pause, upgrade, or switch as your routine evolves.</p>
+                </div>
+              </li>
+
+              <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
+                <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
+                  <svg class="w-[22px] h-[22px]" aria-hidden="true"><use href="assets/icons.svg#icon-users"></use></svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Supportive Fitness Community</h3>
+                  <p class="text-gray-400 text-sm">Coaches &amp; members who keep you accountable—and celebrate every win.</p>
+                </div>
+              </li>
+            </ul>
+
+            <a href="#join" class="btn-red mt-10 inline-flex items-center justify-center">Join Our Community</a>
+          </div>
+        </div>
 
       </div>
     </div>
   </section>
-  
 
-  <!-- ===== Vision / Mission / Motto cards ===== -->
-<section class="section-pad relative bg-[#1a1a1a] overflow-hidden">
-  <!-- big background text -->
-  <div class="pointer-events-none select-none absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-full text-center">
-    <span class="whitespace-nowrap text-white/10 uppercase font-bold tracking-[0.2em]
-                 leading-none text-[5vw] md:text-[4vw] lg:text-[3.5vw]">
-      PROFESSIONAL FITNESS
-    </span>
-  </div>
+  <!-- ===== Vision / Mission / Motto ===== -->
+  <section id="vmm" class="section-pad relative bg-[#1a1a1a] overflow-hidden">
+    <div class="pointer-events-none select-none absolute -bottom-2 left-1/2 -translate-x-1/2 w-full text-center">
+      <span class="whitespace-nowrap text-white/10 uppercase font-bold tracking-[0.2em] leading-none text-[5vw] md:text-[4vw] lg:text-[3.5vw]">PROFESSIONAL FITNESS</span>
+    </div>
 
-  <!-- cards container -->
-  <div class="relative z-10 container-x px-6 lg:px-8 grid md:grid-cols-3 gap-6">
-    
-    <!-- Vision -->
-    <article class="reveal zoom-in bg-[#262626] p-8 rounded-none ring-1 ring-white/5">
-      <div class="w-12 h-12 grid place-items-center bg-[#333] text-white mb-5">
-        <!-- Eye Icon (Vision) -->
-        <svg xmlns="http://www.w3.org/2000/svg" 
-             class="w-8 h-8" fill="none" viewBox="0 0 24 24" 
-             stroke="currentColor" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" 
-                d="M2.25 12C3.75 7.5 7.5 4.5 12 4.5s8.25 3 9.75 7.5c-1.5 4.5-5.25 7.5-9.75 7.5s-8.25-3-9.75-7.5z"/>
-          <circle cx="12" cy="12" r="3"/>
-        </svg>
+    <div class="relative z-10 container-x px-6 lg:px-8 grid md:grid-cols-3 gap-6">
+      <!-- Vision -->
+      <article class="reveal zoom-in bg-[#262626] p-8 ring-1 ring-white/5 rounded-xl">
+        <div class="w-12 h-12 grid place-items-center bg-[#333] text-white mb-5 rounded">
+          <svg class="w-8 h-8" aria-hidden="true"><use href="assets/icons.svg#icon-eye"></use></svg>
+        </div>
+        <h3 class="text-2xl font-black mb-2">Our Vision</h3>
+        <p class="text-gray-300">To inspire healthier lifestyles by building stronger bodies and empowering minds through fitness.</p>
+        <a href="#" class="mt-6 inline-block btn-outline-red">Learn More</a>
+      </article>
+
+      <!-- Mission -->
+      <article class="reveal zoom-in bg-[color:var(--brand-red)] p-8 text-black rounded-xl">
+        <div class="w-12 h-12 grid place-items-center bg-black/20 mb-5 rounded">
+          <svg class="w-8 h-8" aria-hidden="true"><use href="assets/icons.svg#icon-grid"></use></svg>
+        </div>
+        <h3 class="text-2xl font-black mb-2">Our Mission</h3>
+        <p>To provide expert training, personalized programs, and a supportive community that helps every member achieve their fitness goals.</p>
+        <a href="#" class="mt-6 inline-block btn-outline-red border-black text-black hover:text-white">Learn More</a>
+      </article>
+
+      <!-- Motto -->
+      <article class="reveal zoom-in bg-[#262626] p-8 ring-1 ring-white/5 rounded-xl">
+        <div class="w-12 h-12 grid place-items-center bg-[#333] text-white mb-5 rounded">
+          <svg class="w-8 h-8" aria-hidden="true"><use href="assets/icons.svg#icon-globe"></use></svg>
+        </div>
+        <h3 class="text-2xl font-black mb-2">Our Motto</h3>
+        <p class="text-gray-300">Train hard, stay consistent, and become stronger every day — inside and out.</p>
+        <a href="#" class="mt-6 inline-block btn-outline-red">Learn More</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Video CTA ===== -->
+  <section id="videoCTA" class="relative overflow-hidden">
+    <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="metadata" poster="images/gym-floor.jpg">
+      <source src="images/gym%20video.mp4" type="video/mp4" />
+      <img src="images/gym-floor.jpg" alt="Gym floor" />
+    </video>
+    <div class="absolute inset-0 bg-black/60"></div>
+
+    <div class="container-x relative px-6 lg:px-8 py-24 text-center">
+      <h3 class="reveal fade-down text-4xl md:text-5xl font-black leading-tight mb-4">Push Harder, Sweat More, Achieve Greatness with FitNation!</h3>
+      <p class="reveal fade-up text-gray-200 max-w-3xl mx-auto">Growth and improvement come from steady discipline and strong foundations. True progress lies in balanced effort, dignified habits, and consistent support.</p>
+      <a class="btn-red mt-6 inline-block" href="#">Discover More</a>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section id="testimonials" class="section-pad bg-black" aria-labelledby="reviews-title">
+    <div class="container-x px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <h3 id="reviews-title" class="reveal fade-down text-4xl md:text-5xl font-black mb-3">Real Member Stories at Hamza Fitness Club</h3>
+          <p class="text-gray-300 max-w-2xl">Proven results, supportive coaches, and a community that keeps you consistent.</p>
+        </div>
+
+        <!-- Ratings Card -->
+        <aside class="bg-neutral-900 rounded-xl p-5 ring-1 ring-white/5 w-full md:w-auto md:min-w-[320px]">
+          <div class="flex items-center gap-3">
+            <div class="text-4xl font-black"><span id="avg-number" aria-live="polite">0.0</span></div>
+            <div>
+              <div class="flex" aria-label="Average rating 4.9 out of 5">
+                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
+                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
+                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
+                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
+                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
+              </div>
+              <p class="text-xs text-gray-400 leading-tight mt-1">Based on <span id="total-reviews">0</span> member reviews</p>
+            </div>
+          </div>
+
+          <!-- Bars (animated by hfc.js) -->
+          <div class="mt-4 space-y-2">
+            <div class="flex items-center gap-2" data-row data-label="5★" data-value="92">
+              <span class="text-xs text-gray-400 w-8">5★</span>
+              <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pg__fill"></div></div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
+            </div>
+            <div class="flex items-center gap-2" data-row data-label="4★" data-value="7">
+              <span class="text-xs text-gray-400 w-8">4★</span>
+              <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pg__fill"></div></div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
+            </div>
+            <div class="flex items-center gap-2" data-row data-label="3★" data-value="1">
+              <span class="text-xs text-gray-400 w-8">3★</span>
+              <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pg__fill"></div></div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
+            </div>
+          </div>
+        </aside>
       </div>
-      <h3 class="text-2xl font-black mb-2">Our Vision</h3>
-      <p class="text-gray-300">
-        To inspire healthier lifestyles by building stronger bodies and empowering minds through fitness.
-      </p>
-      <a href="#" class="mt-6 inline-block btn-outline-red">Learn More</a>
-    </article>
 
-    <!-- Mission -->
-    <article class="reveal zoom-in bg-[color:var(--brand-red)] p-8 rounded-none text-black">
-      <div class="w-12 h-12 grid place-items-center bg-black/20 mb-5">
-        <!-- Grid Icon (Mission) -->
-        <svg xmlns="http://www.w3.org/2000/svg" 
-             class="w-8 h-8" fill="none" viewBox="0 0 24 24" 
-             stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="7" height="7" rx="1"/>
-          <rect x="14" y="3" width="7" height="7" rx="1"/>
-          <rect x="3" y="14" width="7" height="7" rx="1"/>
-          <rect x="14" y="14" width="7" height="7" rx="1"/>
-        </svg>
+      <!-- Carousel (12 cards) -->
+      <div id="reviewsCarousel" class="relative reel group mt-2" aria-roledescription="carousel">
+        <div class="reel__track" role="listbox" aria-label="Member reviews carousel" tabindex="0">
+          
+          <!-- Cards 1-12 (unchanged content) -->
+          <!-- 1 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="true">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Pakeeza Hassan"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Pakeeza Hassan</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">In 8 weeks I dropped 6kg and hit my first unassisted pull-up. Coaches actually track my progress weekly — feels like a team behind me!</blockquote>
+          </article>
+
+          <!-- 2 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ahmed Raza"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Ahmed Raza</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Variety is insane — HIIT, strength, boxing. I never get bored and my stamina’s never been better.</blockquote>
+          </article>
+
+          <!-- 3 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ali"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">24/7 access, spotless equipment, and trainers who actually check my form. Couldn’t ask for more.</blockquote>
+          </article>
+
+          <!-- 4 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Sara Khan"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Sara Khan</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Lahore</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">The programming keeps me consistent. I’ve never felt stronger.</blockquote>
+          </article>
+
+          <!-- 5 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Bilal Ahmed"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Bilal Ahmed</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Karachi</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Coaches correct my form every session. Big difference.</blockquote>
+          </article>
+
+          <!-- 6 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Amna Tariq"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Amna Tariq</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Islamabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Friendly community and results that stick.</blockquote>
+          </article>
+
+          <!-- 7 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Hamza Iqbal"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Hamza Iqbal</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Multan</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Equipment is spotless and top quality.</blockquote>
+          </article>
+
+          <!-- 8 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Zoya Anwar"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Zoya Anwar</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Rawalpindi</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Love the variety—never boring, always challenging.</blockquote>
+          </article>
+
+          <!-- 9 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Adeel Shah"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Adeel Shah</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Hyderabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Accountability and coaching changed my routine.</blockquote>
+          </article>
+
+          <!-- 10 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Mahnoor Ali"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Mahnoor Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Quetta</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">My energy levels are way up since joining.</blockquote>
+          </article>
+
+          <!-- 11 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Zain Bhatti"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Zain Bhatti</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Peshawar</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Great coaching. Great culture. 10/10.</blockquote>
+          </article>
+
+          <!-- 12 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Hira Naveed"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Hira Naveed</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Sialkot</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Support and structure I actually stick with.</blockquote>
+          </article>
+        </div>
+
+        <!-- Glass Circle Controls -->
+        <div class="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2">
+          <button type="button" class="glass-btn pointer-events-auto" aria-label="Previous reviews" data-reel-prev>‹</button>
+          <button type="button" class="glass-btn pointer-events-auto" aria-label="Next reviews" data-reel-next>›</button>
+        </div>
       </div>
-      <h3 class="text-2xl font-black mb-2">Our Mission</h3>
-      <p>
-        To provide expert training, personalized programs, and a supportive community that helps every member achieve their fitness goals.
-      </p>
-      <a href="#" class="mt-6 inline-block btn-outline-red border-black text-black hover:text-white">
-        Learn More
-      </a>
-    </article>
 
-    <!-- Motto -->
-    <article class="reveal zoom-in bg-[#262626] p-8 rounded-none ring-1 ring-white/5">
-      <div class="w-12 h-12 grid place-items-center bg-[#333] text-white mb-5">
-        <!-- Globe Icon (Motto) -->
-        <svg xmlns="http://www.w3.org/2000/svg" 
-             class="w-8 h-8" fill="none" viewBox="0 0 24 24" 
-             stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="9"/>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/>
-        </svg>
+      <div class="text-center mt-10">
+        <a href="#join" class="btn-red inline-block">Join Hamza Fitness Club</a>
       </div>
-      <h3 class="text-2xl font-black mb-2">Our Motto</h3>
-      <p class="text-gray-300">
-        Train hard, stay consistent, and become stronger every day — inside and out.
-      </p>
-      <a href="#" class="mt-6 inline-block btn-outline-red">Learn More</a>
-    </article>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <!-- ===== Stats Strip ===== -->
+  <section id="statsstrip" class="bg-[color:var(--brand-red)] text-white border-y border-black">
+    <div class="max-w-4xl mx-auto px-5 lg:px-7 py-5 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="reveal fade-up"><p class="text-3xl md:text-4xl font-black leading-none">91K+</p><p class="mt-2 text-base md:text-lg font-semibold">Projects Done</p></div>
+      <div class="reveal fade-up delay-100"><p class="text-3xl md:text-4xl font-black leading-none">84K+</p><p class="mt-2 text-base md:text-lg font-semibold">Happy Clients</p></div>
+      <div class="reveal fade-up delay-200"><p class="text-3xl md:text-4xl font-black leading-none">42+</p><p class="mt-2 text-base md:text-lg font-semibold">Company Support</p></div>
+      <div class="reveal fade-up delay-300"><p class="text-3xl md:text-4xl font-black leading-none">4.7+</p><p class="mt-2 text-base md:text-lg font-semibold">Client Reviews</p></div>
+    </div>
+  </section>
 
-  
+  <!-- ===== How It Works ===== -->
+  <section id="howitworks" class="section-pad relative bg-[#1a1a1a] overflow-hidden">
+    <div class="container-x px-6 lg:px-8 text-center relative z-10">
+      <p class="uppercase text-[color:var(--brand-red)] tracking-widest mb-2 font-black">How It Works</p>
+      <h3 class="text-3xl md:text-5xl font-black mb-12">Unlock Your Potential with Our Simple Fitness Process</h3>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <article class="reveal fade-up bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 transition hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40 duration-300">
+          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4">01</div>
+          <h4 class="font-bold text-xl mb-2">Goal Setting</h4>
+          <p class="text-gray-300">Define clear, achievable milestones tailored to your fitness journey.</p>
+        </article>
+
+        <!-- Step 2 -->
+        <article class="reveal fade-up delay-100 bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 transition hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40 duration-300">
+          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4">02</div>
+          <h4 class="font-bold text-xl mb-2">Structured Training</h4>
+          <p class="text-gray-300">Follow a proven training program designed for consistent progress.</p>
+        </article>
+
+        <!-- Step 3 -->
+        <article class="reveal fade-up delay-200 bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 transition hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40 duration-300">
+          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4">03</div>
+          <h4 class="font-bold text-xl mb-2">Progress Tracking</h4>
+          <p class="text-gray-300">Measure results with real-time feedback to stay motivated and on track.</p>
+        </article>
+
+        <!-- Step 4 -->
+        <article class="reveal fade-up delay-300 bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 transition hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40 duration-300">
+          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4">04</div>
+          <h4 class="font-bold text-xl mb-2">Recovery Focus</h4>
+          <p class="text-gray-300">Prioritize rest and recovery to prevent injury and boost performance.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="absolute inset-0"><div class="absolute top-0 left-1/2 w-[600px] h-[600px] bg-[color:var(--brand-red)]/10 rounded-full blur-3xl -translate-x-1/2"></div></div>
+  </section>
+
   <!-- ===== Classes Grid ===== -->
-  <section id="classes" class="section-pad bg-black">
+  <section id="classesgrid" class="section-pad bg-black">
     <div class="container-x px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+
+      <!-- Left content -->
       <div class="reveal slide-left">
-        <p class="uppercase text-[color:var(--brand-red)] tracking-widest mb-2 font-black">
-          Our Classes
-        </p>
-        <h3 class="text-4xl md:text-5xl font-black leading-tight mb-4">
-          Explore Our Fitness Classes for Every Skill Level
-        </h3>
+        <p class="uppercase text-[color:var(--brand-red)] tracking-widest mb-2 font-black">Our Classes</p>
+        <h3 class="text-4xl md:text-5xl font-black leading-tight mb-4">Explore Our Fitness Classes for Every Skill Level</h3>
         <ul class="space-y-3 text-gray-300 list-disc list-inside">
           <li>Build muscle, improve endurance, and enhance overall strength.</li>
           <li>High-intensity interval training for fat loss and endurance.</li>
@@ -324,581 +652,180 @@
           <a class="btn-outline-red" href="#" aria-label="Book a free fitness consultation">Free Consultations</a>
         </div>
       </div>
+
+      <!-- Right image grid -->
       <div class="grid sm:grid-cols-2 gap-5">
         <figure class="reveal zoom-in bg-[url('images/training.jpg')] bg-cover bg-center rounded-xl min-h-[220px] p-5 flex items-end">
           <figcaption class="backdrop-blur-sm bg-black/30 px-3 py-2 rounded">Personal Training</figcaption>
         </figure>
         <figure class="reveal zoom-in delay-100 bg-[url('images/Cardio.jpg')] bg-cover bg-center rounded-xl min-h-[220px] p-5 flex items-end">
-          <figcaption class="backdrop-blur-sm bg-black/30 px-3 py-2 rounded">HIIT & Cardio</figcaption>
+          <figcaption class="backdrop-blur-sm bg-black/30 px-3 py-2 rounded">HIIT &amp; Cardio</figcaption>
         </figure>
         <figure class="reveal zoom-in delay-200 bg-[url('images/Yoga.jpg')] bg-cover bg-center rounded-xl min-h-[220px] p-5 flex items-end">
-          <figcaption class="backdrop-blur-sm bg-black/30 px-3 py-2 rounded">Yoga & Mindfulness</figcaption>
+          <figcaption class="backdrop-blur-sm bg-black/30 px-3 py-2 rounded">Yoga &amp; Mindfulness</figcaption>
         </figure>
         <figure class="reveal zoom-in delay-300 bg-[url('images/boxing.jpg')] bg-cover bg-center rounded-xl min-h-[220px] p-5 flex items-end">
-          <figcaption class="backdrop-blur-sm bg-black/30 px-3 py-2 rounded">Boxing & Combat</figcaption>
+          <figcaption class="backdrop-blur-sm bg-black/30 px-3 py-2 rounded">Boxing &amp; Conditioning</figcaption>
         </figure>
       </div>
     </div>
   </section>
+
+  <footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
   
-
-
-  <!-- ===== Stats strip under Vision/Mission/Motto ===== -->
-  <section class="bg-[color:var(--brand-red)] text-white border-y border-black">
-    <div class="max-w-4xl mx-auto px-5 lg:px-7 py-5 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-    <div>
-      <p class="text-3xl md:text-4xl font-black leading-none">91K+</p>
-      <p class="mt-2 text-base md:text-lg font-semibold">Projects Done</p>
-    </div>
-    <div>
-      <p class="text-3xl md:text-4xl font-black leading-none">84K+</p>
-      <p class="mt-2 text-base md:text-lg font-semibold">Happy Clients</p>
-    </div>
-    <div>
-      <p class="text-3xl md:text-4xl font-black leading-none">42+</p>
-      <p class="mt-2 text-base md:text-lg font-semibold">Company Support</p>
-    </div>
-    <div>
-      <p class="text-3xl md:text-4xl font-black leading-none">4.7+</p>
-      <p class="mt-2 text-base md:text-lg font-semibold">Client Reviews</p>
-    </div>
-  </div>
-</section>
-
-
-  <!-- ===== Video CTA (decorative) ===== -->
-  <section class="relative overflow-hidden">
-    <!-- Background Video -->
-    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
-      <source src="images/gym video.mp4" type="video/mp4">
-      <!-- fallback image if video doesn't load -->
-      <img src="images/gym-floor.jpg" alt="Gym floor">
-    </video>
+      <!-- Brand + Newsletter -->
+      <section class="md:col-span-5">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+          <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
+        </div>
+        <p class="mb-5 text-gray-400 leading-relaxed">
+          Hamza Fitness Club is your destination for strength, dedication, and transformation.
+          Join our community today!
+        </p>
   
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/60"></div>
+        <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
+          <label for="newsletter-email" class="sr-only">Email</label>
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+            class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
+                   focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
+          />
+          <button
+            type="submit"
+            class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
+          >
+            Sign Up
+          </button>
+          <!-- Inline feedback (toggle via JS if you want) -->
+          <p id="newsletter-msg" class="col-span-full text-[13px] text-gray-400"></p>
+        </form>
+      </section>
   
-    <!-- Content -->
-    <div class="container-x relative px-6 lg:px-8 py-24 text-center">
-      <h3 class="reveal fade-down text-4xl md:text-5xl font-black leading-tight mb-4">
-        Push Harder, Sweat More, Achieve Greatness with FitNation!
-      </h3>
-      <p class="reveal fade-up text-gray-200 max-w-3xl mx-auto">
-        Growth and improvement come from steady discipline and strong foundations. True progress lies in balanced effort, dignified habits, and consistent support.
-      </p>
-      <a class="btn-red mt-6 inline-block" href="#">Discover More</a>
-    </div>
-  </section>
-  
-
-  <!-- ===== Testimonials (auto-slide) ===== -->
-  <!-- Reviews / Testimonials — Hamza Fitness Club -->
-<section id="reviews" class="section-pad bg-black" aria-labelledby="reviews-title">
-  <div class="container-x px-6 lg:px-8">
-    <!-- Header + Rating Summary -->
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-      <div>
-        <h3 id="reviews-title" class="reveal fade-down text-4xl md:text-5xl font-black mb-3">
-          Real Member Stories at Hamza Fitness Club
+      <!-- Our Studio -->
+      <nav class="md:col-span-2">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Our Studio
         </h3>
-        <p class="text-gray-300 max-w-2xl">
-          Proven results, supportive coaches, and a community that keeps you consistent.
-        </p>
-      </div>
-
-      <!-- Rating Summary Card -->
-      <aside class="bg-neutral-900 rounded-xl p-5 ring-1 ring-white/5 w-full md:w-auto md:min-w-[320px]">
-        <div class="flex items-center gap-3">
-          <div class="text-4xl font-black">4.9</div>
-          <div>
-            <div class="flex" aria-label="Average rating 4.9 out of 5">
-              <!-- stars -->
-              <svg class="w-5 h-5 fill-yellow-400" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
-              <svg class="w-5 h-5 fill-yellow-400" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
-              <svg class="w-5 h-5 fill-yellow-400" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
-              <svg class="w-5 h-5 fill-yellow-400" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
-              <svg class="w-5 h-5 fill-yellow-400" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
-            </div>
-            <p class="text-xs text-gray-400 leading-tight mt-1">Based on 320+ member reviews</p>
-          </div>
-        </div>
-        <!-- bars -->
-        <div class="mt-4 space-y-1.5">
-          <div class="flex items-center gap-2">
-            <span class="text-xs text-gray-400 w-8">5★</span>
-            <div class="flex-1 h-2 bg-white/10 rounded"><div class="h-2 bg-yellow-400 rounded" style="width:92%"></div></div>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-xs text-gray-400 w-8">4★</span>
-            <div class="flex-1 h-2 bg-white/10 rounded"><div class="h-2 bg-yellow-400/80 rounded" style="width:7%"></div></div>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-xs text-gray-400 w-8">3★</span>
-            <div class="flex-1 h-2 bg-white/10 rounded"><div class="h-2 bg-yellow-400/60 rounded" style="width:1%"></div></div>
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <!-- Carousel -->
-    <div class="relative overflow-hidden group" x-data x-id="['carousel']">
-      <!-- slider -->
-      <div id="slider"
-           class="flex gap-6 transition-transform duration-700 will-change-transform"
-           role="listbox"
-           aria-label="Member reviews carousel"
-           tabindex="0">
-        <!-- Card 1 -->
-        <article class="min-w-full md:min-w-[33.333%] bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 reveal zoom-in"
-                 role="option"
-                 aria-selected="true"
-                 itemscope itemtype="https://schema.org/Review">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/female user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Olivia Davis" itemprop="image"/>
-            <div>
-              <p class="font-bold flex items-center gap-2" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <span itemprop="name">Pakeeza Hassan</span>
-                <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span>
-              </p>
-              <p class="text-xs text-gray-400">Faisalabad</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating" aria-label="5 out of 5 stars">
-            <meta itemprop="ratingValue" content="5"/>
-            <span class="sr-only">Rating:</span>
-            <svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
-          </div>
-          <blockquote class="text-gray-300" itemprop="reviewBody">
-            In 8 weeks I dropped 6kg and hit my first unassisted pull-up. Coaches actually track my progress weekly — feels like a team behind me!
-          </blockquote>
-          <meta itemprop="itemReviewed" content="Hamza Fitness Club"/>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="min-w-full md:min-w-[33.333%] bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 reveal zoom-in" style="animation-delay:.1s"
-                 role="option"
-                 aria-selected="false"
-                 itemscope itemtype="https://schema.org/Review">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/male user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Emily Roberts"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Ahmed Raza</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Faisalabad</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
-          </div>
-          <blockquote class="text-gray-300">
-            Variety is insane — HIIT, strength, boxing. I never get bored and my stamina’s never been better.
-          </blockquote>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="min-w-full md:min-w-[33.333%] bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 reveal zoom-in" style="animation-delay:.2s"
-                 role="option"
-                 aria-selected="false"
-                 itemscope itemtype="https://schema.org/Review">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/male user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Michael Brown"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Faisalabad</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg><svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M10 15.27 16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
-          </div>
-          <blockquote class="text-gray-300">
-            24/7 access, spotless equipment, and trainers who actually check my form. Couldn’t ask for more.
-          </blockquote>
-        </article>
-      </div>
-
-      <!-- Controls -->
-      <div class="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2">
-        <button id="prevBtn" aria-label="Previous review"
-                class="pointer-events-auto hidden md:grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/10 backdrop-blur transition">
-          ‹
-        </button>
-        <button id="nextBtn" aria-label="Next review"
-                class="pointer-events-auto hidden md:grid place-items-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/10 backdrop-blur transition">
-          ›
-        </button>
-      </div>
-
-      <!-- Dots -->
-      <div class="mt-6 flex justify-center gap-2" role="tablist" aria-label="Slide selectors">
-        <button class="dot w-2.5 h-2.5 rounded-full bg-white/30" aria-label="Go to slide 1" role="tab" aria-selected="true"></button>
-        <button class="dot w-2.5 h-2.5 rounded-full bg-white/30" aria-label="Go to slide 2" role="tab" aria-selected="false"></button>
-        <button class="dot w-2.5 h-2.5 rounded-full bg-white/30" aria-label="Go to slide 3" role="tab" aria-selected="false"></button>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="text-center mt-10">
-      <a href="#join" class="btn-red inline-block">Join Hamza Fitness Club</a>
-    </div>
-  </div>
-</section>
-
-<!-- Minimal JS: autoplay, dots, keyboard, touch -->
-<script>
-(function(){
-  const slider = document.getElementById('slider');
-  const cards = Array.from(slider.children);
-  const dots = Array.from(document.querySelectorAll('#reviews .dot'));
-  const prev = document.getElementById('prevBtn');
-  const next = document.getElementById('nextBtn');
-
-  let index = 0;
-  const perView = () => (window.matchMedia('(min-width: 768px)').matches ? 3 : 1);
-  const clampIndex = () => {
-    const pv = perView();
-    const max = Math.max(0, cards.length - pv);
-    index = Math.max(0, Math.min(index, max));
-  };
-
-  function update(){
-    clampIndex();
-    const cardWidth = cards[0].getBoundingClientRect().width + 24; // gap-6 = 24px
-    slider.style.transform = `translateX(${-index * cardWidth}px)`;
-    // dots
-    dots.forEach((d,i)=>d.setAttribute('aria-selected', i===index ? 'true':'false'));
-    // aria-selected on cards
-    cards.forEach((c,i)=>c.setAttribute('aria-selected', i===index ? 'true':'false'));
-  }
-
-  // Buttons
-  prev?.addEventListener('click', ()=>{ index = Math.max(0, index-1); update(); stopAuto(); });
-  next?.addEventListener('click', ()=>{ index = Math.min(cards.length-1, index+1); update(); stopAuto(); });
-
-  // Dots
-  dots.forEach((d,i)=> d.addEventListener('click', ()=>{ index = i; update(); stopAuto(); }));
-
-  // Keyboard
-  slider.addEventListener('keydown', (e)=>{
-    if(e.key === 'ArrowRight'){ index++; update(); stopAuto(); }
-    if(e.key === 'ArrowLeft'){ index--; update(); stopAuto(); }
-  });
-
-  // Touch drag (simple)
-  let startX = 0, dx = 0;
-  slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dx = 0; stopAuto(); }, {passive:true});
-  slider.addEventListener('touchmove', e => { dx = e.touches[0].clientX - startX; }, {passive:true});
-  slider.addEventListener('touchend', ()=> {
-    if (Math.abs(dx) > 40) index += dx < 0 ? 1 : -1;
-    update();
-  });
-
-  // Auto-play with pause on hover
-  let timer = null;
-  function startAuto(){ timer = setInterval(()=>{ index++; update(); }, 3500); }
-  function stopAuto(){ if(timer) clearInterval(timer); timer = null; }
-  const container = slider.parentElement;
-  container.addEventListener('mouseenter', stopAuto);
-  container.addEventListener('mouseleave', ()=> { if(!timer) startAuto(); });
-
-  // Resize recalculation
-  window.addEventListener('resize', update);
-
-  // Init
-  update();
-  startAuto();
-})();
-</script>
-
-
-  <!-- ===== How it works ===== -->
-  <section class="section-pad relative bg-[#1a1a1a] overflow-hidden">
-    <div class="container-x px-6 lg:px-8 text-center relative z-10">
-      <!-- Section Header -->
-      <p class="uppercase text-[color:var(--brand-red)] tracking-widest mb-2 font-black">
-        How It Works
-      </p>
-      <h3 class="text-3xl md:text-5xl font-black mb-12">
-        Unlock Your Potential with Our Simple Fitness Process
-      </h3>
-  
-      <!-- Steps Grid -->
-      <div class="grid md:grid-cols-4 gap-6">
-        <!-- Step 1 -->
-        <article class="reveal fade-up bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 transition transform hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40 duration-300">
-          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4">
-            01
-          </div>
-          <h4 class="font-bold text-xl mb-2">Goal Setting</h4>
-          <p class="text-gray-300">
-            Define clear, achievable milestones tailored to your fitness journey.
-          </p>
-        </article>
-  
-        <!-- Step 2 -->
-        <article class="reveal fade-up delay-100 bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 transition transform hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40 duration-300">
-          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4">
-            02
-          </div>
-          <h4 class="font-bold text-xl mb-2">Structured Training</h4>
-          <p class="text-gray-300">
-            Follow a proven training program designed for consistent progress.
-          </p>
-        </article>
-  
-        <!-- Step 3 -->
-        <article class="reveal fade-up delay-200 bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 transition transform hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40 duration-300">
-          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4">
-            03
-          </div>
-          <h4 class="font-bold text-xl mb-2">Progress Tracking</h4>
-          <p class="text-gray-300">
-            Measure results with real-time feedback to stay motivated and on track.
-          </p>
-        </article>
-  
-        <!-- Step 4 -->
-        <article class="reveal fade-up delay-300 bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5 transition transform hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40 duration-300">
-          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4">
-            04
-          </div>
-          <h4 class="font-bold text-xl mb-2">Recovery Focus</h4>
-          <p class="text-gray-300">
-            Prioritize rest and recovery to prevent injury and boost performance.
-          </p>
-        </article>
-      </div>
-    </div>
-  
-    <!-- Decorative Background Example -->
-    <div class="absolute inset-0 -z-0">
-      <div class="absolute top-0 left-1/2 w-[600px] h-[600px] bg-[color:var(--brand-red)]/10 rounded-full blur-3xl -translate-x-1/2"></div>
-    </div>
-  </section>
-  
-  
-
-<!-- ================= Why Choose Us ================= -->
-<section id="why-choose-us" class="section-pad relative bg-black overflow-hidden">
-  <!-- background accents -->
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-    <div class="absolute -top-40 right-1/4 w-[900px] h-[900px] rounded-full bg-[color:var(--brand-red)]/10 blur-3xl"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_60%)]"></div>
-  </div>
-
-  <div class="container-x px-6 lg:px-8 relative z-10">
-    <div class="flex flex-col lg:flex-row items-center gap-12">
-      <!-- Left: Image -->
-      <div class="lg:w-1/2 w-full">
-        <figure class="relative">
-          <div class="w-full h-80 sm:h-96 lg:h-[520px] rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl">
-            <img
-              src="images/classes.avif"
-              alt="Coach guiding a client through strength training"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0"></div>
-          </div>
-        </figure>
-      </div>
-
-      <!-- Right: Content -->
-      <div class="lg:w-1/2 w-full">
-        <div class="max-w-lg">
-          <p class="uppercase tracking-widest text-[color:var(--brand-red)] font-black mb-2">Why Choose Us</p>
-          <h2 class="text-4xl font-black leading-tight mb-3">Elevate Your Workout with Expert-Led Fitness Classes</h2>
-          <p class="text-gray-300 mb-8">Science-backed programming, real accountability, and a community that keeps you moving forward.</p>
-
-          <!-- Features -->
-          <ul class="space-y-5" role="list">
-            <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
-              <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
-                <!-- Heart icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="opacity-90">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 0 0 0 6.364L12 20.364l7.682-7.682a4.5 4.5 0 0 0-6.364-6.364L12 7.636 10.682 6.318a4.5 4.5 0 0 0-6.364 0z"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold">Holistic Health Approach</h3>
-                <p class="text-gray-400 text-sm">Balanced training across strength, mobility, and cardio for long-term results.</p>
-              </div>
-            </li>
-
-            <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
-              <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
-                <!-- Layers icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="opacity-90">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m12 3 9 6-9 6-9-6 9-6Z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m3 15 9 6 9-6"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold">Wide Range of Classes</h3>
-                <p class="text-gray-400 text-sm">HIIT, lifting, mobility, conditioning, and mindfulness—mix & match to your goals.</p>
-              </div>
-            </li>
-
-            <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
-              <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
-                <!-- Clock icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="opacity-90">
-                  <circle cx="12" cy="12" r="9" stroke-width="1.8"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 7v5l3 3"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold">Flexible Membership Plans</h3>
-                <p class="text-gray-400 text-sm">Plans that adapt—pause, upgrade, or switch as your routine evolves.</p>
-              </div>
-            </li>
-
-            <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
-              <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
-                <!-- Users icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="opacity-90">
-                  <path stroke-width="1.8" d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4" stroke-width="1.8"/>
-                  <path stroke-width="1.8" d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path stroke-width="1.8" d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold">Supportive Fitness Community</h3>
-                <p class="text-gray-400 text-sm">Coaches & members who keep you accountable—and celebrate every win.</p>
-              </div>
-            </li>
-          </ul>
-
-          <a href="#join" class="inline-flex items-center justify-center mt-10 px-6 py-3 rounded-md font-bold bg-[color:var(--brand-red)] hover:bg-red-800 transition-colors">
-            Join Our Community
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- =============== /Why Choose Us =============== -->
-
-<!-- ================= Smoky Grey Footer (end of page) ================= -->
-<footer id="footer" class="bg-neutral-900 text-gray-300">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 py-14">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-      <!-- Brand -->
-      <div>
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-12 h-12 shrink-0 rounded-lg ring-1 ring-white/10 overflow-hidden bg-white/5">
-            <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club" class="w-full h-full object-contain" />
-          </div>
-          <span class="font-extrabold text-xl tracking-wide uppercase text-white">Hamza Fitness Club</span>
-        </div>
-        <p class="text-gray-400">
-          Transform your body and mind with science-backed programming and coaches who care.
-        </p>
-      </div>
-
-      <!-- Quick Links -->
-      <nav aria-label="Quick links">
-        <h3 class="text-lg font-bold mb-4 text-white">Quick Links</h3>
-        <ul class="space-y-2">
-          <li><a href="#home" class="hover:text-[color:var(--brand-red)] transition">Home</a></li>
-          <li><a href="#about" class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
-          <li><a href="#classes" class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
-          <li><a href="#values" class="hover:text-[color:var(--brand-red)] transition">Our Values</a></li>
-          <li><a href="#why-choose-us" class="hover:text-[color:var(--brand-red)] transition">Why Choose Us</a></li>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/aboutus.html"          class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
+          <li><a href="trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
+          <li><a href="classes.html"  class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
+          <li><a href="pricing.html"  class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
         </ul>
       </nav>
-
-      <!-- Classes -->
-      <nav aria-label="Classes">
-        <h3 class="text-lg font-bold mb-4 text-white">Classes</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="hover:text-[color:var(--brand-red)] transition">Weightlifting</a></li>
-          <li><a href="#" class="hover:text-[color:var(--brand-red)] transition">HIIT Training</a></li>
-          <li><a href="#" class="hover:text-[color:var(--brand-red)] transition">Yoga & Flexibility</a></li>
-          <li><a href="#" class="hover:text-[color:var(--brand-red)] transition">CrossFit</a></li>
-          <li><a href="#" class="hover:text-[color:var(--brand-red)] transition">Personal Training</a></li>
+  
+      <!-- Support -->
+      <nav class="md:col-span-2">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Support
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
         </ul>
       </nav>
-
-      <!-- Contact -->
-      <address class="not-italic" aria-label="Contact info">
-        <h3 class="text-lg font-bold mb-4 text-white">Contact Info</h3>
-        <ul class="space-y-3">
-          
-          <!-- Location -->
-          <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-                 class="w-5 h-5 mr-3 text-[color:var(--brand-red)] mt-0.5 flex-shrink-0" 
-                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" 
-                    d="M12 2c3.866 0 7 3.134 7 7 0 5.25-7 13-7 13S5 14.25 5 9c0-3.866 3.134-7 7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
+  
+      <!-- Contact + Hours -->
+      <section id="contact" class="md:col-span-3">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Get in Touch
+        </h3>
+  
+        <address class="not-italic space-y-3 text-sm">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-map-pin"></use>
             </svg>
-            Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000
-          </li>
-      
-          <!-- Phone -->
-          <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-                 class="w-5 h-5 mr-3 text-[color:var(--brand-red)] mt-0.5 flex-shrink-0" 
-                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" 
-                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.55 19.55 0 01-6-6A19.79 19.79 0 012.08 4.18 2 2 0 014.06 2h3a2 2 0 012 1.72c.1.89.3 1.76.6 2.58a2 2 0 01-.45 2.11l-1.27 1.27a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.82.3 1.69.5 2.58.6A2 2 0 0122 16.92z"/>
+            <a
+              href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
+              target="_blank" rel="noopener"
+              class="hover:text-[color:var(--brand-red)] transition"
+            >
+              Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
+            </a>
+          </div>
+  
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-mail"></use>
             </svg>
-            <a href="tel:+923216640706" class="hover:text-[color:var(--brand-red)] transition">0321 6640706</a>
-          </li>
-      
-          <!-- Email -->
-          <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-                 class="w-5 h-5 mr-3 text-[color:var(--brand-red)] mt-0.5 flex-shrink-0" 
-                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" 
-                    d="M4 4h16v16H4z" />
-              <path stroke-linecap="round" stroke-linejoin="round" 
-                    d="M22 6 12 13 2 6" />
+            <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">
+              support@hamzafitnessclub.com
+            </a>
+          </div>
+  
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-phone"></use>
             </svg>
-            <a href="mailto:hello@hamzafitness.com" class="hover:text-[color:var(--brand-red)] transition">hello@hamzafitness.com</a>
+            <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
+          </div>
+        </address>
+  
+        <!-- Socials -->
+        <ul class="flex items-center gap-3 mt-5">
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Facebook">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-facebook"></use></svg>
+            </a>
           </li>
-      
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Instagram">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-instagram"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="X (Twitter)">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-x"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="YouTube">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-youtube"></use></svg>
+            </a>
+          </li>
         </ul>
-      </address>
-      
+  
+        <!-- Hours -->
+        <div class="mt-6">
+          <h4 class="font-semibold text-white mb-3 border-b border-white/10 pb-1">Hours</h4>
+          <dl id="hours" class="space-y-1 text-sm leading-relaxed">
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Monday – Saturday</dt>
+              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            </div>
+        
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Sunday</dt>
+              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            </div>
+        
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Friday</dt>
+              <dd class="text-gray-500 italic text-right">Closed</dd>
+            </div>
+          </dl>
+        </div>
+        
+        
+      </section>
     </div>
-
-    <!-- bottom bar -->
-    <div class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-gray-400">2025 © Hamza Fitness Club. All rights reserved.</p>
-      <div class="flex items-center gap-6 text-sm">
-        <a href="#" class="hover:text-white transition">Privacy Policy</a>
-        <a href="#" class="hover:text-white transition">Terms of Service</a>
-      </div>
+  
+    <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
+      © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
+      All rights reserved. Designed by
+      <span class="text-[color:var(--brand-red)] font-bold">Ramla & Pakeeza</span>.
     </div>
-  </div>
-</footer>
+  </footer>
+  
+  <script src="assets/footer.js" defer></script>
 
-  <!-- ===== Interactivity & A11y ===== -->
-  <script>
-    // Respect reduced motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+<script src="assets/hfc.js" defer></script>
 
-    // Intersection Observer for reveal-on-scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach((e)=>{
-        if(e.isIntersecting){ e.target.classList.add('show'); }
-      })
-    }, { threshold: 0.14 });
-
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
-
-    // Testimonials auto slider (simple, loop + dots)
-    const slider = document.getElementById('slider');
-    const dots = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
-    let idx = 0;
-    function renderDots(){ dots.forEach((d,i)=> d.style.background = i===idx ? 'white' : 'rgba(255,255,255,.3)'); }
-    function next(){ idx = (idx+1)%3; slider.style.transform = `translateX(-${idx*100}%)`; renderDots(); }
-    renderDots();
-    if(!prefersReduced){ setInterval(next, 4500); }
-  </script>
 </body>
 </html>

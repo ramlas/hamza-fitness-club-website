@@ -1,61 +1,70 @@
-<header class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-      <!-- ✅ Use relative path for logo -->
-      <a href="../index.html" class="flex items-center gap-3">
-        <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md">
-        <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
-      </a>
-  
-      <!-- Desktop Nav -->
-      <nav class="hidden md:block">
-        <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
-          <li><a href="../index.html" class="hover:text-[color:var(--brand-red)] transition">Home</a></li>
-          <li><a href="../index.html#who" class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
-  
-          <li class="relative group">
-            <button class="flex items-center gap-2 hover:text-[color:var(--brand-red)]">
-              Classes <span class="text-lg leading-none">▾</span>
-            </button>
-            <div class="absolute left-0 mt-4 hidden group-hover:block bg-neutral-900 border border-white/10 w-52 shadow-lg">
-              <a href="../classes.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Detail Class</a>
-              <a href="../pricing.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Pricing Plan</a>
-            </div>
-          </li>
-  
-          <li><a href="../index.html#contact" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a></li>
-  
-          <li class="relative group">
-            <button class="flex items-center gap-2 hover:text-[color:var(--brand-red)]">
-              Pages <span class="text-lg leading-none">▾</span>
-            </button>
-            <div class="absolute left-0 mt-4 hidden group-hover:block bg-neutral-900 border border-white/10 w-52 shadow-lg">
-              <a href="../trainers.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Trainer</a>
-              <a href="../faq.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">FAQ</a>
-              <a href="../blog.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Blog Archive</a>
-              <a href="../post.html" class="block px-4 py-3 font-bold bg-[color:var(--brand-red)] text-white">Single Post</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-  
-      <!-- Mobile Button -->
-      <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white" aria-label="Open menu">☰</button>
-  
-      <a href="../index.html#contact" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
-        Get Started
-      </a>
-    </div>
-  
-    <!-- Mobile Menu -->
-    <div data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
-      <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
-        <li><a href="../index.html" class="block py-2">Home</a></li>
-        <li><a href="../index.html#who" class="block py-2">About Us</a></li>
-        <li><a href="../classes.html" class="block py-2">Classes</a></li>
-        <li><a href="../index.html#contact" class="block py-2">Contact Us</a></li>
-        <li><a href="../trainers.html" class="block py-2">Trainer</a></li>
-        <li><a href="../index.html#contact" class="inline-flex btn-red px-5 py-2 text-sm uppercase">Get Started</a></li>
+<!-- components/header.html -->
+<header id="header" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="/index.html#hero-index" class="flex items-center gap-3">
+      <img src="/images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+      <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:block" aria-label="Primary">
+      <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
+        <li>
+          <a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a>
+        </li>
+        <li>
+          <a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a>
+        </li>
+
+        <!-- CLASSES dropdown -->
+        <li class="relative group">
+          <button class="flex items-center gap-2 hover:text-[color:var(--brand-red)] uppercase"
+                  aria-haspopup="true" aria-expanded="false" aria-controls="menu-classes">
+            CLASSES <span class="text-lg leading-none">▾</span>
+          </button>
+
+          <div id="menu-classes" data-menu
+               class="absolute left-0 mt-4 bg-neutral-900 border border-white/10 w-52 shadow-lg
+                      invisible opacity-0 translate-y-1 transition duration-250 ease-out
+                      group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
+            <a href="/classes.html"  class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Detail Class</a>
+            <a href="/pricing.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Pricing Plan</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="/index.html#contact" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a>
+        </li>
+
+        <!-- TRAINERS (direct link) -->
+        <li>
+          <a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a>
+        </li>
       </ul>
-    </div>
-  </header>
-  
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+
+    <!-- CTA -->
+    <a href="/index.html#contact" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
+      Book Free Appointment
+    </a>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
+    <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
+      <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
+      <li><a href="/aboutus.html"        class="block py-2">About Us</a></li>
+      <li><a href="/classes.html"          class="block py-2">Classes</a></li>
+      <li><a href="/index.html#contact"    class="block py-2">Contact Us</a></li>
+      <li><a href="/trainers.html"         class="block py-2">Trainers</a></li>
+      <li><a href="/booking.html"    class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Header interactivity -->
+<script src="assets/header.js" defer></script>

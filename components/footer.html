@@ -1,63 +1,151 @@
-<footer class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid md:grid-cols-4 gap-10">
+<footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+
+    <!-- Brand + Newsletter -->
+    <section class="md:col-span-5">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+        <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
+      </div>
+      <p class="mb-5 text-gray-400 leading-relaxed">
+        Hamza Fitness Club is your destination for strength, dedication, and transformation.
+        Join our community today!
+      </p>
+
+      <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
+        <label for="newsletter-email" class="sr-only">Email</label>
+        <input
+          id="newsletter-email"
+          name="email"
+          type="email"
+          placeholder="you@example.com"
+          required
+          class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
+                 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
+        />
+        <button
+          type="submit"
+          class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
+        >
+          Sign Up
+        </button>
+        <!-- Inline feedback (toggle via JS if you want) -->
+        <p id="newsletter-msg" class="col-span-full text-[13px] text-gray-400"></p>
+      </form>
+    </section>
+
+    <!-- Our Studio -->
+    <nav class="md:col-span-2">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+        Our Studio
+      </h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/aboutus.html"          class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
+        <li><a href="trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
+        <li><a href="classes.html"  class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
+        <li><a href="pricing.html"  class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
+      </ul>
+    </nav>
+
+    <!-- Support -->
+    <nav class="md:col-span-2">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+        Support
+      </h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contact + Hours -->
+    <section id="contact" class="md:col-span-3">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+        Get in Touch
+      </h3>
+
+      <address class="not-italic space-y-3 text-sm">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+            <use href="assets/icons.svg#icon-map-pin"></use>
+          </svg>
+          <a
+            href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
+            target="_blank" rel="noopener"
+            class="hover:text-[color:var(--brand-red)] transition"
+          >
+            Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
+          </a>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+            <use href="assets/icons.svg#icon-mail"></use>
+          </svg>
+          <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">
+            support@hamzafitnessclub.com
+          </a>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+            <use href="assets/icons.svg#icon-phone"></use>
+          </svg>
+          <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
+        </div>
+      </address>
+
+      <!-- Socials -->
+      <ul class="flex items-center gap-3 mt-5">
+        <li>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Facebook">
+            <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-facebook"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Instagram">
+            <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-instagram"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="X (Twitter)">
+            <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-x"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="YouTube">
+            <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-youtube"></use></svg>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Hours -->
+      <div class="mt-6">
+        <h4 class="font-semibold text-white mb-3 border-b border-white/10 pb-1">Hours</h4>
+        <dl id="hours" class="space-y-1 text-sm leading-relaxed">
+          <div class="flex justify-between items-start gap-4">
+            <dt class="font-semibold text-white">Monday – Saturday</dt>
+            <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+          </div>
       
-      <!-- Logo & Newsletter -->
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md">
-          <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
-        </div>
-        <p class="mb-4 text-gray-400">Hamza Fitness Club is your ultimate destination for strength, dedication, and health transformation. Join our community today!</p>
-        <form class="flex">
-          <input type="email" placeholder="Email" class="px-3 py-2 w-full bg-neutral-800 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]">
-          <button type="submit" class="btn-red text-sm uppercase px-5 py-2 font-extrabold">Sign Up</button>
-        </form>
+          <div class="flex justify-between items-start gap-4">
+            <dt class="font-semibold text-white">Sunday</dt>
+            <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+          </div>
+      
+          <div class="flex justify-between items-start gap-4">
+            <dt class="font-semibold text-white">Friday</dt>
+            <dd class="text-gray-500 italic text-right">Closed</dd>
+          </div>
+        </dl>
       </div>
-  
-      <!-- Our Studio -->
-      <div>
-        <h3 class="text-white font-bold mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">Our Studio</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="../index.html#who" class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
-          <li><a href="../trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
-          <li><a href="../classes.html" class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
-          <li><a href="../pricing.html" class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
-          <li><a href="../blog.html" class="hover:text-[color:var(--brand-red)] transition">Blog</a></li>
-        </ul>
-      </div>
-  
-      <!-- Support -->
-      <div>
-        <h3 class="text-white font-bold mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">Support</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="../faq.html" class="hover:text-[color:var(--brand-red)] transition">FAQ</a></li>
-          <li><a href="../index.html#contact" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a></li>
-          <li><a href="#" class="hover:text-[color:var(--brand-red)] transition">Customer Service</a></li>
-          <li><a href="#" class="hover:text-[color:var(--brand-red)] transition">Forum</a></li>
-          <li><a href="#" class="hover:text-[color:var(--brand-red)] transition">Legal Notices</a></li>
-        </ul>
-      </div>
-  
-      <!-- Get in Touch -->
-      <div>
-        <h3 class="text-white font-bold mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">Get in Touch</h3>
-        <ul class="space-y-2 text-sm">
-          <li>📍 Jln Cempaka Wangi No 22<br>Jakarta - Indonesia</li>
-          <li>✉️ support@hamzafitnessclub.com</li>
-          <li>📞 (888) 4000-2424</li>
-        </ul>
-        <div class="flex gap-4 mt-4 text-xl">
-          <a href="#" class="hover:text-[color:var(--brand-red)] transition"></a>
-          <a href="#" class="hover:text-[color:var(--brand-red)] transition"></a>
-          <a href="#" class="hover:text-[color:var(--brand-red)] transition"></a>
-          <a href="#" class="hover:text-[color:var(--brand-red)] transition"></a>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Bottom Line -->
-    <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
-      © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>. All rights reserved. Designed by <span class="text-[color:var(--brand-red)] font-bold">MoxCreative</span>.
-    </div>
-  </footer>
-  
+      
+      
+    </section>
+  </div>
+
+  <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
+    © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
+    All rights reserved. Designed by
+    <span class="text-[color:var(--brand-red)] font-bold">MoxCreative</span>.
+  </div>
+</footer>

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Trainers | Hamza Fitness Club</title>
-  <meta name="description" content="Meet our expert trainers — certified coaching for strength, endurance, and total wellness."/>
+  <meta name="description" content="Meet our expert trainers — certified coaching for strength, endurance, and total wellness." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
 
-  <!-- Tailwind (project theme) -->
+  <!-- Tailwind -->
   <script>
+    window.tailwind = window.tailwind || {};
     tailwind.config = {
       theme: {
         extend: {
@@ -20,250 +21,360 @@
           fontFamily: { display: ['Oswald','ui-sans-serif','system-ui','sans-serif'] }
         }
       }
-    }
+    };
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Shared stylesheet -->
   <link rel="stylesheet" href="assets/hfc.css" />
-
-  <!-- Preload the icon sprite -->
-  <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
 </head>
 
-<body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16">
-  <!-- ===== Global Header (injected) ===== -->
-  <div id="header"></div>
+<body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
 
-  <!-- ===== Hero (black) ===== -->
-  <section class="relative h-[56vh] md:h-[64vh] flex items-center bg-black">
-    <img src="images/gym-floor.jpg" alt="Training hero"
-         class="absolute inset-0 w-full h-full object-cover opacity-80" />
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+<!-- components/header.html -->
+<header id="header" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="/index.html#hero-index" class="flex items-center gap-3">
+      <img src="/images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+      <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
+    </a>
 
-    <div class="relative z-10 w-full">
-      <div class="max-w-5xl mx-auto px-6 lg:px-10">
-        <div class="relative mx-auto text-center px-6 md:px-10 py-10 md:py-12 
-                    rounded-2xl border border-black/10 
-                    bg-black/15 backdrop-blur-lg 
-                    shadow-[0_8px_40px_rgba(0,0,0,0.8)] ring-1 ring-black/30 
-                    reveal fade-up">
-    
-          <!-- Subtle darker gradient layer for visual depth -->
-          <span class="absolute inset-0 rounded-none bg-gradient-to-b from-black/10 via-transparent to-black/5 pointer-events-none"></span>
-    
-          <p class="relative uppercase tracking-[0.25em] text-[color:var(--brand-red)] 
-                     font-extrabold text-sm md:text-base mb-3">
-            Trainer
-          </p>
-    
-          <h1 class="relative text-4xl md:text-6xl font-extrabold leading-tight mb-3 
-                     text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.7)]">
-            Trainer
-          </h1>
-    
-          <p class="relative text-gray-200 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-            Expert Coaching for Strength, Endurance, and Total Wellness
-          </p>
-        </div>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:block" aria-label="Primary">
+      <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
+        <li>
+          <a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a>
+        </li>
+        <li>
+          <a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a>
+        </li>
+
+        <!-- CLASSES dropdown -->
+        <li class="relative group">
+          <button class="flex items-center gap-2 hover:text-[color:var(--brand-red)] uppercase"
+                  aria-haspopup="true" aria-expanded="false" aria-controls="menu-classes">
+            CLASSES <span class="text-lg leading-none">▾</span>
+          </button>
+
+          <div id="menu-classes" data-menu
+               class="absolute left-0 mt-4 bg-neutral-900 border border-white/10 w-52 shadow-lg
+                      invisible opacity-0 translate-y-1 transition duration-250 ease-out
+                      group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
+            <a href="/classes.html"  class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Detail Class</a>
+            <a href="/pricing.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Pricing Plan</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="/trainers.html#footer" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a>
+        </li>
+
+        <!-- TRAINERS (direct link) -->
+        <li>
+          <a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+
+    <!-- CTA -->
+    <a href="/booking.html" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
+      Book Free Appointment
+    </a>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
+    <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
+      <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
+      <li><a href="/aboutus.html"        class="block py-2">About Us</a></li>
+      <li><a href="/classes.html"          class="block py-2">Classes</a></li>
+      <li><a href="/trainers.html#footer"    class="block py-2">Contact Us</a></li>
+      <li><a href="/trainers.html"         class="block py-2">Trainers</a></li>
+      <li><a href="/booking.html"    class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Header interactivity -->
+<script src="assets/header.js" defer></script>
+
+<!-- ===== HERO (Trainers) ===== -->
+<header class="relative">
+  <!-- Background -->
+  <div class="absolute inset-0">
+    <img src="images/gym-floor.jpg" alt="Hamza Fitness Club Trainers" class="h-full w-full object-cover opacity-60" />
+    <div class="absolute inset-0 bg-black/70"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative container-x px-4 lg:px-8 py-20 md:py-28">
+    <div class="glass rounded-2xl p-8 md:p-12 max-w-3xl">
+      <!-- Tagline -->
+      <p class="text-sm md:text-base tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-extrabold mb-3">
+        Trainers
+      </p>
+
+      <!-- Title -->
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+        Meet the Professionals Behind Every Transformation
+      </h1>
+
+      <!-- Description -->
+      <p class="text-base md:text-lg text-gray-200 leading-relaxed">
+        At <strong>Hamza Fitness Club</strong>, our certified trainers bring unmatched expertise, energy, and focus to every
+        session. They don’t just train you—they coach, motivate, and personalize your fitness journey.
+        From weight loss and muscle gain to mobility and performance, they’ll help you unlock your full potential.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a href="#team" class="btn-red px-6 py-3 text-sm md:text-base uppercase font-extrabold tracking-wide shadow-md hover:shadow-lg">
+          Explore Our Team
+        </a>
+        <a href="/booking.html" class="inline-flex items-center px-6 py-3 text-sm md:text-base uppercase font-extrabold border border-white/20 rounded-md hover:bg-white/10 transition">
+          Book a Free Session
+        </a>
       </div>
     </div>
-    
-    
-  </section>
 
-  <!-- ===== Feature strip (smokey grey) ===== -->
-  <section id="who" class="py-12 md:py-16" style="background-color: var(--brand-smoke, #151618);">
-    <div class="max-w-6xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-8 items-center">
-      <div class="relative reveal fade-up">
-        <div class="absolute -left-4 top-0 bottom-0 w-2 bg-[color:var(--brand-red)]"></div>
-        <img src="images/training.jpg" alt="Happy training"
-             class="w-full object-cover aspect-[16/10] rounded-md" />
-      </div>
-
-      <div class="reveal fade-up">
-        <p class="uppercase tracking-[0.22em] text-[color:var(--brand-red)] font-extrabold mb-2 text-sm">
-          Our Team
-        </p>
-        <h2 class="text-2xl md:text-4xl font-extrabold leading-snug mb-3">
-          Your Fitness Journey Starts with Our Professional Trainers.
-        </h2>
-        <p class="text-gray-300 mb-7 text-base md:text-lg">
-          Personalized plans, progressive overload, and a supportive community—built around your goals.
-        </p>
-
-        <ul class="space-y-5">
-          <li class="flex items-start gap-3">
-            <div class="w-12 h-12 bg-[color:var(--brand-red)] grid place-items-center text-white rounded">
-              <svg class="w-6 h-6" aria-hidden="true"><use href="assets/icons.svg#icon-trophy"></use></svg>
-            </div>
-            <div>
-              <h3 class="text-lg md:text-xl font-extrabold">Certified Expertise</h3>
-              <p class="text-gray-400 text-[15px] md:text-base">
-                All coaches hold current certifications and complete quarterly continuing education.
-              </p>
-            </div>
-          </li>
-
-          <li class="flex items-start gap-3">
-            <div class="w-12 h-12 bg-[color:var(--brand-red)] grid place-items-center text-white rounded">
-              <svg class="w-6 h-6" aria-hidden="true"><use href="assets/icons.svg#icon-dumbbell"></use></svg>
-            </div>
-            <div>
-              <h3 class="text-lg md:text-xl font-extrabold">Strength &amp; Conditioning Core</h3>
-              <p class="text-gray-400 text-[15px] md:text-base">
-                Mobility, recovery, and performance-focused progressions tailored to your level.
-              </p>
-            </div>
-          </li>
-
-          <li class="flex items-start gap-3">
-            <div class="w-12 h-12 bg-[color:var(--brand-red)] grid place-items-center text-white rounded">
-              <svg class="w-6 h-6" aria-hidden="true"><use href="assets/icons.svg#icon-book"></use></svg>
-            </div>
-            <div>
-              <h3 class="text-lg md:text-xl font-extrabold">Adaptive Methods</h3>
-              <p class="text-gray-400 text-[15px] md:text-base">
-                We scale movements and intensities so you train safely and consistently.
-              </p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Trainers grid (black) ===== -->
-<section id="trainers" class="py-10 md:py-12">
-  <div class="max-w-6xl mx-auto px-5 lg:px-8">
-    <div class="text-center mb-8 md:mb-10 reveal fade-up">
-      <p class="uppercase tracking-[0.25em] text-[color:var(--brand-red)] font-extrabold text-xs">Meet Our Team</p>
-      <h2 class="text-2xl md:text-4xl font-extrabold leading-tight mt-2">
-        Meet Our Expert Trainers Dedicated to Your Success.
-      </h2>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <!-- Card 1 -->
-      <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group reveal zoom-in">
-        <div class="relative">
-          <img src="images/male%20user.jpg" alt="Alexander Thornton"
-               class="w-full h-56 sm:h-64 object-cover grayscale group-hover:grayscale-0 transition duration-300">
-          <ul class="absolute top-4 right-3 space-y-2">
-            <li><a href="#" aria-label="facebook" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-facebook"></use></svg></a></li>
-            <li><a href="#" aria-label="instagram" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-instagram"></use></svg></a></li>
-            <li><a href="#" aria-label="x" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-x"></use></svg></a></li>
-            <li><a href="#" aria-label="youtube" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-youtube"></use></svg></a></li>
-          </ul>
-        </div>
-        <div class="p-4 card-footer">
-          <h3 class="text-xl font-extrabold">Alexander Thornton</h3>
-          <p class="mt-1 text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide">Founder</p>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group reveal zoom-in" style="animation-delay:.05s">
-        <div class="relative">
-          <img src="images/female%20user.jpg" alt="Nathaniel Brooks"
-               class="w-full h-56 sm:h-64 object-cover grayscale group-hover:grayscale-0 transition duration-300">
-          <ul class="absolute top-4 right-3 space-y-2">
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-facebook"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-instagram"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-x"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-youtube"></use></svg></a></li>
-          </ul>
-        </div>
-        <div class="p-4 card-footer">
-          <h3 class="text-xl font-extrabold">Nathaniel Brooks</h3>
-          <p class="mt-1 text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide">Co-Founder</p>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group reveal zoom-in" style="animation-delay:.1s">
-        <div class="relative">
-          <img src="images/boxing.jpg" alt="Carolina Roberts"
-               class="w-full h-56 sm:h-64 object-cover grayscale group-hover:grayscale-0 transition duration-300">
-          <ul class="absolute top-4 right-3 space-y-2">
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-facebook"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-instagram"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-x"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-youtube"></use></svg></a></li>
-          </ul>
-        </div>
-        <div class="p-4 card-footer">
-          <h3 class="text-xl font-extrabold">Carolina Roberts</h3>
-          <p class="mt-1 text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide">Trainer</p>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group reveal zoom-in" style="animation-delay:.15s">
-        <div class="relative">
-          <img src="images/Yoga.jpg" alt="Isabella Hartman"
-               class="w-full h-56 sm:h-64 object-cover grayscale group-hover:grayscale-0 transition duration-300">
-          <ul class="absolute top-4 right-3 space-y-2">
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-facebook"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-instagram"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-x"></use></svg></a></li>
-            <li><a href="#" class="w-8 h-8 grid place-items-center bg-[color:var(--brand-red)] text-white">
-              <svg class="w-4 h-4"><use href="assets/icons.svg#icon-youtube"></use></svg></a></li>
-          </ul>
-        </div>
-        <div class="p-4 card-footer">
-          <h3 class="text-xl font-extrabold">Isabella Hartman</h3>
-          <p class="mt-1 text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide">Trainer</p>
-        </div>
-      </article>
+    <!-- Optional decorative overlay elements -->
+    <div class="absolute right-10 bottom-10 hidden md:flex items-center gap-3 opacity-70">
+      <svg class="w-6 h-6 text-[color:var(--brand-red)]" aria-hidden="true">
+        <use href="assets/icons.svg#icon-dumbbell"></use>
+      </svg>
+      <p class="text-sm uppercase tracking-widest font-semibold text-white">Train. Transform. Thrive.</p>
     </div>
   </div>
-</section>
+</header>
 
-  <!-- ===== CTA (smokey grey) ===== -->
-  <section class="py-12 md:py-16" style="background-color: var(--brand-smoke, #151618);">
-    <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center reveal fade-up">
-      <div class="flex justify-center -space-x-2 mb-6">
-        <span class="w-10 h-10 rounded-full ring-2 ring-black bg-white/10 grid place-items-center text-sm">A</span>
-        <span class="w-10 h-10 rounded-full ring-2 ring-black bg-white/10 grid place-items-center text-sm">B</span>
-        <span class="w-10 h-10 rounded-full ring-2 ring-black bg-white/10 grid place-items-center text-sm">C</span>
-        <span class="w-10 h-10 rounded-full ring-2 ring-black bg-white/10 grid place-items-center text-sm">D</span>
-        <span class="w-10 h-10 rounded-full ring-2 ring-black bg-white/10 grid place-items-center text-sm">E</span>
+
+
+
+
+  <!-- ===== TRAINERS GRID ===== -->
+  <section id="trainers" class="py-12 bg-[color:var(--brand-dark)]">
+    <div class="max-w-6xl mx-auto px-5 lg:px-10">
+      <div class="text-center mb-10 reveal fade-up">
+        <p class="uppercase tracking-[0.25em] text-[color:var(--brand-red)] font-extrabold text-xs">Our Team</p>
+        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight mt-2">Expert Trainers Dedicated to Your Success</h2>
       </div>
-      <h3 class="text-2xl md:text-3xl font-extrabold mb-3">
-        Expert Coaching for Strength, Endurance, and Total Wellness
-      </h3>
-      <p class="text-gray-300 mb-7 text-base md:text-lg">
-        Join our community and train with coaches who care about your long-term progress.
-      </p>
-      <a href="#" class="btn-red inline-flex px-6 py-3 text-sm md:text-base uppercase rounded-none">
-        Join Our Team
-      </a>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Repeat cards -->
+        <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group reveal zoom-in">
+          <div class="relative overflow-hidden">
+            <img src="images/male%20user.jpg" alt="Alexander Thornton" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition duration-300">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-extrabold">Alexander Thornton</h3>
+            <p class="text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide mt-1">Founder</p>
+          </div>
+        </article>
+
+        <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group reveal zoom-in">
+          <div class="relative">
+            <img src="images/female%20user.jpg" alt="Nathaniel Brooks" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition duration-300">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-extrabold">Nathaniel Brooks</h3>
+            <p class="text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide mt-1">Co-Founder</p>
+          </div>
+        </article>
+
+        <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group reveal zoom-in">
+          <div class="relative">
+            <img src="images/boxing.jpg" alt="Carolina Roberts" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition duration-300">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-extrabold">Carolina Roberts</h3>
+            <p class="text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide mt-1">Trainer</p>
+          </div>
+        </article>
+
+        <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group reveal zoom-in">
+          <div class="relative">
+            <img src="images/Yoga.jpg" alt="Isabella Hartman" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition duration-300">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-extrabold">Isabella Hartman</h3>
+            <p class="text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide mt-1">Trainer</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ===== Footer Global JS ===== -->
-  <div id="footer"></div>
+  
+  <!-- ===== CTA ===== -->
+  <section class="py-16 bg-[color:var(--brand-smoke)] text-center">
+    <div class="max-w-4xl mx-auto px-6 reveal fade-up">
+      <h3 class="text-2xl md:text-3xl font-extrabold mb-3">Join Our Fitness Community</h3>
+      <p class="text-gray-300 mb-7">Train with expert coaches committed to your transformation.</p>
+      <a href="/booking.html" class="btn-red inline-flex px-6 py-3 text-sm md:text-base uppercase">Join Now</a>
+    </div>
+  </section>
 
-  <!-- Shared JS (loads header.html + reveal + mobile nav) -->
+  <footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+  
+      <!-- Brand + Newsletter -->
+      <section class="md:col-span-5">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+          <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
+        </div>
+        <p class="mb-5 text-gray-400 leading-relaxed">
+          Hamza Fitness Club is your destination for strength, dedication, and transformation.
+          Join our community today!
+        </p>
+  
+        <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
+          <label for="newsletter-email" class="sr-only">Email</label>
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+            class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
+                   focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
+          />
+          <button
+            type="submit"
+            class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
+          >
+            Sign Up
+          </button>
+          <!-- Inline feedback (toggle via JS if you want) -->
+          <p id="newsletter-msg" class="col-span-full text-[13px] text-gray-400"></p>
+        </form>
+      </section>
+  
+      <!-- Our Studio -->
+      <nav class="md:col-span-2">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Our Studio
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/aboutus.html"          class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
+          <li><a href="trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
+          <li><a href="classes.html"  class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
+          <li><a href="pricing.html"  class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Support -->
+      <nav class="md:col-span-2">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Support
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Contact + Hours -->
+      <section id="contact" class="md:col-span-3">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Get in Touch
+        </h3>
+  
+        <address class="not-italic space-y-3 text-sm">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-map-pin"></use>
+            </svg>
+            <a
+              href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
+              target="_blank" rel="noopener"
+              class="hover:text-[color:var(--brand-red)] transition"
+            >
+              Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
+            </a>
+          </div>
+  
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-mail"></use>
+            </svg>
+            <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">
+              support@hamzafitnessclub.com
+            </a>
+          </div>
+  
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-phone"></use>
+            </svg>
+            <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
+          </div>
+        </address>
+  
+        <!-- Socials -->
+        <ul class="flex items-center gap-3 mt-5">
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Facebook">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-facebook"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Instagram">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-instagram"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="X (Twitter)">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-x"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="YouTube">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-youtube"></use></svg>
+            </a>
+          </li>
+        </ul>
+  
+        <!-- Hours -->
+        <div class="mt-6">
+          <h4 class="font-semibold text-white mb-3 border-b border-white/10 pb-1">Hours</h4>
+          <dl id="hours" class="space-y-1 text-sm leading-relaxed">
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Monday – Saturday</dt>
+              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            </div>
+        
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Sunday</dt>
+              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            </div>
+        
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Friday</dt>
+              <dd class="text-gray-500 italic text-right">Closed</dd>
+            </div>
+          </dl>
+        </div>
+        
+        
+      </section>
+    </div>
+  
+    <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
+      © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
+      All rights reserved. Designed by
+      <span class="text-[color:var(--brand-red)] font-bold">Ramla & Pakeeza</span>.
+    </div>
+  </footer>
+  
+  <script src="assets/footer.js" defer></script>
+  
+  <!-- Scripts -->
   <script src="assets/hfc.js" defer></script>
-
-  <!-- Page-only: current year -->
+  <script src="assets/trainers.js" defer></script>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>

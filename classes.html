@@ -1,185 +1,431 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hamza Fitness Club - Classes</title>
-  <!-- Tailwind build assumed -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .class-tab.active {
-        border-bottom: 2px solid var(--brand-red);
-        color: var(--brand-red);
+  <title>Classes | Hamza Fitness Club</title>
+  <meta name="description" content="Certified coaching for strength, endurance, and total wellness. Book your Strength & Conditioning session at Hamza Fitness Club." />
+  <meta name="theme-color" content="#d5100c" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind (project theme) -->
+  <script>
+    window.tailwind = window.tailwind || {};
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red: '#d5100c', dark: '#0b0b0b', smoke: '#151618' } },
+          fontFamily: { display: ['Oswald','ui-sans-serif','system-ui','sans-serif'] }
         }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-
-  </style>
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="assets/hfc.css" />
+  <!-- Preload icon sprite (optional) -->
+  <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
 </head>
 
-<body class="bg-black text-white">
-  
-  <!-- ================== CLASSES SECTION ================== -->
-  <section id="classes" class="section-pad bg-black relative overflow-hidden py-20">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-      
-      <!-- Section Header -->
-      <div class="text-center mb-14">
-        <p class="uppercase text-[color:var(--brand-red)] font-black tracking-widest mb-3">Our Classes</p>
-        <h2 class="text-4xl md:text-5xl font-black leading-tight mb-4">Diverse Fitness Programs</h2>
-        <p class="text-gray-300 max-w-2xl mx-auto">Choose from our wide range of fitness classes designed to challenge you and help you achieve your goals.</p>
-      </div>
+<body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
 
-      <!-- Tabs -->
-      <div class="flex justify-center mb-12 overflow-x-auto">
-        <div class="flex border-b border-gray-700 gap-6">
-          <button class="class-tab active px-4 py-2 font-semibold text-sm tracking-wide" data-category="all">All</button>
-          <button class="class-tab px-4 py-2 font-semibold text-sm tracking-wide" data-category="strength">Strength</button>
-          <button class="class-tab px-4 py-2 font-semibold text-sm tracking-wide" data-category="cardio">Cardio</button>
-          <button class="class-tab px-4 py-2 font-semibold text-sm tracking-wide" data-category="group">Group</button>
-          <button class="class-tab px-4 py-2 font-semibold text-sm tracking-wide" data-category="specialized">Specialized</button>
-        </div>
-      </div>
+<!-- components/header.html -->
+<header id="header" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="/index.html#hero-index" class="flex items-center gap-3">
+      <img src="/images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+      <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
+    </a>
 
-      <!-- Classes Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Example Card -->
-        <div class="class-card bg-neutral-900 rounded-xl overflow-hidden shadow-lg hover:shadow-[0_0_20px_rgba(255,0,0,0.3)] transition duration-300" data-category="strength">
-          <div class="relative h-52 overflow-hidden group">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=80" alt="Weightlifting" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-            <span class="absolute top-4 left-4 bg-[color:var(--brand-red)] text-white px-3 py-1 text-xs font-bold rounded-md">STRENGTH</span>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:block" aria-label="Primary">
+      <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
+        <li>
+          <a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a>
+        </li>
+        <li>
+          <a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a>
+        </li>
+
+        <!-- CLASSES dropdown -->
+        <li class="relative group">
+          <button class="flex items-center gap-2 hover:text-[color:var(--brand-red)] uppercase"
+                  aria-haspopup="true" aria-expanded="false" aria-controls="menu-classes">
+            CLASSES <span class="text-lg leading-none">▾</span>
+          </button>
+
+          <div id="menu-classes" data-menu
+               class="absolute left-0 mt-4 bg-neutral-900 border border-white/10 w-52 shadow-lg
+                      invisible opacity-0 translate-y-1 transition duration-250 ease-out
+                      group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
+            <a href="/classes.html"  class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Detail Class</a>
+            <a href="/pricing.html" class="block px-4 py-3 hover:bg-[color:var(--brand-red)] hover:text-white">Pricing Plan</a>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Weightlifting</h3>
-            <p class="text-gray-300 mb-4">Build raw power and muscle with our expert-led weightlifting sessions.</p>
-            <div class="flex justify-between text-sm text-gray-400">
-              <span>Mon, Wed, Fri</span>
-              <span>60 mins</span>
+        </li>
+
+        <li>
+          <a href="/classes.html#footer" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a>
+        </li>
+
+        <!-- TRAINERS (direct link) -->
+        <li>
+          <a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+
+    <!-- CTA -->
+    <a href="/index.html#contact" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
+      Book Free Appointment
+    </a>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
+    <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
+      <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
+      <li><a href="/aboutus.html"        class="block py-2">About Us</a></li>
+      <li><a href="/classes.html"          class="block py-2">Classes</a></li>
+      <li><a href="/classes.html#footer"    class="block py-2">Contact Us</a></li>
+      <li><a href="/trainers.html"         class="block py-2">Trainers</a></li>
+      <li><a href="/booking.html"    class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Header interactivity -->
+<script src="assets/header.js" defer></script>
+
+
+  <!-- ========================= BENEFITS ========================== -->
+  <section id="benefits" class="section-pad relative bg-[#1a1a1a] overflow-hidden">
+    <div class="container-x px-4 lg:px-6">
+      <div class="text-center mb-12">
+        <p class="uppercase text-[color:var(--brand-red)] tracking-widest font-black mb-2">
+          Why Train With Us
+        </p>
+        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">
+          Experience the Difference at Hamza Fitness Club
+        </h2>
+        <p class="text-gray-300 max-w-xl mx-auto mt-3">
+          From expert trainers to flexible plans, we provide everything you need to reach your fitness goals — no matter your level.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
+        <!-- Left: Key Benefits -->
+        <article class="reveal fade-up hfc-card hfc-card--ring rounded-2xl border border-white/10 p-6 bg-[#151618]/60 backdrop-blur-sm">
+          <h3 class="mb-4 font-semibold uppercase tracking-wider text-[color:var(--brand-red)]">
+            Key Benefits
+          </h3>
+          <ul class="space-y-3 text-gray-200">
+            <li class="flex items-start gap-3">
+              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+              Proven results &amp; success stories
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+              Expert trainers &amp; personalized coaching
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+              Supportive fitness community
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+              State-of-the-art facilities
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+              Flexible membership plans
+            </li>
+          </ul>
+        </article>
+
+        <!-- Right: Highlights -->
+        <article class="reveal fade-up delay-100 hfc-card hfc-card--ring rounded-2xl border border-white/10 p-6 bg-[#151618]/60 backdrop-blur-sm">
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex h-11 w-11 items-center justify-center">
+                <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-timer"></use></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-[color:var(--brand-red)]">60-Minute In-Person Session</h4>
+                <p class="text-gray-300">Personalized coaching to strengthen your technique and reach your goals faster.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex h-11 w-11 items-center justify-center">
+                <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-screen"></use></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-[color:var(--brand-red)]">Virtual Training Session</h4>
+                <p class="text-gray-300">Join live or on-demand workouts from anywhere with real-time trainer feedback.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex h-11 w-11 items-center justify-center">
+                <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"></use></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-[color:var(--brand-red)]">Flexible Scheduling</h4>
+                <p class="text-gray-300">Choose morning, midday, or evening sessions that fit your daily routine.</p>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Repeat: HIIT, Yoga, CrossFit, Cycling, Personal Training, Powerlifting, Boxing, Zumba, Pilates, Senior Fitness, Postnatal -->
-        <!-- You can reuse the above card structure for all classes (just swap image, text, and category) -->
-
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ================== OUR VALUE SECTION ================== -->
-  <section id="values" class="section-pad bg-black relative overflow-hidden py-20">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center gap-12">
-        
-        <!-- Left: Image -->
-        <div class="lg:w-1/2 w-full">
-          <div class="relative">
-            <div class="w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/10">
-              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Fitness Training" class="w-full h-full object-cover">
-            </div>
-            <div class="absolute -bottom-6 -right-6 bg-black/90 text-white p-6 rounded-xl shadow-lg w-3/4">
-              <h3 class="text-xl font-bold mb-2">10+ Years of Excellence</h3>
-              <p class="text-sm text-gray-300">Helping thousands achieve their fitness goals</p>
+  <!-- ========================= HOW IT WORKS ========================== -->
+  <section id="how" class="section-pad relative bg-[color:var(--brand-dark)] overflow-hidden">
+    <div class="container-x px-4 lg:px-6 text-center relative z-10">
+      <p class="uppercase text-[color:var(--brand-red)] tracking-widest mb-2 font-black">How It Works</p>
+      <h3 class="text-3xl md:text-5xl font-extrabold mb-12">Unlock Your Potential with Our Simple Fitness Process</h3>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <article class="reveal fade-up hfc-card hfc-card--ring p-8 transition-transform duration-300 hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40">
+          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4 font-bold">01</div>
+          <h4 class="font-bold text-xl mb-2 text-[color:var(--brand-red)]">Goal Setting</h4>
+          <p class="text-gray-300">Define clear, achievable milestones tailored to your fitness journey.</p>
+        </article>
+
+        <article class="reveal fade-up delay-100 hfc-card hfc-card--ring p-8 transition-transform duration-300 hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40">
+          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4 font-bold">02</div>
+          <h4 class="font-bold text-xl mb-2 text-[color:var(--brand-red)]">Structured Training</h4>
+          <p class="text-gray-300">Follow a proven training program designed for consistent progress.</p>
+        </article>
+
+        <article class="reveal fade-up delay-200 hfc-card hfc-card--ring p-8 transition-transform duration-300 hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40">
+          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4 font-bold">03</div>
+          <h4 class="font-bold text-xl mb-2 text-[color:var(--brand-red)]">Progress Tracking</h4>
+          <p class="text-gray-300">Measure your results and stay motivated with visible progress over time.</p>
+        </article>
+
+        <article class="reveal fade-up delay-300 hfc-card hfc-card--ring p-8 transition-transform duration-300 hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40">
+          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4 font-bold">04</div>
+          <h4 class="font-bold text-xl mb-2 text-[color:var(--brand-red)]">Recovery Focus</h4>
+          <p class="text-gray-300">Prioritize recovery to avoid burnout and sustain long-term performance.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- Decorative glow -->
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-1/2 w-[500px] h-[500px] bg-[color:var(--brand-red)]/10 rounded-full blur-3xl -translate-x-1/2"></div>
+    </div>
+  </section>
+
+  <!-- ========================= TESTIMONIALS ========================== -->
+  <section id="reviews" class="py-10">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="max-w-3xl text-3xl sm:text-4xl font-extrabold">Real Member Stories: Transformations that Inspire and Motivate</h2>
+
+      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <article class="reveal hfc-card hfc-card--ring rounded-2xl border border-white/10 bg-black/60 p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&auto=format&fit=crop" alt="Olivia Davis portrait" loading="lazy">
+            <div>
+              <p class="font-semibold">Olivia Davis</p>
+              <p class="text-xs text-gray-400">Jakarta</p>
             </div>
           </div>
-        </div>
+          <p class="text-gray-200">“Since joining HFC, I’ve seen amazing progress. The community is inspiring, and the trainers genuinely care about my success.”</p>
+        </article>
 
-        <!-- Right: Content -->
-        <div class="lg:w-1/2 w-full">
-          <div class="max-w-lg">
-            <p class="uppercase tracking-widest text-[color:var(--brand-red)] font-black mb-2">Our Value</p>
-            <h2 class="text-4xl font-black mb-4">Building a Stronger You</h2>
-            <h3 class="text-2xl font-semibold mb-6 text-[color:var(--brand-red)]">Commitment, Integrity & Results</h3>
-            <p class="text-gray-300 mb-10">Fames arcu ad aenean suscipit ut ipsum habitasse quisque lorem ornare efficitur. Blandit ultricies morbi mattis fermentum scelerisque eros.</p>
-            
-            <!-- Progress Bars -->
-            <div class="space-y-6">
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span class="font-medium">Commitment to Member Success</span>
-                  <span class="text-[color:var(--brand-red)] font-bold">90%</span>
-                </div>
-                <div class="w-full h-2 bg-gray-700 rounded-full">
-                  <div class="progress-fill h-2 rounded-full bg-[color:var(--brand-red)] transition-all duration-1000" data-width="90"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span class="font-medium">Professional Coaching</span>
-                  <span class="text-[color:var(--brand-red)] font-bold">80%</span>
-                </div>
-                <div class="w-full h-2 bg-gray-700 rounded-full">
-                  <div class="progress-fill h-2 rounded-full bg-[color:var(--brand-red)]" data-width="80"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span class="font-medium">Wellness Focus</span>
-                  <span class="text-[color:var(--brand-red)] font-bold">75%</span>
-                </div>
-                <div class="w-full h-2 bg-gray-700 rounded-full">
-                  <div class="progress-fill h-2 rounded-full bg-[color:var(--brand-red)]" data-width="75"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span class="font-medium">Facilities & Equipment</span>
-                  <span class="text-[color:var(--brand-red)] font-bold">85%</span>
-                </div>
-                <div class="w-full h-2 bg-gray-700 rounded-full">
-                  <div class="progress-fill h-2 rounded-full bg-[color:var(--brand-red)]" data-width="85"></div>
-                </div>
-              </div>
+        <article class="reveal hfc-card hfc-card--ring rounded-2xl border border-white/10 bg-black/60 p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005316-04ce9f4c9f16?q=80&w=256&auto=format&fit=crop" alt="Emily Roberts portrait" loading="lazy">
+            <div>
+              <p class="font-semibold">Emily Roberts</p>
+              <p class="text-xs text-gray-400">Jakarta</p>
             </div>
+          </div>
+          <p class="text-gray-200">“I love the variety of classes and expert guidance. Every workout challenges me in a fun and exciting way.”</p>
+        </article>
 
-            <!-- CTA -->
-            <a href="#programs" class="inline-flex mt-10 px-6 py-3 rounded-md font-bold text-white bg-gradient-to-r from-[color:var(--brand-red)] to-red-700 hover:opacity-90 transition">
-              Discover Our Programs
+        <article class="reveal hfc-card hfc-card--ring rounded-2xl border border-white/10 bg-black/60 p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=256&auto=format&fit=crop" alt="Michael Brown portrait" loading="lazy">
+            <div>
+              <p class="font-semibold">Michael Brown</p>
+              <p class="text-xs text-gray-400">Jakarta</p>
+            </div>
+          </div>
+          <p class="text-gray-200">“The facilities are clean, modern, and fully equipped. HFC provides everything I need to stay in shape!”</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+  
+      <!-- Brand + Newsletter -->
+      <section class="md:col-span-5">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+          <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
+        </div>
+        <p class="mb-5 text-gray-400 leading-relaxed">
+          Hamza Fitness Club is your destination for strength, dedication, and transformation.
+          Join our community today!
+        </p>
+  
+        <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
+          <label for="newsletter-email" class="sr-only">Email</label>
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+            class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
+                   focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
+          />
+          <button
+            type="submit"
+            class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
+          >
+            Sign Up
+          </button>
+          <!-- Inline feedback (toggle via JS if you want) -->
+          <p id="newsletter-msg" class="col-span-full text-[13px] text-gray-400"></p>
+        </form>
+      </section>
+  
+      <!-- Our Studio -->
+      <nav class="md:col-span-2">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Our Studio
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/aboutus.html"          class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
+          <li><a href="trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
+          <li><a href="classes.html"  class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
+          <li><a href="pricing.html"  class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Support -->
+      <nav class="md:col-span-2">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Support
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
+        </ul>
+      </nav>
+  
+      <!-- Contact + Hours -->
+      <section id="contact" class="md:col-span-3">
+        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+          Get in Touch
+        </h3>
+  
+        <address class="not-italic space-y-3 text-sm">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-map-pin"></use>
+            </svg>
+            <a
+              href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
+              target="_blank" rel="noopener"
+              class="hover:text-[color:var(--brand-red)] transition"
+            >
+              Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
             </a>
           </div>
+  
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-mail"></use>
+            </svg>
+            <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">
+              support@hamzafitnessclub.com
+            </a>
+          </div>
+  
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+              <use href="assets/icons.svg#icon-phone"></use>
+            </svg>
+            <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
+          </div>
+        </address>
+  
+        <!-- Socials -->
+        <ul class="flex items-center gap-3 mt-5">
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Facebook">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-facebook"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Instagram">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-instagram"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="X (Twitter)">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-x"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="YouTube">
+              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-youtube"></use></svg>
+            </a>
+          </li>
+        </ul>
+  
+        <!-- Hours -->
+        <div class="mt-6">
+          <h4 class="font-semibold text-white mb-3 border-b border-white/10 pb-1">Hours</h4>
+          <dl id="hours" class="space-y-1 text-sm leading-relaxed">
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Monday – Saturday</dt>
+              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            </div>
+        
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Sunday</dt>
+              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            </div>
+        
+            <div class="flex justify-between items-start gap-4">
+              <dt class="font-semibold text-white">Friday</dt>
+              <dd class="text-gray-500 italic text-right">Closed</dd>
+            </div>
+          </dl>
         </div>
-      </div>
+        
+        
+      </section>
     </div>
-  </section>
-
-  <!-- ================== SCRIPT ================== -->
-  <script>
-    // Progress bar animation
-    document.addEventListener('DOMContentLoaded', () => {
-      const progressBars = document.querySelectorAll('.progress-fill');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const width = entry.target.getAttribute('data-width');
-            entry.target.style.width = width + '%';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.4 });
-      progressBars.forEach(bar => observer.observe(bar));
-    });
-
-    // Class tab filtering
-    const tabs = document.querySelectorAll('.class-tab');
-    const cards = document.querySelectorAll('.class-card');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const category = tab.dataset.category;
-        cards.forEach(card => {
-          if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  </script>
-
+  
+    <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
+      © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
+      All rights reserved. Designed by
+      <span class="text-[color:var(--brand-red)] font-bold">Ramla & Pakeeza</span>.
+    </div>
+  </footer>
+  
+  <script src="assets/footer.js" defer></script>
+  <!-- Scripts -->
+  <script src="assets/hfc.js" defer></script>
+  <script src="assets/classes.js" defer></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!-- ===== Video CTA ===== -->
+<section id="videoCTA" class="relative overflow-hidden">
+    <!-- Background video with safe fallbacks -->
+    <video
+      class="absolute inset-0 w-full h-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="images/gym-floor.jpg"
+    >
+      <!-- URL-encode the space in the filename -->
+      <source src="images/gym%20video.mp4" type="video/mp4" />
+      <!-- Fallback image if video can't play -->
+      <img src="images/gym-floor.jpg" alt="Gym floor" />
+    </video>
+  
+    <!-- Dark overlay for text contrast -->
+    <div class="absolute inset-0 bg-black/60"></div>
+  
+    <!-- Content -->
+    <div class="container-x relative px-6 lg:px-8 py-24 text-center">
+      <h3 class="reveal fade-down text-4xl md:text-5xl font-black leading-tight mb-4">
+        Push Harder, Sweat More, Achieve Greatness with FitNation!
+      </h3>
+      <p class="reveal fade-up text-gray-200 max-w-3xl mx-auto">
+        Growth and improvement come from steady discipline and strong foundations. True progress lies in balanced effort, dignified habits, and consistent support.
+      </p>
+      <a class="btn-red mt-6 inline-block" href="#">Discover More</a>
+    </div>
+  </section>
+  
