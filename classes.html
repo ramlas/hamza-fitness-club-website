@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Classes | Hamza Fitness Club</title>
-  <meta name="description" content="Certified coaching for strength, endurance, and total wellness. Book your Strength & Conditioning session at Hamza Fitness Club." />
+  <meta name="description" content="Certified coaching for strength, endurance, and total wellness. Explore classes at Hamza Fitness Club and book a free appointment." />
   <meta name="theme-color" content="#d5100c" />
 
   <!-- Fonts -->
@@ -28,38 +28,32 @@
 
   <!-- Shared stylesheet -->
   <link rel="stylesheet" href="assets/hfc.css" />
-  <!-- Preload icon sprite (optional) -->
+  
   <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
+
+
 </head>
 
 <body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
 
-<!-- components/header.html -->
+<!-- Header -->
 <header id="header" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-    <!-- Brand -->
     <a href="/index.html#hero-index" class="flex items-center gap-3">
       <img src="/images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
       <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
     </a>
 
-    <!-- Desktop Nav -->
     <nav class="hidden md:block" aria-label="Primary">
       <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
-        <li>
-          <a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a>
-        </li>
-        <li>
-          <a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a>
-        </li>
+        <li><a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a></li>
+        <li><a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
 
-        <!-- CLASSES dropdown -->
         <li class="relative group">
           <button class="flex items-center gap-2 hover:text-[color:var(--brand-red)] uppercase"
                   aria-haspopup="true" aria-expanded="false" aria-controls="menu-classes">
             CLASSES <span class="text-lg leading-none">▾</span>
           </button>
-
           <div id="menu-classes" data-menu
                class="absolute left-0 mt-4 bg-neutral-900 border border-white/10 w-52 shadow-lg
                       invisible opacity-0 translate-y-1 transition duration-250 ease-out
@@ -69,363 +63,557 @@
           </div>
         </li>
 
-        <li>
-          <a href="/classes.html#footer" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a>
-        </li>
-
-        <!-- TRAINERS (direct link) -->
-        <li>
-          <a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a>
-        </li>
+        <li><a href="/classes.html#footer" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a></li>
+        <li><a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
       </ul>
     </nav>
 
-    <!-- Mobile Menu Button -->
     <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
-
-    <!-- CTA -->
-    <a href="/index.html#contact" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
+    <a href="/booking.html" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
       Book Free Appointment
     </a>
   </div>
 
-  <!-- Mobile Menu -->
   <div id="mobile-menu" data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
     <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
       <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
-      <li><a href="/aboutus.html"        class="block py-2">About Us</a></li>
-      <li><a href="/classes.html"          class="block py-2">Classes</a></li>
-      <li><a href="/classes.html#footer"    class="block py-2">Contact Us</a></li>
-      <li><a href="/trainers.html"         class="block py-2">Trainers</a></li>
-      <li><a href="/booking.html"    class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
+      <li><a href="/aboutus.html" class="block py-2">About Us</a></li>
+      <li><a href="/classes.html" class="block py-2">Classes</a></li>
+      <li><a href="/classes.html#footer" class="block py-2">Contact Us</a></li>
+      <li><a href="/trainers.html" class="block py-2">Trainers</a></li>
+      <li><a href="/booking.html" class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
     </ul>
   </div>
 </header>
-
-<!-- Header interactivity -->
 <script src="assets/header.js" defer></script>
 
+<!-- ===== HERO (Classes) ===== -->
+<header class="relative">
+  <div class="absolute inset-0">
+    <img src="images/gym-floor.jpg" alt="Hamza Fitness Club classes" class="h-full w-full object-cover opacity-60" />
+    <div class="absolute inset-0 bg-black/60"></div>
+  </div>
 
-  <!-- ========================= BENEFITS ========================== -->
-  <section id="benefits" class="section-pad relative bg-[#1a1a1a] overflow-hidden">
-    <div class="container-x px-4 lg:px-6">
-      <div class="text-center mb-12">
-        <p class="uppercase text-[color:var(--brand-red)] tracking-widest font-black mb-2">
-          Why Train With Us
-        </p>
-        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">
-          Experience the Difference at Hamza Fitness Club
-        </h2>
-        <p class="text-gray-300 max-w-xl mx-auto mt-3">
-          From expert trainers to flexible plans, we provide everything you need to reach your fitness goals — no matter your level.
-        </p>
+  <div class="relative container-x px-4 lg:px-6 py-12">
+    <div class="glass rounded-xl p-6 md:p-8">
+      <p class="text-sm md:text-base tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-extrabold mb-1.5">Our Classes</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Build Strength. Boost Endurance. Feel Amazing.</h1>
+      <p class="hero-text-body mt-3 max-w-3xl">
+        From strength & conditioning to high-energy cardio and guided mobility, every class is led by certified coaches who care about your technique and results.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a href="/pricing.html" class="inline-flex items-center px-5 py-2 text-sm uppercase font-extrabold border border-white/20 rounded-md hover:bg-white/5">View Pricing</a>
+        <a href="/booking.html" class="btn-red px-5 py-2 text-sm uppercase font-extrabold">Book Free Appointment</a>
       </div>
+    </div>
+  </div>
+</header>
 
-      <div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
-        <!-- Left: Key Benefits -->
-        <article class="reveal fade-up hfc-card hfc-card--ring rounded-2xl border border-white/10 p-6 bg-[#151618]/60 backdrop-blur-sm">
-          <h3 class="mb-4 font-semibold uppercase tracking-wider text-[color:var(--brand-red)]">
-            Key Benefits
+<!-- ========================= BENEFITS ========================== -->
+<section id="benefits" class="section-pad relative bg-[#1a1a1a] overflow-hidden">
+  <div class="container-x px-4 lg:px-6">
+    <div class="text-center mb-12">
+      <p class="uppercase text-[color:var(--brand-red)] tracking-widest font-black mb-2">Why Train With Us</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Experience the Difference at Hamza Fitness Club</h2>
+      <p class="text-gray-300 max-w-xl mx-auto mt-3">From expert trainers to flexible plans, we provide everything you need to reach your fitness goals — no matter your level.</p>
+    </div>
+
+    <div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
+      <article class="reveal fade-up hfc-card hfc-card--ring rounded-2xl border border-white/10 p-6 bg-[#151618]/60 backdrop-blur-sm">
+        <h3 class="mb-4 font-semibold uppercase tracking-wider text-[color:var(--brand-red)]">Key Benefits</h3>
+        <ul class="space-y-3 text-gray-200">
+          <li class="flex items-start gap-3">
+            <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+            Proven results &amp; success stories
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+            Expert trainers &amp; personalized coaching
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+            Supportive fitness community
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+            State-of-the-art facilities
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
+            Flexible membership plans
+          </li>
+        </ul>
+      </article>
+
+      <article class="reveal fade-up delay-100 hfc-card hfc-card--ring rounded-2xl border border-white/10 p-6 bg-[#151618]/60 backdrop-blur-sm">
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="flex h-11 w-11 items-center justify-center">
+              <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-timer"></use></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-[color:var(--brand-red)]">60-Minute In-Person Session</h4>
+              <p class="text-gray-300">Personalized coaching to strengthen your technique and reach your goals faster.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex h-11 w-11 items-center justify-center">
+              <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-screen"></use></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-[color:var(--brand-red)]">Virtual Training Session</h4>
+              <p class="text-gray-300">Join live or on-demand workouts from anywhere with real-time trainer feedback.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex h-11 w-11 items-center justify-center">
+              <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"></use></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-[color:var(--brand-red)]">Flexible Scheduling</h4>
+              <p class="text-gray-300">Choose morning, midday, or evening sessions that fit your daily routine.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stats Strip ===== -->
+<section id="statsstrip" class="bg-[color:var(--brand-red)] text-white border-y border-black">
+  <div class="max-w-4xl mx-auto px-5 lg:px-7 py-5 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    
+    <div class="reveal fade-up">
+      <p class="text-3xl md:text-4xl font-black leading-none">91K+</p>
+      <p class="mt-2 text-base md:text-lg font-semibold">Projects Done</p>
+    </div>
+
+    <div class="reveal fade-up delay-100">
+      <p class="text-3xl md:text-4xl font-black leading-none">84K+</p>
+      <p class="mt-2 text-base md:text-lg font-semibold">Happy Clients</p>
+    </div>
+
+    <div class="reveal fade-up delay-200">
+      <p class="text-3xl md:text-4xl font-black leading-none">42+</p>
+      <p class="mt-2 text-base md:text-lg font-semibold">Company Support</p>
+    </div>
+
+    <div class="reveal fade-up delay-300">
+      <p class="text-3xl md:text-4xl font-black leading-none">4.7+</p>
+      <p class="mt-2 text-base md:text-lg font-semibold">Client Reviews</p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- ===== Testimonials ===== -->
+  <section id="testimonials" class="section-pad bg-black" aria-labelledby="reviews-title">
+    <div class="container-x px-6 lg:px-8">
+      <!-- Header + Score -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <h3 id="reviews-title" class="reveal fade-down text-4xl md:text-5xl font-black mb-3">
+            Real Member Stories at Hamza Fitness Club
           </h3>
-          <ul class="space-y-3 text-gray-200">
-            <li class="flex items-start gap-3">
-              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
-              Proven results &amp; success stories
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
-              Expert trainers &amp; personalized coaching
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
-              Supportive fitness community
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
-              State-of-the-art facilities
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="mt-1 w-5 h-5 text-[color:var(--brand-red)] shrink-0"><use href="assets/icons.svg#icon-check"></use></svg>
-              Flexible membership plans
-            </li>
-          </ul>
-        </article>
-
-        <!-- Right: Highlights -->
-        <article class="reveal fade-up delay-100 hfc-card hfc-card--ring rounded-2xl border border-white/10 p-6 bg-[#151618]/60 backdrop-blur-sm">
-          <div class="space-y-6">
-            <div class="flex gap-4">
-              <div class="flex h-11 w-11 items-center justify-center">
-                <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-timer"></use></svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-[color:var(--brand-red)]">60-Minute In-Person Session</h4>
-                <p class="text-gray-300">Personalized coaching to strengthen your technique and reach your goals faster.</p>
-              </div>
-            </div>
-
-            <div class="flex gap-4">
-              <div class="flex h-11 w-11 items-center justify-center">
-                <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-screen"></use></svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-[color:var(--brand-red)]">Virtual Training Session</h4>
-                <p class="text-gray-300">Join live or on-demand workouts from anywhere with real-time trainer feedback.</p>
-              </div>
-            </div>
-
-            <div class="flex gap-4">
-              <div class="flex h-11 w-11 items-center justify-center">
-                <svg class="h-8 w-8" aria-hidden="true"><use href="assets/icons.svg#icon-calendar"></use></svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-[color:var(--brand-red)]">Flexible Scheduling</h4>
-                <p class="text-gray-300">Choose morning, midday, or evening sessions that fit your daily routine.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= HOW IT WORKS ========================== -->
-  <section id="how" class="section-pad relative bg-[color:var(--brand-dark)] overflow-hidden">
-    <div class="container-x px-4 lg:px-6 text-center relative z-10">
-      <p class="uppercase text-[color:var(--brand-red)] tracking-widest mb-2 font-black">How It Works</p>
-      <h3 class="text-3xl md:text-5xl font-extrabold mb-12">Unlock Your Potential with Our Simple Fitness Process</h3>
-
-      <div class="grid md:grid-cols-4 gap-6">
-        <article class="reveal fade-up hfc-card hfc-card--ring p-8 transition-transform duration-300 hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40">
-          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4 font-bold">01</div>
-          <h4 class="font-bold text-xl mb-2 text-[color:var(--brand-red)]">Goal Setting</h4>
-          <p class="text-gray-300">Define clear, achievable milestones tailored to your fitness journey.</p>
-        </article>
-
-        <article class="reveal fade-up delay-100 hfc-card hfc-card--ring p-8 transition-transform duration-300 hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40">
-          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4 font-bold">02</div>
-          <h4 class="font-bold text-xl mb-2 text-[color:var(--brand-red)]">Structured Training</h4>
-          <p class="text-gray-300">Follow a proven training program designed for consistent progress.</p>
-        </article>
-
-        <article class="reveal fade-up delay-200 hfc-card hfc-card--ring p-8 transition-transform duration-300 hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40">
-          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4 font-bold">03</div>
-          <h4 class="font-bold text-xl mb-2 text-[color:var(--brand-red)]">Progress Tracking</h4>
-          <p class="text-gray-300">Measure your results and stay motivated with visible progress over time.</p>
-        </article>
-
-        <article class="reveal fade-up delay-300 hfc-card hfc-card--ring p-8 transition-transform duration-300 hover:-translate-y-1 hover:ring-[color:var(--brand-red)]/40">
-          <div class="text-2xl w-12 h-12 grid place-items-center rounded-full bg-[color:var(--brand-red)] text-white mx-auto mb-4 font-bold">04</div>
-          <h4 class="font-bold text-xl mb-2 text-[color:var(--brand-red)]">Recovery Focus</h4>
-          <p class="text-gray-300">Prioritize recovery to avoid burnout and sustain long-term performance.</p>
-        </article>
-      </div>
-    </div>
-
-    <!-- Decorative glow -->
-    <div class="absolute inset-0">
-      <div class="absolute top-0 left-1/2 w-[500px] h-[500px] bg-[color:var(--brand-red)]/10 rounded-full blur-3xl -translate-x-1/2"></div>
-    </div>
-  </section>
-
-  <!-- ========================= TESTIMONIALS ========================== -->
-  <section id="reviews" class="py-10">
-    <div class="mx-auto max-w-4xl px-6">
-      <h2 class="max-w-3xl text-3xl sm:text-4xl font-extrabold">Real Member Stories: Transformations that Inspire and Motivate</h2>
-
-      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <article class="reveal hfc-card hfc-card--ring rounded-2xl border border-white/10 bg-black/60 p-6">
-          <div class="mb-4 flex items-center gap-3">
-            <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&auto=format&fit=crop" alt="Olivia Davis portrait" loading="lazy">
-            <div>
-              <p class="font-semibold">Olivia Davis</p>
-              <p class="text-xs text-gray-400">Jakarta</p>
-            </div>
-          </div>
-          <p class="text-gray-200">“Since joining HFC, I’ve seen amazing progress. The community is inspiring, and the trainers genuinely care about my success.”</p>
-        </article>
-
-        <article class="reveal hfc-card hfc-card--ring rounded-2xl border border-white/10 bg-black/60 p-6">
-          <div class="mb-4 flex items-center gap-3">
-            <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005316-04ce9f4c9f16?q=80&w=256&auto=format&fit=crop" alt="Emily Roberts portrait" loading="lazy">
-            <div>
-              <p class="font-semibold">Emily Roberts</p>
-              <p class="text-xs text-gray-400">Jakarta</p>
-            </div>
-          </div>
-          <p class="text-gray-200">“I love the variety of classes and expert guidance. Every workout challenges me in a fun and exciting way.”</p>
-        </article>
-
-        <article class="reveal hfc-card hfc-card--ring rounded-2xl border border-white/10 bg-black/60 p-6">
-          <div class="mb-4 flex items-center gap-3">
-            <img class="h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=256&auto=format&fit=crop" alt="Michael Brown portrait" loading="lazy">
-            <div>
-              <p class="font-semibold">Michael Brown</p>
-              <p class="text-xs text-gray-400">Jakarta</p>
-            </div>
-          </div>
-          <p class="text-gray-200">“The facilities are clean, modern, and fully equipped. HFC provides everything I need to stay in shape!”</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
-  
-      <!-- Brand + Newsletter -->
-      <section class="md:col-span-5">
-        <div class="flex items-center gap-3 mb-4">
-          <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
-          <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
+          <p class="text-gray-300 max-w-2xl">
+            Proven results, supportive coaches, and a community that keeps you consistent.
+          </p>
         </div>
-        <p class="mb-5 text-gray-400 leading-relaxed">
-          Hamza Fitness Club is your destination for strength, dedication, and transformation.
-          Join our community today!
-        </p>
   
-        <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
-          <label for="newsletter-email" class="sr-only">Email</label>
-          <input
-            id="newsletter-email"
-            name="email"
-            type="email"
-            placeholder="you@example.com"
-            required
-            class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
-                   focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
-          />
-          <button
-            type="submit"
-            class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
-          >
-            Sign Up
-          </button>
-          <!-- Inline feedback (toggle via JS if you want) -->
-          <p id="newsletter-msg" class="col-span-full text-[13px] text-gray-400"></p>
-        </form>
-      </section>
-  
-      <!-- Our Studio -->
-      <nav class="md:col-span-2">
-        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
-          Our Studio
-        </h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/aboutus.html"          class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
-          <li><a href="trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
-          <li><a href="classes.html"  class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
-          <li><a href="pricing.html"  class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
-        </ul>
-      </nav>
-  
-      <!-- Support -->
-      <nav class="md:col-span-2">
-        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
-          Support
-        </h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
-        </ul>
-      </nav>
-  
-      <!-- Contact + Hours -->
-      <section id="contact" class="md:col-span-3">
-        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
-          Get in Touch
-        </h3>
-  
-        <address class="not-italic space-y-3 text-sm">
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
-              <use href="assets/icons.svg#icon-map-pin"></use>
-            </svg>
-            <a
-              href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
-              target="_blank" rel="noopener"
-              class="hover:text-[color:var(--brand-red)] transition"
-            >
-              Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
-            </a>
+        <!-- Ratings Card -->
+        <aside class="bg-neutral-900 rounded-xl p-5 ring-1 ring-white/5 w-full md:w-auto md:min-w-[340px]" aria-live="polite">
+          <div class="flex items-center gap-3">
+            <div class="text-4xl font-black">
+              <span id="avg-number">4.9</span>
+            </div>
+            <div>
+              <div class="flex" aria-label="Average rating">
+                <!-- Stars filled based on JS; fallback shows 5 -->
+                <div class="flex" id="avg-stars" aria-hidden="true">
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current opacity-50"><use href="assets/icons.svg#icon-star"/></svg>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 leading-tight mt-1">
+                Based on <span id="total-reviews">12</span> member reviews
+              </p>
+            </div>
           </div>
   
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
-              <use href="assets/icons.svg#icon-mail"></use>
-            </svg>
-            <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">
-              support@hamzafitnessclub.com
-            </a>
+          <!-- Distribution Bars -->
+          <div class="mt-4 space-y-2" id="rating-bars">
+            <!-- Each row controlled by data-value (%) -->
+            <div class="flex items-center gap-2" data-row data-label="5★" data-value="92">
+              <span class="text-xs text-gray-400 w-8">5★</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="92">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">92</span>%</span>
+            </div>
+            <div class="flex items-center gap-2" data-row data-label="4★" data-value="7">
+              <span class="text-xs text-gray-400 w-8">4★</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="7">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">7</span>%</span>
+            </div>
+            <div class="flex items-center gap-2" data-row data-label="3★" data-value="1">
+              <span class="text-xs text-gray-400 w-8">3★</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="1">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">1</span>%</span>
+            </div>
           </div>
+        </aside>
+      </div>
   
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
-              <use href="assets/icons.svg#icon-phone"></use>
-            </svg>
-            <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
-          </div>
-        </address>
+      <!-- Carousel -->
+      <div id="reviewsCarousel" class="relative reel group mt-2" aria-roledescription="carousel">
+        <div class="reel__track" role="listbox" aria-label="Member reviews carousel" tabindex="0">
+          <!-- Card template (repeat as needed) -->
+          <!-- 1 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="true">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Pakeeza Hassan"/>
+              <div>
+                <p class="font-bold flex items-center gap-2">
+                  <span>Pakeeza Hassan</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span>
+                </p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">
+              In 8 weeks I dropped 6kg and hit my first unassisted pull-up. Coaches actually track my progress weekly — feels like a team behind me!
+            </blockquote>
+          </article>
   
-        <!-- Socials -->
-        <ul class="flex items-center gap-3 mt-5">
-          <li>
-            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Facebook">
-              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-facebook"></use></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Instagram">
-              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-instagram"></use></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="X (Twitter)">
-              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-x"></use></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="YouTube">
-              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-youtube"></use></svg>
-            </a>
-          </li>
-        </ul>
-  
-        <!-- Hours -->
-        <div class="mt-6">
-          <h4 class="font-semibold text-white mb-3 border-b border-white/10 pb-1">Hours</h4>
-          <dl id="hours" class="space-y-1 text-sm leading-relaxed">
-            <div class="flex justify-between items-start gap-4">
-              <dt class="font-semibold text-white">Monday – Saturday</dt>
-              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+          <!-- 2 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ahmed Raza"/>
+              <div>
+                <p class="font-bold flex items-center gap-2">
+                  <span>Ahmed Raza</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span>
+                </p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
             </div>
-        
-            <div class="flex justify-between items-start gap-4">
-              <dt class="font-semibold text-white">Sunday</dt>
-              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
             </div>
-        
-            <div class="flex justify-between items-start gap-4">
-              <dt class="font-semibold text-white">Friday</dt>
-              <dd class="text-gray-500 italic text-right">Closed</dd>
+            <blockquote class="text-gray-300">Variety is insane — HIIT, strength, boxing. I never get bored and my stamina’s never been better.</blockquote>
+          </article>
+
+          <!-- 3 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ali"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
             </div>
-          </dl>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">24/7 access, spotless equipment, and trainers who actually check my form. Couldn’t ask for more.</blockquote>
+          </article>
+
+          <!-- 4 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Sara Khan"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Sara Khan</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Lahore</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">The programming keeps me consistent. I’ve never felt stronger.</blockquote>
+          </article>
+
+          <!-- 5 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Bilal Ahmed"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Bilal Ahmed</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Karachi</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Coaches correct my form every session. Big difference.</blockquote>
+          </article>
+
+          <!-- 6 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Amna Tariq"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Amna Tariq</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Islamabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Friendly community and results that stick.</blockquote>
+          </article>
+
+          <!-- 7 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Hamza Iqbal"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Hamza Iqbal</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Multan</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Equipment is spotless and top quality.</blockquote>
+          </article>
+
+          <!-- 8 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Zoya Anwar"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Zoya Anwar</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Rawalpindi</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Love the variety—never boring, always challenging.</blockquote>
+          </article>
+
+          <!-- 9 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Adeel Shah"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Adeel Shah</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Hyderabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Accountability and coaching changed my routine.</blockquote>
+          </article>
+
+          <!-- 10 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Mahnoor Ali"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Mahnoor Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Quetta</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">My energy levels are way up since joining.</blockquote>
+          </article>
+
+          <!-- 11 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Zain Bhatti"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Zain Bhatti</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Peshawar</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Great coaching. Great culture. 10/10.</blockquote>
+          </article>
+
+          <!-- 12 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Hira Naveed"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Hira Naveed</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Sialkot</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Support and structure I actually stick with.</blockquote>
+          </article>
         </div>
-        
-        
-      </section>
-    </div>
+
+        <!-- Glass Circle Controls -->
+        <div class="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2">
+          <button type="button" class="glass-btn pointer-events-auto" aria-label="Previous reviews" data-reel-prev>‹</button>
+          <button type="button" class="glass-btn pointer-events-auto" aria-label="Next reviews" data-reel-next>›</button>
+        </div>
   
-    <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
-      © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
-      All rights reserved. Designed by
-      <span class="text-[color:var(--brand-red)] font-bold">Ramla & Pakeeza</span>.
+      <div class="text-center mt-10">
+        <a href="/booking.html" class="btn-red inline-block">Join Hamza Fitness Club</a>
+      </div>
     </div>
-  </footer>
-  
-  <script src="assets/footer.js" defer></script>
-  <!-- Scripts -->
-  <script src="assets/hfc.js" defer></script>
-  <script src="assets/classes.js" defer></script>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  </section>
+  <script src="assets/testimonials.js" defer></script>
+
+<!-- ========================= FOOTER ========================== -->
+<footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+    <!-- Brand + Newsletter -->
+    <section class="md:col-span-5">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+        <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
+      </div>
+      <p class="mb-5 text-gray-400 leading-relaxed">
+        Hamza Fitness Club is your destination for strength, dedication, and transformation.
+        Join our community today!
+      </p>
+
+      <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
+        <label for="newsletter-email" class="sr-only">Email</label>
+        <input
+          id="newsletter-email"
+          name="email"
+          type="email"
+          placeholder="you@example.com"
+          required
+          class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
+                 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
+        />
+        <button
+          type="submit"
+          class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
+        >
+          Sign Up
+        </button>
+        <p id="newsletter-msg" class="col-span-full text-[13px] text-gray-400"></p>
+      </form>
+    </section>
+
+    <!-- Our Studio -->
+    <nav class="md:col-span-2">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">Our Studio</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
+        <li><a href="trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
+        <li><a href="classes.html"  class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
+        <li><a href="pricing.html"  class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
+      </ul>
+    </nav>
+
+    <!-- Support -->
+    <nav class="md:col-span-2">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">Support</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contact + Hours -->
+    <section id="contact" class="md:col-span-3">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">Get in Touch</h3>
+
+      <address class="not-italic space-y-3 text-sm">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+            <use href="assets/icons.svg#icon-map-pin"></use>
+          </svg>
+          <a href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
+             target="_blank" rel="noopener"
+             class="hover:text-[color:var(--brand-red)] transition">
+            Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
+          </a>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+            <use href="assets/icons.svg#icon-mail"></use>
+          </svg>
+          <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">
+            support@hamzafitnessclub.com
+          </a>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+            <use href="assets/icons.svg#icon-phone"></use>
+          </svg>
+          <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
+        </div>
+      </address>
+
+      <ul class="flex items-center gap-3 mt-5">
+        <li><a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Facebook"><svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-facebook"></use></svg></a></li>
+        <li><a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Instagram"><svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-instagram"></use></svg></a></li>
+        <li><a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="X (Twitter)"><svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-x"></use></svg></a></li>
+        <li><a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="YouTube"><svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-youtube"></use></svg></a></li>
+      </ul>
+
+      <div class="mt-6">
+        <h4 class="font-semibold text-white mb-3 border-b border-white/10 pb-1">Hours</h4>
+        <dl id="hours" class="space-y-1 text-sm leading-relaxed">
+          <div class="flex justify-between items-start gap-4">
+            <dt class="font-semibold text-white">Monday – Saturday</dt>
+            <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+          </div>
+          <div class="flex justify-between items-start gap-4">
+            <dt class="font-semibold text-white">Sunday</dt>
+            <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
+          </div>
+          <div class="flex justify-between items-start gap-4">
+            <dt class="font-semibold text-white">Friday</dt>
+            <dd class="text-gray-500 italic text-right">Closed</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </div>
+
+  <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
+    © <span id="y"></span> <span class="text-white font-semibold">Hamza Fitness Club</span>.
+    All rights reserved. Designed by
+    <span class="text-[color:var(--brand-red)] font-bold">Ramla & Pakeeza</span>.
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/hfc.js" defer></script>
+<script src="assets/classes.js" defer></script>
+<script src="assets/testimonials.js" defer></script>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>

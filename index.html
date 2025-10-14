@@ -126,7 +126,6 @@
         <p class="mb-8 hero-text-body max-w-xl">At Hamza Fitness Club, every workout brings you closer to your goals. Push your limits, build strength, and become the best version of yourself!</p>
         <div class="flex flex-wrap gap-4">
           <a href="/booking.html" class="btn-red text-base">Book Free Appointment</a>
-          <a href="/aboutus.html" class="btn-outline-red text-base">Learn More</a>
         </div>
       </div>
     </div>
@@ -175,13 +174,13 @@
         <div class="h-px bg-white/10 md:w-3/4 w-full my-6"></div>
 
         <!-- Support tile -->
-        <a href="tel:+188840002424" class="inline-flex items-center gap-4 transition">
+        <a href="tel:+923057050399" class="inline-flex items-center gap-4 transition">
           <div class="grid place-items-center w-14 h-14 bg-[color:var(--brand-red)] text-white">
             <svg class="w-10 h-10" aria-hidden="true"><use href="assets/icons.svg#icon-phone-arrow"></use></svg>
           </div>
           <div>
             <p class="text-xs uppercase tracking-widest text-gray-400">Customer Support</p>
-            <p class="text-lg md:text-xl font-extrabold">(888) 4000-2424</p>
+            <p class="text-lg md:text-xl font-extrabold">+92 305 7050399</p>
           </div>
         </a>
       </div>
@@ -263,7 +262,7 @@
               </li>
             </ul>
 
-            <a href="#join" class="btn-red mt-10 inline-flex items-center justify-center">Join Our Community</a>
+            <a href="/booking.html" class="btn-red mt-10 inline-flex items-center justify-center">Join Our Community</a>
           </div>
         </div>
 
@@ -285,7 +284,7 @@
         </div>
         <h3 class="text-2xl font-black mb-2">Our Vision</h3>
         <p class="text-gray-300">To inspire healthier lifestyles by building stronger bodies and empowering minds through fitness.</p>
-        <a href="#" class="mt-6 inline-block btn-outline-red">Learn More</a>
+        
       </article>
 
       <!-- Mission -->
@@ -295,7 +294,7 @@
         </div>
         <h3 class="text-2xl font-black mb-2">Our Mission</h3>
         <p>To provide expert training, personalized programs, and a supportive community that helps every member achieve their fitness goals.</p>
-        <a href="#" class="mt-6 inline-block btn-outline-red border-black text-black hover:text-white">Learn More</a>
+        
       </article>
 
       <!-- Motto -->
@@ -305,7 +304,7 @@
         </div>
         <h3 class="text-2xl font-black mb-2">Our Motto</h3>
         <p class="text-gray-300">Train hard, stay consistent, and become stronger every day — inside and out.</p>
-        <a href="#" class="mt-6 inline-block btn-outline-red">Learn More</a>
+        
       </article>
     </div>
   </section>
@@ -319,69 +318,90 @@
     <div class="absolute inset-0 bg-black/60"></div>
 
     <div class="container-x relative px-6 lg:px-8 py-24 text-center">
-      <h3 class="reveal fade-down text-4xl md:text-5xl font-black leading-tight mb-4">Push Harder, Sweat More, Achieve Greatness with FitNation!</h3>
+      <h3 class="reveal fade-down text-4xl md:text-5xl font-black leading-tight mb-4">Push Harder, Sweat More, Achieve Greatness with Hamza Fitness Club!</h3>
       <p class="reveal fade-up text-gray-200 max-w-3xl mx-auto">Growth and improvement come from steady discipline and strong foundations. True progress lies in balanced effort, dignified habits, and consistent support.</p>
-      <a class="btn-red mt-6 inline-block" href="#">Discover More</a>
+      <a class="btn-red mt-6 inline-block" href="/aboutus.html">Discover More</a>
     </div>
   </section>
 
   <!-- ===== Testimonials ===== -->
   <section id="testimonials" class="section-pad bg-black" aria-labelledby="reviews-title">
     <div class="container-x px-6 lg:px-8">
+      <!-- Header + Score -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
         <div>
-          <h3 id="reviews-title" class="reveal fade-down text-4xl md:text-5xl font-black mb-3">Real Member Stories at Hamza Fitness Club</h3>
-          <p class="text-gray-300 max-w-2xl">Proven results, supportive coaches, and a community that keeps you consistent.</p>
+          <h3 id="reviews-title" class="reveal fade-down text-4xl md:text-5xl font-black mb-3">
+            Real Member Stories at Hamza Fitness Club
+          </h3>
+          <p class="text-gray-300 max-w-2xl">
+            Proven results, supportive coaches, and a community that keeps you consistent.
+          </p>
         </div>
-
+  
         <!-- Ratings Card -->
-        <aside class="bg-neutral-900 rounded-xl p-5 ring-1 ring-white/5 w-full md:w-auto md:min-w-[320px]">
+        <aside class="bg-neutral-900 rounded-xl p-5 ring-1 ring-white/5 w-full md:w-auto md:min-w-[340px]" aria-live="polite">
           <div class="flex items-center gap-3">
-            <div class="text-4xl font-black"><span id="avg-number" aria-live="polite">0.0</span></div>
+            <div class="text-4xl font-black">
+              <span id="avg-number">4.9</span>
+            </div>
             <div>
-              <div class="flex" aria-label="Average rating 4.9 out of 5">
-                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-                <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
+              <div class="flex" aria-label="Average rating">
+                <!-- Stars filled based on JS; fallback shows 5 -->
+                <div class="flex" id="avg-stars" aria-hidden="true">
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current opacity-50"><use href="assets/icons.svg#icon-star"/></svg>
+                </div>
               </div>
-              <p class="text-xs text-gray-400 leading-tight mt-1">Based on <span id="total-reviews">0</span> member reviews</p>
+              <p class="text-xs text-gray-400 leading-tight mt-1">
+                Based on <span id="total-reviews">12</span> member reviews
+              </p>
             </div>
           </div>
-
-          <!-- Bars (animated by hfc.js) -->
-          <div class="mt-4 space-y-2">
+  
+          <!-- Distribution Bars -->
+          <div class="mt-4 space-y-2" id="rating-bars">
+            <!-- Each row controlled by data-value (%) -->
             <div class="flex items-center gap-2" data-row data-label="5★" data-value="92">
               <span class="text-xs text-gray-400 w-8">5★</span>
-              <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pg__fill"></div></div>
-              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="92">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">92</span>%</span>
             </div>
             <div class="flex items-center gap-2" data-row data-label="4★" data-value="7">
               <span class="text-xs text-gray-400 w-8">4★</span>
-              <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pg__fill"></div></div>
-              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="7">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">7</span>%</span>
             </div>
             <div class="flex items-center gap-2" data-row data-label="3★" data-value="1">
               <span class="text-xs text-gray-400 w-8">3★</span>
-              <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pg__fill"></div></div>
-              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="1">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">1</span>%</span>
             </div>
           </div>
         </aside>
       </div>
-
-      <!-- Carousel (12 cards) -->
+  
+      <!-- Carousel -->
       <div id="reviewsCarousel" class="relative reel group mt-2" aria-roledescription="carousel">
         <div class="reel__track" role="listbox" aria-label="Member reviews carousel" tabindex="0">
-          
-          <!-- Cards 1-12 (unchanged content) -->
+          <!-- Card template (repeat as needed) -->
           <!-- 1 -->
           <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="true">
             <div class="flex items-center gap-3 mb-4">
               <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Pakeeza Hassan"/>
               <div>
-                <p class="font-bold flex items-center gap-2"><span>Pakeeza Hassan</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="font-bold flex items-center gap-2">
+                  <span>Pakeeza Hassan</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span>
+                </p>
                 <p class="text-xs text-gray-400">Faisalabad</p>
               </div>
             </div>
@@ -392,24 +412,25 @@
               <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
               <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
             </div>
-            <blockquote class="text-gray-300">In 8 weeks I dropped 6kg and hit my first unassisted pull-up. Coaches actually track my progress weekly — feels like a team behind me!</blockquote>
+            <blockquote class="text-gray-300">
+              In 8 weeks I dropped 6kg and hit my first unassisted pull-up. Coaches actually track my progress weekly — feels like a team behind me!
+            </blockquote>
           </article>
-
+  
           <!-- 2 -->
           <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
             <div class="flex items-center gap-3 mb-4">
               <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ahmed Raza"/>
               <div>
-                <p class="font-bold flex items-center gap-2"><span>Ahmed Raza</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="font-bold flex items-center gap-2">
+                  <span>Ahmed Raza</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span>
+                </p>
                 <p class="text-xs text-gray-400">Faisalabad</p>
               </div>
             </div>
             <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
             </div>
             <blockquote class="text-gray-300">Variety is insane — HIIT, strength, boxing. I never get bored and my stamina’s never been better.</blockquote>
           </article>
@@ -574,13 +595,13 @@
           <button type="button" class="glass-btn pointer-events-auto" aria-label="Previous reviews" data-reel-prev>‹</button>
           <button type="button" class="glass-btn pointer-events-auto" aria-label="Next reviews" data-reel-next>›</button>
         </div>
-      </div>
-
+  
       <div class="text-center mt-10">
-        <a href="#join" class="btn-red inline-block">Join Hamza Fitness Club</a>
+        <a href="/booking.html" class="btn-red inline-block">Join Hamza Fitness Club</a>
       </div>
     </div>
   </section>
+  <script src="assets/testimonials.js" defer></script>
 
   <!-- ===== Stats Strip ===== -->
   <section id="statsstrip" class="bg-[color:var(--brand-red)] text-white border-y border-black">

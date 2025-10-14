@@ -1,279 +1,278 @@
-<!-- ===== Testimonials ===== -->
-<section id="testimonials" class="section-pad bg-black" aria-labelledby="reviews-title">
-  <div class="container-x px-6 lg:px-8">
-    <!-- Header + Rating Summary -->
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-      <div>
-        <h3 id="reviews-title" class="reveal fade-down text-4xl md:text-5xl font-black mb-3">
-          Real Member Stories at Hamza Fitness Club
-        </h3>
-        <p class="text-gray-300 max-w-2xl">
-          Proven results, supportive coaches, and a community that keeps you consistent.
-        </p>
-      </div>
-
-      <!-- Animated Ratings Card (driven by hfc.js, styled by hfc.css) -->
-      <aside class="bg-neutral-900 rounded-xl p-5 ring-1 ring-white/5 w-full md:w-auto md:min-w-[320px]">
-        <div class="flex items-center gap-3">
-          <div class="text-4xl font-black">
-            <span id="avg-number" aria-live="polite">0.0</span>
-          </div>
-          <div>
-            <div class="flex" aria-label="Average rating 4.9 out of 5">
-              <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-              <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-              <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-              <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-              <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"></use></svg>
-            </div>
-            <p class="text-xs text-gray-400 leading-tight mt-1">
-              Based on <span id="total-reviews">0</span> member reviews
-            </p>
-          </div>
+  <!-- ===== Testimonials ===== -->
+  <section id="testimonials" class="section-pad bg-black" aria-labelledby="reviews-title">
+    <div class="container-x px-6 lg:px-8">
+      <!-- Header + Score -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <h3 id="reviews-title" class="reveal fade-down text-4xl md:text-5xl font-black mb-3">
+            Real Member Stories at Hamza Fitness Club
+          </h3>
+          <p class="text-gray-300 max-w-2xl">
+            Proven results, supportive coaches, and a community that keeps you consistent.
+          </p>
         </div>
-
-        <!-- Bars (animated by hfc.js) -->
-        <div class="mt-4 space-y-2">
-          <div class="flex items-center gap-2" data-row data-label="5★" data-value="92">
-            <span class="text-xs text-gray-400 w-8">5★</span>
-            <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-              <div class="pg__fill"></div>
+  
+        <!-- Ratings Card -->
+        <aside class="bg-neutral-900 rounded-xl p-5 ring-1 ring-white/5 w-full md:w-auto md:min-w-[340px]" aria-live="polite">
+          <div class="flex items-center gap-3">
+            <div class="text-4xl font-black">
+              <span id="avg-number">4.9</span>
             </div>
-            <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
-          </div>
-          <div class="flex items-center gap-2" data-row data-label="4★" data-value="7">
-            <span class="text-xs text-gray-400 w-8">4★</span>
-            <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-              <div class="pg__fill"></div>
-            </div>
-            <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
-          </div>
-          <div class="flex items-center gap-2" data-row data-label="3★" data-value="1">
-            <span class="text-xs text-gray-400 w-8">3★</span>
-            <div class="pg flex-1" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-              <div class="pg__fill"></div>
-            </div>
-            <span class="text-xs text-gray-400 w-10 text-right"><span class="now">0</span>%</span>
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <!-- Carousel (12 cards, show 3 on md+, step by 3) -->
-    <div id="reviewsCarousel" class="relative reel group mt-2" aria-roledescription="carousel">
-      <div class="reel__track" role="listbox" aria-label="Member reviews carousel" tabindex="0">
-        <!-- 1 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="true">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Pakeeza Hassan"/>
             <div>
-              <p class="font-bold flex items-center gap-2">
-                <span>Pakeeza Hassan</span>
-                <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span>
+              <div class="flex" aria-label="Average rating">
+                <!-- Stars filled based on JS; fallback shows 5 -->
+                <div class="flex" id="avg-stars" aria-hidden="true">
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400 fill-current opacity-50"><use href="assets/icons.svg#icon-star"/></svg>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 leading-tight mt-1">
+                Based on <span id="total-reviews">12</span> member reviews
               </p>
-              <p class="text-xs text-gray-400">Faisalabad</p>
             </div>
           </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">
-            In 8 weeks I dropped 6kg and hit my first unassisted pull-up. Coaches actually track my progress weekly — feels like a team behind me!
-          </blockquote>
-        </article>
-
-        <!-- 2 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ahmed Raza"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Ahmed Raza</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Faisalabad</p>
+  
+          <!-- Distribution Bars -->
+          <div class="mt-4 space-y-2" id="rating-bars">
+            <!-- Each row controlled by data-value (%) -->
+            <div class="flex items-center gap-2" data-row data-label="5★" data-value="92">
+              <span class="text-xs text-gray-400 w-8">5★</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="92">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">92</span>%</span>
+            </div>
+            <div class="flex items-center gap-2" data-row data-label="4★" data-value="7">
+              <span class="text-xs text-gray-400 w-8">4★</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="7">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">7</span>%</span>
+            </div>
+            <div class="flex items-center gap-2" data-row data-label="3★" data-value="1">
+              <span class="text-xs text-gray-400 w-8">3★</span>
+              <div class="pg flex-1 overflow-hidden rounded bg-white/5" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="1">
+                <div class="pg__fill h-2 bg-yellow-400 w-0"></div>
+              </div>
+              <span class="text-xs text-gray-400 w-10 text-right"><span class="now">1</span>%</span>
             </div>
           </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">
-            Variety is insane — HIIT, strength, boxing. I never get bored and my stamina’s never been better.
-          </blockquote>
-        </article>
-
-        <!-- 3 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ali"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Faisalabad</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">
-            24/7 access, spotless equipment, and trainers who actually check my form. Couldn’t ask for more.
-          </blockquote>
-        </article>
-
-        <!-- 4 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Sara Khan"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Sara Khan</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Lahore</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">The programming keeps me consistent. I’ve never felt stronger.</blockquote>
-        </article>
-
-        <!-- 5 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Bilal Ahmed"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Bilal Ahmed</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Karachi</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">Coaches correct my form every session. Big difference.</blockquote>
-        </article>
-
-        <!-- 6 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Amna Tariq"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Amna Tariq</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Islamabad</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">Friendly community and results that stick.</blockquote>
-        </article>
-
-        <!-- 7 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Hamza Iqbal"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Hamza Iqbal</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Multan</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">Equipment is spotless and top quality.</blockquote>
-        </article>
-
-        <!-- 8 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Zoya Anwar"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Zoya Anwar</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Rawalpindi</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">Love the variety—never boring, always challenging.</blockquote>
-        </article>
-
-        <!-- 9 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Adeel Shah"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Adeel Shah</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Hyderabad</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">Accountability and coaching changed my routine.</blockquote>
-        </article>
-
-        <!-- 10 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Mahnoor Ali"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Mahnoor Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Quetta</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">My energy levels are way up since joining.</blockquote>
-        </article>
-
-        <!-- 11 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Zain Bhatti"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Zain Bhatti</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Peshawar</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">Great coaching. Great culture. 10/10.</blockquote>
-        </article>
-
-        <!-- 12 -->
-        <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
-          <div class="flex items-center gap-3 mb-4">
-            <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Hira Naveed"/>
-            <div>
-              <p class="font-bold flex items-center gap-2"><span>Hira Naveed</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
-              <p class="text-xs text-gray-400">Sialkot</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
-            <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
-          </div>
-          <blockquote class="text-gray-300">Support and structure I actually stick with.</blockquote>
-        </article>
+        </aside>
       </div>
+  
+      <!-- Carousel -->
+      <div id="reviewsCarousel" class="relative reel group mt-2" aria-roledescription="carousel">
+        <div class="reel__track" role="listbox" aria-label="Member reviews carousel" tabindex="0">
+          <!-- Card template (repeat as needed) -->
+          <!-- 1 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="true">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Pakeeza Hassan"/>
+              <div>
+                <p class="font-bold flex items-center gap-2">
+                  <span>Pakeeza Hassan</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span>
+                </p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">
+              In 8 weeks I dropped 6kg and hit my first unassisted pull-up. Coaches actually track my progress weekly — feels like a team behind me!
+            </blockquote>
+          </article>
+  
+          <!-- 2 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ahmed Raza"/>
+              <div>
+                <p class="font-bold flex items-center gap-2">
+                  <span>Ahmed Raza</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span>
+                </p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Variety is insane — HIIT, strength, boxing. I never get bored and my stamina’s never been better.</blockquote>
+          </article>
 
-      <!-- Glass Circle Controls -->
-      <div class="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2">
-        <button type="button" class="glass-btn pointer-events-auto" aria-label="Previous reviews" data-reel-prev>‹</button>
-        <button type="button" class="glass-btn pointer-events-auto" aria-label="Next reviews" data-reel-next>›</button>
+          <!-- 3 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Ali"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Faisalabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">24/7 access, spotless equipment, and trainers who actually check my form. Couldn’t ask for more.</blockquote>
+          </article>
+
+          <!-- 4 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Sara Khan"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Sara Khan</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Lahore</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">The programming keeps me consistent. I’ve never felt stronger.</blockquote>
+          </article>
+
+          <!-- 5 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Bilal Ahmed"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Bilal Ahmed</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Karachi</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Coaches correct my form every session. Big difference.</blockquote>
+          </article>
+
+          <!-- 6 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Amna Tariq"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Amna Tariq</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Islamabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Friendly community and results that stick.</blockquote>
+          </article>
+
+          <!-- 7 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Hamza Iqbal"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Hamza Iqbal</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Multan</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Equipment is spotless and top quality.</blockquote>
+          </article>
+
+          <!-- 8 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Zoya Anwar"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Zoya Anwar</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Rawalpindi</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Love the variety—never boring, always challenging.</blockquote>
+          </article>
+
+          <!-- 9 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Adeel Shah"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Adeel Shah</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Hyderabad</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Accountability and coaching changed my routine.</blockquote>
+          </article>
+
+          <!-- 10 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Mahnoor Ali"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Mahnoor Ali</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Quetta</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">My energy levels are way up since joining.</blockquote>
+          </article>
+
+          <!-- 11 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/male%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Zain Bhatti"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Zain Bhatti</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Peshawar</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Great coaching. Great culture. 10/10.</blockquote>
+          </article>
+
+          <!-- 12 -->
+          <article class="reel__card bg-neutral-900 rounded-xl p-8 ring-1 ring-white/5" role="option" aria-selected="false">
+            <div class="flex items-center gap-3 mb-4">
+              <img loading="lazy" src="images/female%20user.jpg" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/10" alt="Portrait of Hira Naveed"/>
+              <div>
+                <p class="font-bold flex items-center gap-2"><span>Hira Naveed</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/20">Verified</span></p>
+                <p class="text-xs text-gray-400">Sialkot</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 mb-3" aria-label="5 out of 5 stars">
+              <svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg><svg class="w-4 h-4 text-yellow-400 fill-current"><use href="assets/icons.svg#icon-star"/></svg>
+            </div>
+            <blockquote class="text-gray-300">Support and structure I actually stick with.</blockquote>
+          </article>
+        </div>
+
+        <!-- Glass Circle Controls -->
+        <div class="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2">
+          <button type="button" class="glass-btn pointer-events-auto" aria-label="Previous reviews" data-reel-prev>‹</button>
+          <button type="button" class="glass-btn pointer-events-auto" aria-label="Next reviews" data-reel-next>›</button>
+        </div>
+  
+      <div class="text-center mt-10">
+        <a href="/booking.html" class="btn-red inline-block">Join Hamza Fitness Club</a>
       </div>
     </div>
-
-    <!-- CTA -->
-    <div class="text-center mt-10">
-      <a href="#join" class="btn-red inline-block">Join Hamza Fitness Club</a>
-    </div>
-  </div>
-</section>
+  </section>
+  <script src="assets/testimonials.js" defer></script>
