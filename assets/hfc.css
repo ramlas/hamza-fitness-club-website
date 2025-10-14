@@ -1,373 +1,207 @@
-/* =========================
-   Hamza Fitness Club – Global Styles
+/* =======================================================
+   Hamza Fitness Club — Global Styles (Cleaned)
    Reuse across all pages
-   ========================= */
+   ======================================================= */
 
-   :root {
-    --brand-red: #d5100c;
-    --brand-dark: #0b0b0b;
-  }
-  
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Oswald', ui-sans-serif, system-ui, sans-serif;
-    background: var(--brand-dark);
-    color: #fff;
-  }
-  
-  /* Layout helpers */
-  .container-x { max-width: 1200px; margin-left: auto; margin-right: auto; }
-  .section-pad { padding: clamp(3rem, 5vw, 6rem) 0; }
-
-  :root{ --accent:#d5100c; /* or use your brand red: #d5100c */ }
-
-  /* =========================
-     Buttons (works with Tailwind)
-     ========================= */
-  .btn-red {
-    background-color: var(--brand-red);
-    color: #fff;
-    padding: .65rem 1.4rem;
-    font-weight: 800;
-    letter-spacing: .04em;
-    transition: all .35s ease;
-    border-radius: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .btn-red:hover { background: #a80c09; transform: translateY(-1px); }
-  
-  .btn-outline-red {
-    background: transparent;
-    border: 2px solid var(--brand-red);
-    color: var(--brand-red);
-    padding: .65rem 1.4rem;
-    font-weight: 800;
-    letter-spacing: .04em;
-    transition: all .35s ease;
-    border-radius: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .btn-outline-red:hover { background: var(--brand-red); color: #fff; transform: translateY(-1px); }
-  
-  /* =========================
-     Type scale helpers
-     ========================= */
-  .hero-text-subheading { font-size: .95rem; }
-  @media (min-width: 768px) { .hero-text-subheading { font-size: 1.05rem; } }
-  @media (min-width: 1024px) { .hero-text-subheading { font-size: 1.15rem; } }
-  
-  .hero-text-body { font-size: 1.05rem; color: #d1d5db; }
-  @media (min-width: 1024px) { .hero-text-body { font-size: 1.15rem; } }
-  
-  /* =========================
-     Animations
-     ========================= */
-  @keyframes fadeInUp { from { opacity:0; transform: translateY(24px);} to { opacity:1; transform: translateY(0);} }
-  @keyframes fadeInDown { from { opacity:0; transform: translateY(-24px);} to { opacity:1; transform: translateY(0);} }
-  @keyframes slideInLeft { from { opacity:0; transform: translateX(-100px);} to { opacity:1; transform: translateX(0);} }
-  @keyframes slideInRight { from { opacity:0; transform: translateX(100px);} to { opacity:1; transform: translateX(0);} }
-  @keyframes zoomIn { from {opacity:0; transform: scale(.92);} to { opacity:1; transform: scale(1);} }
-  @keyframes floatY { 0%{ transform:translateY(0);} 50%{ transform:translateY(-8px);} 100%{ transform:translateY(0);} }
-  @keyframes slowPulse { 0%,100%{opacity:.8} 50%{opacity:1} }
-  
-  /* Reveal-on-scroll utility */
-  .reveal { opacity: 0; }
-  .reveal.show.fade-up { animation: fadeInUp 900ms ease-out forwards; }
-  .reveal.show.fade-down { animation: fadeInDown 900ms ease-out forwards; }
-  .reveal.show.slide-left { animation: slideInLeft 1100ms cubic-bezier(.22,.61,.36,1) forwards; }
-  .reveal.show.slide-right { animation: slideInRight 1100ms cubic-bezier(.22,.61,.36,1) forwards; }
-  .reveal.show.zoom-in { animation: zoomIn 900ms ease-out forwards; }
-  
-  /* Subtle looping motion helpers */
-  .float-loop { animation: floatY 6s ease-in-out infinite; }
-  .pulse-slow { animation: slowPulse 5s ease-in-out infinite; }
-  
-  /* =========================
-     Accessibility & Motion
-     ========================= */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.001ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.001ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-  
-  /* =========================
-     Components (optional)
-     ========================= */
-  
-  /* Rating stars – keep sizes consistent */
-  .hfc-stars svg { width: 1.1rem; height: 1.1rem; }
-  
-  /* Cards with subtle ring (pair with Tailwind: bg-neutral-900 rounded-xl p-8) */
-  .hfc-card { position: relative; border-radius: 0.75rem; }
-  .hfc-card--ring { box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset; }
-  
-  /* Carousel base – make it reusable */
-  .hfc-carousel {
-    overflow: hidden;
-    position: relative;
-  }
-  .hfc-carousel__track {
-    display: flex;
-    gap: 1.5rem; /* 24px to match gap-6 */
-    transition: transform 700ms;
-    will-change: transform;
-  }
-  .hfc-carousel__nav-btn {
-    width: 2.5rem; height: 2.5rem;
-    display: grid; place-items: center;
-    border-radius: 9999px;
-    background: rgba(255,255,255,.1);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 0 1px rgba(255,255,255,.1) inset;
-    transition: background .2s ease;
-  }
-  .hfc-carousel__nav-btn:hover { background: rgba(255,255,255,.2); }
-  
-  .hfc-carousel__dot {
-    width: 10px; height: 10px; border-radius: 9999px;
-    background: rgba(255,255,255,.3);
-    transition: opacity .2s ease, transform .2s ease, background .2s ease;
-  }
-  .hfc-carousel__dot[aria-selected="true"] {
-    background: #fff; transform: scale(1.05);
-  }
-  
-  /* Footer link hover color */
-  a.hfc-link:hover { color: var(--brand-red); }
-  
-  /* Utility: remove outlines only when using focus-visible */
-  * :focus { outline: none; }
-  * :focus-visible { outline: 2px solid var(--brand-red); outline-offset: 2px; }
-
-  /* ==== Pricing page helpers (minimal) ==== */
+/* ---------- Theme tokens ---------- */
 :root {
-  /* Use brand red by default; you can override per-page with inline style if needed */
+  --brand-red: #d5100c;
+  --brand-dark: #0b0b0b;
   --accent: var(--brand-red);
   --accent-hover: #b30e0b;
   --card: #0f1012;
   --smoke: #151618;
 }
 
-/* Glass panel used in hero */
-.glass {
-  background: linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.55));
-  border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 10px 35px rgba(0,0,0,.35);
-}
-
-/* Subtle reveal animations (works with your reduced-motion rules) */
-.anim-fadeUp { animation: fadeInUp 800ms ease-out both; }
-.anim-slideIn { animation: slideInRight 900ms ease-out both; }
-
-/* Toggle (Monthly/Yearly) */
-.toggle .track { border-radius: 9999px; position: relative; transition: background .25s ease; }
-.toggle .dot { border-radius: 9999px; position: absolute; transition: transform .25s ease, background .25s ease; }
-.toggle input:checked + .track .dot { transform: translateX(1rem); }
-.toggle input:checked + .track { background: rgba(255,255,255,.18); }
-
-/* Pricing card surface */
-.pricing-card {
-  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: .75rem;
-  overflow: hidden;
-}
-
-/* Quick Methods – pill buttons with icons */
-.quick-btn{
-  display:inline-flex; align-items:center; gap:.6rem;
-  width:100%;
-  padding:.9rem 1rem;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.06);
-  border-radius: 1rem;
-  font-weight: 700;
-  letter-spacing:.01em;
-  transition: transform .15s ease, background .2s ease, border-color .2s ease;
-}
-.quick-btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); transform: translateY(-1px); }
-.quick-btn:active{ transform: translateY(0); }
-.quick-btn:focus-visible{ outline:2px solid var(--brand-red); outline-offset:3px; }
-
-.quick-btn .icon-wrap{
-  display:grid; place-items:center;
-  width:2.5rem; height:2.5rem;
-  border-radius: .9rem;
-  background: rgba(0,0,0,.35);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
-}
-
-.quick-btn .icon{
-  width:1.15rem; height:1.15rem;
-  fill: currentColor; color:#fff;
-}
-
-.quick-btn .label{ font-size:.95rem; }
-
-/* Full-width calendar CTA */
-.quick-btn--full{
-  justify-content:center;
-  margin-top:.25rem;
-  padding:1rem 1.1rem;
-  border-radius: 1.25rem;
-}
-
-/* === Ratings Card Animation === */
-.pg {
-  position: relative;
-  height: 0.5rem;
-  border-radius: 9999px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.pg__fill {
-  height: 100%;
-  width: 0%; /* animated later via JS */
-  border-radius: inherit;
-  background: repeating-linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0.0) 0 10px,
-      rgba(0, 0, 0, 0.10) 10px 20px
-    ),
-    currentColor;
-  color: #facc15; /* tailwind yellow-400 */
-  background-size: 40px 40px, auto;
-  animation: barberpole 1s linear infinite;
-}
-
-@keyframes barberpole {
-  to {
-    background-position: 40px 0, 0 0;
-  }
-}
-
-.pg__fill.run {
-  transition: width 1.2s cubic-bezier(.2, .8, .2, 1);
-}
-
-/* =========================================================
-   reviews.css — testimonials carousel + small UI polish
-   Works alongside Tailwind + assets/hfc.css
-   ========================================================= */
-
-/* Reel / Carousel */
-.reel {
-  position: relative;
-  overflow: hidden;
-}
-
-.reel__track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(280px, 1fr);
-  gap: 16px;                        /* ≈ Tailwind gap-4 */
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 6px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-}
-
-.reel__track::-webkit-scrollbar {
-  height: 8px;
-}
-.reel__track::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-}
-.reel__track::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.reel__card {
-  scroll-snap-align: start;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.reel__card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.35);
-}
-
-/* Optional: subtle scale-in when cards come into view (if you add the class via JS) */
-.reel__card.animate-in {
-  animation: cardIn .45s ease both;
-}
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(10px) scale(.98); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* Glass circle nav buttons (works even if you keep arrows) */
-.glass-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 9999px;
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Oswald', ui-sans-serif, system-ui, sans-serif;
+  background: var(--brand-dark);
   color: #fff;
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  transition: background 0.2s ease, transform 0.1s ease;
 }
-.glass-btn:hover { background: rgba(255,255,255,.20); }
-.glass-btn:active { transform: scale(0.98); }
-.glass-btn[disabled] { opacity: .35; pointer-events: none; }
-.glass-btn:focus-visible {
-  outline: 2px solid #d5100c; /* brand red */
-  outline-offset: 2px;
-  border-color: rgba(213, 16, 12, 0.6);
-}
+.container-x { max-width: 1200px; margin-inline: auto; }
+.section-pad { padding: clamp(3rem, 5vw, 6rem) 0; }
 
-/* Rating bars */
-.pg {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 9999px;
-  height: 8px;
-  overflow: hidden;
-  position: relative;
+/* ---------- Buttons ---------- */
+.btn-red {
+  background: var(--brand-red);
+  color: #fff;
+  padding: .65rem 1.4rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  border-radius: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: transform .35s ease, background .35s ease;
 }
-.pg__fill {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 0;
-  height: 8px;
-  background: #facc15; /* yellow-400 */
-  transition: width 0.6s cubic-bezier(.22,.61,.36,1);
-}
+.btn-red:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
-/* Reduce Motion */
-@media (prefers-reduced-motion: reduce) {
-  .reel__card,
-  .pg__fill,
-  .glass-btn {
-    transition: none !important;
-  }
+.btn-outline-red {
+  background: transparent;
+  border: 2px solid var(--brand-red);
+  color: var(--brand-red);
+  padding: .65rem 1.4rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  border-radius: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: transform .35s ease, background .35s ease, color .35s ease;
 }
+.btn-outline-red:hover { background: var(--brand-red); color: #fff; transform: translateY(-1px); }
 
-/* Narrow screens */
-@media (max-width: 380px) {
-  .reel__track {
-    grid-auto-columns: minmax(240px, 1fr);
-  }
-}
+/* ---------- Type helpers ---------- */
+.hero-text-subheading { font-size: .95rem; }
+@media (min-width: 768px) { .hero-text-subheading { font-size: 1.05rem; } }
+@media (min-width: 1024px) { .hero-text-subheading { font-size: 1.15rem; } }
 
-/* Optional: generic .glass utility (used in hero panels) */
+.hero-text-body { font-size: 1.05rem; color: #d1d5db; }
+@media (min-width: 1024px) { .hero-text-body { font-size: 1.15rem; } }
+
+/* ---------- Cards ---------- */
+.hfc-card { position: relative; border-radius: .75rem; }
+.hfc-card--ring { box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset; }
+
+/* ---------- Glass panel (used in heroes / badges) ---------- */
 .glass {
   background: rgba(17, 17, 17, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px rgba(0,0,0,.35);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
+}
+
+/* ---------- Pricing cards ---------- */
+.pricing-card {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  transform: translateZ(0);
+  transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
+  overflow: visible;
+}
+.pricing-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,.45); }
+
+.pricing-card.featured::before {
+  content: "";
+  position: absolute; inset: -2px;
+  border-radius: 18px;
+  background: radial-gradient(120% 120% at 50% -10%, rgba(213,16,12,.35), transparent 60%);
+  pointer-events: none;
+}
+
+/* ---------- Toggle (Monthly/Yearly) ---------- */
+.toggle .track { border-radius: 9999px; position: relative; transition: background .25s ease; }
+.toggle .dot { border-radius: 9999px; position: absolute; transition: transform .25s ease, background .25s ease; }
+.toggle input:checked + .track { background: rgba(255,255,255,.18); }
+#billing:checked + .track .dot { animation: dotPop .25s ease; }
+@keyframes dotPop { 0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)} }
+
+/* ---------- Quick pill buttons (booking goals) ---------- */
+.quick-btn{
+  display:inline-flex; align-items:center; gap:.6rem; width:100%;
+  padding:.9rem 1rem; border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.06); border-radius: 1rem;
+  font-weight: 700; letter-spacing:.01em;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.quick-btn:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); transform: translateY(-1px); }
+.quick-btn:active{ transform: translateY(0); }
+.quick-btn:focus-visible{ outline:2px solid var(--brand-red); outline-offset:3px; }
+.quick-btn .icon-wrap{
+  display:grid; place-items:center; width:2.5rem; height:2.5rem;
+  border-radius:.9rem; background: rgba(0,0,0,.35);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.quick-btn .icon{ width:1.15rem; height:1.15rem; color:#fff; }
+.quick-btn .label{ font-size:.95rem; }
+.quick-btn--full{ justify-content:center; margin-top:.25rem; padding:1rem 1.1rem; border-radius:1.25rem; }
+
+/* ---------- Reviews / Carousel ---------- */
+.reel { position: relative; overflow: hidden; }
+.reel__track{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 1fr);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.reel__track::-webkit-scrollbar { height: 8px; }
+.reel__track::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 8px; }
+.reel__track::-webkit-scrollbar-track { background: transparent; }
+
+.reel__card{
+  scroll-snap-align: start;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.reel__card:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+
+.glass-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:9999px; color:#fff;
+  background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.08);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: background .2s ease, transform .1s ease;
+}
+.glass-btn:hover{ background: rgba(255,255,255,.20); }
+.glass-btn:active{ transform: scale(.98); }
+.glass-btn[disabled]{ opacity:.35; pointer-events:none; }
+.glass-btn:focus-visible{ outline:2px solid var(--brand-red); outline-offset:2px; border-color: rgba(213,16,12,.6); }
+
+/* ---------- Ratings bars (testimonials header) ---------- */
+.pg{
+  position: relative; height: .5rem; border-radius: 9999px;
+  overflow: hidden; background: rgba(255,255,255,.08);
+}
+.pg__fill{
+  height: 100%; width: 0%;
+  border-radius: inherit;
+  background: repeating-linear-gradient(45deg, rgba(0,0,0,0) 0 10px, rgba(0,0,0,.10) 10px 20px), #facc15;
+  background-size: 40px 40px, auto;
+  animation: barberpole 1s linear infinite;
+  transition: width 1.2s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes barberpole { to { background-position: 40px 0, 0 0; } }
+
+/* ---------- Animations (shared) ---------- */
+@keyframes fadeInUp   { from {opacity:0; transform: translateY(24px);}  to {opacity:1; transform: translateY(0);} }
+@keyframes fadeInDown { from {opacity:0; transform: translateY(-24px);} to {opacity:1; transform: translateY(0);} }
+@keyframes slideInLeft  { from {opacity:0; transform: translateX(-100px);} to {opacity:1; transform: translateX(0);} }
+@keyframes slideInRight { from {opacity:0; transform: translateX(100px);}  to {opacity:1; transform: translateX(0);} }
+@keyframes zoomIn { from {opacity:0; transform: scale(.92);} to {opacity:1; transform: scale(1);} }
+@keyframes floatY { 0%{transform:translateY(0)} 50%{transform:translateY(-8px)} 100%{transform:translateY(0)} }
+
+.anim-fadeUp { animation: fadeInUp 800ms ease-out both; }
+.anim-slideIn { animation: slideInRight 900ms ease-out both; }
+.float-loop { animation: floatY 6s ease-in-out infinite; }
+
+/* Reveal-on-scroll (supports .show or .in) */
+.reveal { opacity: 0; }
+.reveal.show.fade-up, .reveal.in.fade-up { animation: fadeInUp 900ms ease-out forwards; }
+.reveal.show.fade-down, .reveal.in.fade-down { animation: fadeInDown 900ms ease-out forwards; }
+.reveal.show.slide-left, .reveal.in.slide-left { animation: slideInLeft 1100ms cubic-bezier(.22,.61,.36,1) forwards; }
+.reveal.show.slide-right, .reveal.in.slide-right { animation: slideInRight 1100ms cubic-bezier(.22,.61,.36,1) forwards; }
+.reveal.show.zoom-in, .reveal.in.zoom-in { animation: zoomIn 900ms ease-out forwards; }
+
+/* ---------- Accessibility / Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Links / Focus ---------- */
+a.hfc-link:hover { color: var(--brand-red); }
+*:focus { outline: none; }
+*:focus-visible { outline: 2px solid var(--brand-red); outline-offset: 2px; }
+
+/* ---------- Small tweak for very narrow screens ---------- */
+@media (max-width: 380px) {
+  .reel__track { grid-auto-columns: minmax(240px, 1fr); }
 }

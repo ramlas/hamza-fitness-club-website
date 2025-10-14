@@ -106,169 +106,190 @@
   <!-- Spacer for fixed header -->
   <div class="h-16"></div>
 
-  <!-- ===== Hero ===== -->
-  <section id="hero-index" class="relative min-h-[100svh] grid items-center">
-    <!-- Background -->
-    <div class="absolute inset-0">
-      <img src="images/web-banner.svg" alt="Gym background" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-black/10"></div>
+      <!-- ===== Hero ===== -->
+    <section id="hero-index" class="relative min-h-[80vh] pt-15 grid items-center">
+      <!-- Background -->
+      <div class="absolute inset-0">
+        <img src="images/web banner.svg" alt="Gym background" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-black/10"></div>
 
-      <!-- soft blobs -->
-      <div class="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-[color:var(--brand-red)]/10 blur-3xl float-loop"></div>
-      <div class="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-white/10 blur-2xl float-loop" style="animation-delay:1s"></div>
-    </div>
+        <!-- soft blobs -->
+        <div class="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-[color:var(--brand-red)]/10 blur-3xl float-loop"></div>
+        <div class="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-white/10 blur-2xl float-loop" style="animation-delay:1s"></div>
+      </div>
 
-    <!-- Content -->
-    <div class="relative z-10 w-full pl-10 pr-6 lg:pl-24 lg:pr-12 flex justify-start">
-      <div class="max-w-2xl reveal fade-up text-left">
-        <p class="tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-black mb-3 text-sm sm:text-base lg:text-lg">Train Hard · Get Stronger</p>
-        <h1 class="font-black leading-tight my-4 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">STRONGER<br />EVERY DAY</h1>
-        <p class="mb-8 hero-text-body max-w-xl">At Hamza Fitness Club, every workout brings you closer to your goals. Push your limits, build strength, and become the best version of yourself!</p>
-        <div class="flex flex-wrap gap-4">
-          <a href="/booking.html" class="btn-red text-base">Book Free Appointment</a>
+      <!-- Content -->
+      <div class="relative z-10 w-full pl-10 sm:pl-12 md:pl-16 lg:pl-24 xl:pl-28 pr-6">
+        <div class="max-w-3xl reveal fade-up anim-slideIn text-left">
+          <p class="tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-black mb-3 text-sm sm:text-base lg:text-lg">
+            Train Hard · Get Stronger
+          </p>
+          <h1 class="font-black leading-tight my-4 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+            STRONGER<br />EVERY DAY
+          </h1>
+          <p class="mb-8 hero-text-body max-w-xl">
+            At Hamza Fitness Club, every workout brings you closer to your goals.
+            Push your limits, build strength, and become the best version of yourself!
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/booking.html" class="btn-red text-base">Book Free Appointment</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== Who We Are ===== -->
-  <section id="who" class="py-1 bg-black relative">
-    <div class="w-11/12 xl:max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+  
 
-      <!-- LEFT -->
-      <div class="reveal fade-up max-w-[640px]">
-        <p class="uppercase font-black tracking-widest mb-2 text-[color:var(--brand-red)] text-sm md:text-base">Who We Are</p>
-        <h2 class="text-3xl md:text-4xl font-black leading-tight mb-3">Your Ultimate Fitness and Wellness Destination.</h2>
-        <p class="text-gray-300 leading-relaxed text-sm md:text-base mb-6">We build stronger bodies and stronger communities. Our expert coaches, supportive culture, and top-tier facilities help beginners and athletes alike reach their potential.</p>
+    <!-- ===== Who We Are (balanced height) ===== -->
+    <section id="who" class="py-12 md:py-16 bg-black relative">
+      <div class="w-11/12 xl:max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
 
-        <div class="h-px bg-white/10 md:w-3/4 w-full mb-6"></div>
+        <!-- LEFT -->
+        <div class="reveal fade-up max-w-[640px]">
+          <p class="uppercase font-black tracking-[0.25em] mb-3 text-[color:var(--brand-red)] text-sm md:text-base">
+            Who We Are
+          </p>
+          <h2 class="text-3xl md:text-4xl font-black leading-snug mb-4">
+            Your Ultimate Fitness and Wellness Destination.
+          </h2>
+          <p class="text-gray-300 leading-relaxed text-base md:text-lg mb-8">
+            We build stronger bodies and stronger communities. Our expert coaches,
+            supportive culture, and top-tier facilities help beginners and athletes
+            alike reach their potential.
+          </p>
 
-        <!-- Feature list -->
-        <div class="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-gray-200 text-sm md:text-base">
-          <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
-            Personalized training programs
-          </p>
-          <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
-            Strength &amp; conditioning
-          </p>
-          <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
-            Nutrition guidance
-          </p>
-          <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
-            Flexible class schedules
-          </p>
-          <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
-            Community events
-          </p>
-          <p class="flex items-start gap-3">
-            <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
-            Progress tracking
-          </p>
-        </div>
+          <div class="h-px bg-white/10 md:w-3/4 w-full mb-8"></div>
 
-        <div class="h-px bg-white/10 md:w-3/4 w-full my-6"></div>
-
-        <!-- Support tile -->
-        <a href="tel:+923057050399" class="inline-flex items-center gap-4 transition">
-          <div class="grid place-items-center w-14 h-14 bg-[color:var(--brand-red)] text-white">
-            <svg class="w-10 h-10" aria-hidden="true"><use href="assets/icons.svg#icon-phone-arrow"></use></svg>
+          <!-- Feature list -->
+          <div class="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-gray-200 text-sm md:text-base">
+            <p class="flex items-start gap-3">
+              <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
+              Personalized training programs
+            </p>
+            <p class="flex items-start gap-3">
+              <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
+              Strength &amp; conditioning
+            </p>
+            <p class="flex items-start gap-3">
+              <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
+              Nutrition guidance
+            </p>
+            <p class="flex items-start gap-3">
+              <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
+              Flexible class schedules
+            </p>
+            <p class="flex items-start gap-3">
+              <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
+              Community events
+            </p>
+            <p class="flex items-start gap-3">
+              <svg class="mt-1 shrink-0 w-[18px] h-[18px] text-[color:var(--brand-red)]" aria-hidden="true"><use href="assets/icons.svg#icon-check-circle"></use></svg>
+              Progress tracking
+            </p>
           </div>
-          <div>
-            <p class="text-xs uppercase tracking-widest text-gray-400">Customer Support</p>
-            <p class="text-lg md:text-xl font-extrabold">+92 305 7050399</p>
-          </div>
-        </a>
-      </div>
 
-      <!-- RIGHT -->
-      <div class="relative reveal slide-right">
-        <img src="images/man%20who%20we%20are.svg" alt="Athlete" class="w-full h-full object-cover" />
-      </div>
-    </div>
-  </section>
+          <div class="h-px bg-white/10 md:w-3/4 w-full my-8"></div>
 
-  <!-- ===== Why Choose Us ===== -->
-  <section id="whychooseus" class="section-pad relative bg-black overflow-hidden">
-    <!-- soft background glow -->
-    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <div class="absolute -top-40 right-1/4 w-[900px] h-[900px] rounded-full bg-[color:var(--brand-red)]/10 blur-3xl"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_60%)]"></div>
-    </div>
-
-    <div class="container-x px-6 lg:px-8 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center gap-12">
-
-        <!-- Image -->
-        <div class="lg:w-1/2 w-full reveal fade-up">
-          <figure class="relative">
-            <div class="w-full h-80 sm:h-96 lg:h-[520px] rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl">
-              <img src="images/classes.avif" alt="Coach guiding a client through strength training" class="w-full h-full object-cover" loading="lazy" decoding="async" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0"></div>
+          <!-- Support tile -->
+          <a href="tel:+923057050399" class="inline-flex items-center gap-4 transition hover:translate-x-1 duration-200">
+            <div class="grid place-items-center w-14 h-14 bg-[color:var(--brand-red)] text-white rounded-md shadow-lg">
+              <svg class="w-8 h-8" aria-hidden="true"><use href="assets/icons.svg#icon-phone-arrow"></use></svg>
             </div>
-          </figure>
+            <div>
+              <p class="text-xs uppercase tracking-widest text-gray-400">Customer Support</p>
+              <p class="text-lg md:text-xl font-extrabold">+92 305 7050399</p>
+            </div>
+          </a>
         </div>
 
-        <!-- Content -->
-        <div class="lg:w-1/2 w-full reveal slide-right">
-          <div class="max-w-lg">
-            <p class="uppercase tracking-widest text-[color:var(--brand-red)] font-black mb-2">Why Choose Us</p>
-            <h2 class="text-4xl font-black leading-tight mb-3">Elevate Your Workout with Expert-Led Fitness Classes</h2>
-            <p class="text-gray-300 mb-8">Science-backed programming, real accountability, and a community that keeps you moving forward.</p>
-
-            <ul class="space-y-5" role="list">
-              <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
-                <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
-                  <svg class="w-[22px] h-[22px]" aria-hidden="true"><use href="assets/icons.svg#icon-heart"></use></svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold">Holistic Health Approach</h3>
-                  <p class="text-gray-400 text-sm">Balanced training across strength, mobility, and cardio for long-term results.</p>
-                </div>
-              </li>
-
-              <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
-                <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
-                  <svg class="w-[22px] h-[22px]" aria-hidden="true"><use href="assets/icons.svg#icon-layers"></use></svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold">Wide Range of Classes</h3>
-                  <p class="text-gray-400 text-sm">HIIT, lifting, mobility, conditioning, and mindfulness—mix &amp; match to your goals.</p>
-                </div>
-              </li>
-
-              <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
-                <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
-                  <svg class="w-[22px] h-[22px]" aria-hidden="true"><use href="assets/icons.svg#icon-clock"></use></svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold">Flexible Membership Plans</h3>
-                  <p class="text-gray-400 text-sm">Plans that adapt—pause, upgrade, or switch as your routine evolves.</p>
-                </div>
-              </li>
-
-              <li class="group flex items-start gap-4 rounded-xl p-4 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
-                <div class="shrink-0 grid place-items-center w-11 h-11 rounded-lg bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
-                  <svg class="w-[22px] h-[22px]" aria-hidden="true"><use href="assets/icons.svg#icon-users"></use></svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold">Supportive Fitness Community</h3>
-                  <p class="text-gray-400 text-sm">Coaches &amp; members who keep you accountable—and celebrate every win.</p>
-                </div>
-              </li>
-            </ul>
-
-            <a href="/booking.html" class="btn-red mt-10 inline-flex items-center justify-center">Join Our Community</a>
-          </div>
+        <!-- RIGHT -->
+        <div class="relative reveal slide-right max-h-[520px] md:max-h-[560px]">
+          <img src="images/man%20who%20we%20are.svg" alt="Athlete" class="w-full h-full object-contain" />
         </div>
 
       </div>
+    </section>
+
+<!-- ===== Why Choose Us ===== -->
+<section id="whychooseus" class="py-14 md:py-16 bg-black relative overflow-hidden">
+  <!-- soft background glow -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+    <div class="absolute -top-32 right-1/4 w-[700px] h-[700px] rounded-full bg-[color:var(--brand-red)]/10 blur-3xl"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_60%)]"></div>
+  </div>
+
+  <div class="container-x px-6 lg:px-8 relative z-10">
+    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+
+      <!-- Image -->
+      <div class="lg:w-1/2 w-full reveal fade-up">
+        <figure class="relative">
+          <div class="w-full h-72 sm:h-80 lg:h-[460px] rounded-xl overflow-hidden ring-1 ring-white/10 shadow-xl">
+            <img src="images/classes.avif" alt="Coach guiding a client through strength training"
+              class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0"></div>
+          </div>
+        </figure>
+      </div>
+
+      <!-- Content -->
+      <div class="lg:w-1/2 w-full reveal slide-right">
+        <div class="max-w-md">
+          <p class="uppercase tracking-widest text-[color:var(--brand-red)] font-black mb-1 text-sm md:text-base">Why Choose Us</p>
+          <h2 class="text-3xl md:text-4xl font-black leading-tight mb-3">Elevate Your Workout with Expert-Led Classes</h2>
+          <p class="text-gray-300 mb-6 text-sm md:text-base">Science-backed training, real accountability, and a
+            community that keeps you motivated.</p>
+
+          <ul class="space-y-3 md:space-y-4" role="list">
+            <li class="group flex items-start gap-3 rounded-lg p-3 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
+              <div class="shrink-0 grid place-items-center w-10 h-10 rounded-md bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
+                <svg class="w-[20px] h-[20px]" aria-hidden="true"><use href="assets/icons.svg#icon-heart"></use></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base">Holistic Health Approach</h3>
+                <p class="text-gray-400 text-sm">Balanced training for strength, mobility, and endurance.</p>
+              </div>
+            </li>
+
+            <li class="group flex items-start gap-3 rounded-lg p-3 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
+              <div class="shrink-0 grid place-items-center w-10 h-10 rounded-md bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
+                <svg class="w-[20px] h-[20px]" aria-hidden="true"><use href="assets/icons.svg#icon-layers"></use></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base">Wide Range of Classes</h3>
+                <p class="text-gray-400 text-sm">HIIT, lifting, conditioning, and mindfulness sessions.</p>
+              </div>
+            </li>
+
+            <li class="group flex items-start gap-3 rounded-lg p-3 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
+              <div class="shrink-0 grid place-items-center w-10 h-10 rounded-md bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
+                <svg class="w-[20px] h-[20px]" aria-hidden="true"><use href="assets/icons.svg#icon-clock"></use></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base">Flexible Membership Plans</h3>
+                <p class="text-gray-400 text-sm">Pause or upgrade anytime—your goals, your pace.</p>
+              </div>
+            </li>
+
+            <li class="group flex items-start gap-3 rounded-lg p-3 ring-1 ring-white/10 hover:ring-[color:var(--brand-red)]/40 transition">
+              <div class="shrink-0 grid place-items-center w-10 h-10 rounded-md bg-white/5 ring-1 ring-white/10 group-hover:bg-[color:var(--brand-red)]/15">
+                <svg class="w-[20px] h-[20px]" aria-hidden="true"><use href="assets/icons.svg#icon-users"></use></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base">Supportive Fitness Community</h3>
+                <p class="text-gray-400 text-sm">Coaches &amp; members who celebrate your wins.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a href="/booking.html" class="btn-red mt-8 inline-flex items-center justify-center">Join Our Community</a>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ===== Vision / Mission / Motto ===== -->
   <section id="vmm" class="section-pad relative bg-[#1a1a1a] overflow-hidden">
