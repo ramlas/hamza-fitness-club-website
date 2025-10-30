@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Hamza Fitness Club</title>
+  <meta name="description" content="Get in touch with Hamza Fitness Club — we’re here to answer your questions, schedule your sessions, and guide you on your fitness journey." />
+  <meta name="theme-color" content="#d5100c" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red: '#d5100c', dark: '#0b0b0b', smoke: '#151618' } },
+          fontFamily: { display: ['Oswald','ui-sans-serif','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/hfc.css" />
+  <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
+</head>
+
+<body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
+
+<!-- ✅ Unified Header -->
+<header id="header" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="/index.html#hero-index" class="flex items-center gap-3">
+      <img src="/images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+      <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:block" aria-label="Primary">
+      <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
+        <li><a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a></li>
+        <li><a href="/classes.html" class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
+        <li><a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
+        <li><a href="/pricing.html" class="hover:text-[color:var(--brand-red)] transition">Membership Plans</a></li>
+        <li><a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
+        <li><a href="/contact.html" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white"
+      aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+
+    <!-- CTA -->
+    <a href="/booking.html" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
+      Book Free Appointment
+    </a>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
+    <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
+      <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
+      <li><a href="/classes.html" class="block py-2">Classes</a></li>
+      <li><a href="/trainers.html" class="block py-2">Trainers</a></li>
+      <li><a href="/pricing.html" class="block py-2">Membership Plans</a></li>
+      <li><a href="/aboutus.html" class="block py-2">About Us</a></li>
+      <li><a href="/contact.html" class="block py-2">Contact Us</a></li>
+      <li><a href="/booking.html" class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Hero + Contact Info -->
+<section class="relative bg-black/90 text-white py-24 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="images/gym-floor.jpg" alt="Contact Hamza Fitness Club" class="w-full h-full object-cover opacity-50">
+      <div class="absolute inset-0 bg-black/70"></div>
+    </div>
+  
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Get in Touch</h1>
+      <p class="max-w-2xl mx-auto text-gray-300 text-lg mb-12">
+        Have questions about memberships, training, or timings? Reach out — we’re here to help you achieve your fitness goals.
+      </p>
+  
+      <!-- Info Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left mt-10">
+        
+        <!-- Address -->
+        <div class="group bg-neutral-900/80 rounded-xl p-8 ring-1 ring-white/10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(213,16,12,0.4)]">
+          <div class="flex items-center gap-3 mb-4">
+            <svg class="w-7 h-7 text-[color:var(--brand-red)]"><use href="assets/icons.svg#icon-map-pin"></use></svg>
+            <h3 class="text-lg font-bold text-white">Visit Us</h3>
+          </div>
+          <p class="text-gray-300 leading-relaxed mb-5">
+            Chowk, Khatam-e-Nabuwat Plaza,<br>
+            Millat Rd, Green Town,<br>
+            Faisalabad, 38000, Pakistan
+          </p>
+          <a href="https://maps.app.goo.gl/d7fBBXknUK5wKgsG7"
+             target="_blank" rel="noopener"
+             class="inline-block w-full text-center py-2.5 px-4 bg-[color:var(--brand-red)] hover:bg-red-700 font-bold uppercase text-sm rounded-md transition-colors duration-200">
+             Open in Maps
+          </a>
+        </div>
+  
+        <!-- Phone -->
+        <div class="group bg-neutral-900/80 rounded-xl p-8 ring-1 ring-white/10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(213,16,12,0.4)]">
+          <div class="flex items-center gap-3 mb-4">
+            <svg class="w-7 h-7 text-[color:var(--brand-red)]"><use href="assets/icons.svg#icon-phone"></use></svg>
+            <h3 class="text-lg font-bold text-white">Call Us</h3>
+          </div>
+          <p class="text-gray-300 leading-relaxed mb-5">
+            Talk directly with our support team for membership details or booking help.
+          </p>
+          <a href="tel:+923057050399"
+             class="inline-block w-full text-center py-2.5 px-4 border border-[color:var(--brand-red)] text-[color:var(--brand-red)] font-bold uppercase text-sm rounded-md hover:bg-[color:var(--brand-red)] hover:text-white transition-all duration-200">
+             +92 305 7050399
+          </a>
+        </div>
+  
+        <!-- Email -->
+        <!-- Email -->
+<div class="group bg-neutral-900/80 rounded-xl p-8 ring-1 ring-white/10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(213,16,12,0.4)]">
+    <div class="flex items-center gap-3 mb-4">
+      <svg class="w-7 h-7 text-[color:var(--brand-red)]"><use href="assets/icons.svg#icon-mail"></use></svg>
+      <h3 class="text-lg font-bold text-white">Email Us</h3>
+    </div>
+    <p class="text-gray-300 leading-relaxed mb-5">
+      For inquiries, collaborations, or support, send us an email anytime.
+    </p>
+    <a href="mailto:support@hamzafitnessclub.com"
+       class="block break-words text-center w-full py-2.5 px-3 border border-[color:var(--brand-red)] text-[color:var(--brand-red)] font-bold uppercase text-sm rounded-md hover:bg-[color:var(--brand-red)] hover:text-white transition-all duration-200">
+       support@hamzafitnessclub.com
+    </a>
+  </div>
+  
+  
+        <!-- Hours -->
+        <div class="group bg-neutral-900/80 rounded-xl p-8 ring-1 ring-white/10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(213,16,12,0.4)]">
+          <div class="flex items-center gap-3 mb-4">
+            <svg class="w-7 h-7 text-[color:var(--brand-red)]"><use href="assets/icons.svg#icon-clock"></use></svg>
+            <h3 class="text-lg font-bold text-white">Working Hours</h3>
+          </div>
+          <ul class="text-gray-300 leading-relaxed space-y-2 mb-5">
+            <li><span class="font-semibold text-white">Mon – Sat:</span> 6:15–9:15 am | 4:15–10:45 pm</li>
+            <li><span class="font-semibold text-white">Sunday:</span> 6:15–9:15 am | 4:15–10:45 pm</li>
+            <li><span class="font-semibold text-white">Friday:</span> <span class="italic text-gray-500">Closed</span></li>
+          </ul>
+          <a href="/booking.html"
+             class="inline-block w-full text-center py-2.5 px-4 bg-[color:var(--brand-red)] hover:bg-red-700 font-bold uppercase text-sm rounded-md transition-colors duration-200">
+             Book a Session
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+<!-- Contact Form -->
+<section class="py-16 bg-black">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl font-extrabold mb-6 text-center">Send Us a Message</h2>
+    <form class="bg-neutral-900 p-8 rounded-xl shadow-lg space-y-6 ring-1 ring-white/10" action="#" method="post">
+      <div>
+        <label class="block mb-2 text-sm font-semibold">Full Name</label>
+        <input type="text" name="name" required
+          class="w-full px-4 py-2 rounded-md bg-neutral-800 border border-white/10 focus:ring-2 focus:ring-[color:var(--brand-red)] outline-none" />
+      </div>
+      <div>
+        <label class="block mb-2 text-sm font-semibold">Email Address</label>
+        <input type="email" name="email" required
+          class="w-full px-4 py-2 rounded-md bg-neutral-800 border border-white/10 focus:ring-2 focus:ring-[color:var(--brand-red)] outline-none" />
+      </div>
+      <div>
+        <label class="block mb-2 text-sm font-semibold">Subject</label>
+        <input type="text" name="subject"
+          class="w-full px-4 py-2 rounded-md bg-neutral-800 border border-white/10 focus:ring-2 focus:ring-[color:var(--brand-red)] outline-none" />
+      </div>
+      <div>
+        <label class="block mb-2 text-sm font-semibold">Message</label>
+        <textarea name="message" rows="5" required
+          class="w-full px-4 py-2 rounded-md bg-neutral-800 border border-white/10 focus:ring-2 focus:ring-[color:var(--brand-red)] outline-none"></textarea>
+      </div>
+      <button type="submit" class="btn-red px-6 py-3 uppercase font-extrabold rounded-md w-full md:w-auto">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+    <!-- Brand + Newsletter -->
+    <section class="md:col-span-5">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
+        <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
+      </div>
+      <p class="mb-5 text-gray-400 leading-relaxed">
+        Hamza Fitness Club is your destination for strength, dedication, and transformation.
+        Join our community today!
+      </p>
+      <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
+        <label for="newsletter-email" class="sr-only">Email</label>
+        <input id="newsletter-email" name="email" type="email" placeholder="you@example.com" required
+          class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
+                 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]" />
+        <button type="submit"
+          class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto">
+          Sign Up
+        </button>
+      </form>
+    </section>
+
+    <!-- Our Studio -->
+    <nav class="md:col-span-2">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+        Our Studio
+      </h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
+        <li><a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
+        <li><a href="/classes.html" class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
+        <li><a href="/pricing.html" class="hover:text-[color:var(--brand-red)] transition">Membership Plans</a></li>
+      </ul>
+    </nav>
+
+    <!-- Support -->
+    <nav class="md:col-span-2">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+        Support
+      </h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contact + Hours -->
+    <section id="contact" class="md:col-span-3">
+      <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
+        Get in Touch
+      </h3>
+      <address class="not-italic space-y-3 text-sm">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0"><use href="assets/icons.svg#icon-map-pin"></use></svg>
+          <a href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
+             target="_blank" rel="noopener" class="hover:text-[color:var(--brand-red)] transition">
+             Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
+          </a>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0"><use href="assets/icons.svg#icon-mail"></use></svg>
+          <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">support@hamzafitnessclub.com</a>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-white/80 shrink-0"><use href="assets/icons.svg#icon-phone"></use></svg>
+          <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
+        </div>
+      </address>
+    </section>
+  </div>
+
+  <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
+    © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
+    All rights reserved. Designed by <span class="text-[color:var(--brand-red)] font-bold">Ramla & Pakeeza</span>.
+  </div>
+</footer>
+
+</body>
+</html>
