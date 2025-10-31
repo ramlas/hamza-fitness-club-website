@@ -79,89 +79,115 @@
 
 <!-- Hero + Contact Info -->
 <section class="relative bg-black/90 text-white py-24 overflow-hidden">
+    <!-- Background -->
     <div class="absolute inset-0">
-      <img src="images/gym-floor.jpg" alt="Contact Hamza Fitness Club" class="w-full h-full object-cover opacity-50">
-      <div class="absolute inset-0 bg-black/70"></div>
+      <img src="images/gym-floor.jpg" alt="Contact Hamza Fitness Club"
+           class="w-full h-full object-cover opacity-50">
+      <div class="absolute inset-0 bg-black/75 backdrop-blur-[2px]"></div>
     </div>
   
+    <!-- Content -->
     <div class="relative max-w-7xl mx-auto px-6 lg:px-10 text-center">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Get in Touch</h1>
-      <p class="max-w-2xl mx-auto text-gray-300 text-lg mb-12">
-        Have questions about memberships, training, or timings? Reach out — we’re here to help you achieve your fitness goals.
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-5 drop-shadow-lg">
+        Get in Touch
+      </h1>
+      <p class="max-w-2xl mx-auto text-gray-300 text-lg mb-14 leading-relaxed">
+        Have questions about memberships, training, or timings?
+        Reach out — we’re here to help you achieve your fitness goals.
       </p>
   
       <!-- Info Cards -->
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left mt-10">
-        
-        <!-- Address -->
-        <div class="group bg-neutral-900/80 rounded-xl p-8 ring-1 ring-white/10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(213,16,12,0.4)]">
-          <div class="flex items-center gap-3 mb-4">
-            <svg class="w-7 h-7 text-[color:var(--brand-red)]"><use href="assets/icons.svg#icon-map-pin"></use></svg>
+  
+        <!-- 1️⃣ Address -->
+        <div class="group bg-neutral-900/80 rounded-2xl p-8 ring-1 ring-white/10 shadow-lg 
+                    transition-all duration-300 hover:-translate-y-1 
+                    hover:shadow-[0_0_25px_rgba(213,16,12,0.4)]">
+          <div class="flex items-center gap-3 mb-5">
+            <svg class="w-7 h-7 text-[color:var(--brand-red)]">
+              <use href="assets/icons.svg#icon-map-pin"></use>
+            </svg>
             <h3 class="text-lg font-bold text-white">Visit Us</h3>
           </div>
-          <p class="text-gray-300 leading-relaxed mb-5">
+          <p class="text-gray-300 leading-relaxed mb-6">
             Chowk, Khatam-e-Nabuwat Plaza,<br>
             Millat Rd, Green Town,<br>
             Faisalabad, 38000, Pakistan
           </p>
-          <a href="https://maps.app.goo.gl/d7fBBXknUK5wKgsG7"
-             target="_blank" rel="noopener"
-             class="inline-block w-full text-center py-2.5 px-4 bg-[color:var(--brand-red)] hover:bg-red-700 font-bold uppercase text-sm rounded-md transition-colors duration-200">
-             Open in Maps
+          <a href="https://maps.app.goo.gl/d7fBBXknUK5wKgsG7" target="_blank" rel="noopener"
+             class="block w-full text-center py-2.5 px-4 rounded-md font-bold uppercase text-sm 
+                    bg-[color:var(--brand-red)] hover:bg-red-700 transition-colors duration-200">
+            Open in Maps
           </a>
         </div>
   
-        <!-- Phone -->
-        <div class="group bg-neutral-900/80 rounded-xl p-8 ring-1 ring-white/10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(213,16,12,0.4)]">
-          <div class="flex items-center gap-3 mb-4">
-            <svg class="w-7 h-7 text-[color:var(--brand-red)]"><use href="assets/icons.svg#icon-phone"></use></svg>
-            <h3 class="text-lg font-bold text-white">Call Us</h3>
+        <!-- 2️⃣ WhatsApp -->
+        <div class="group bg-neutral-900/80 rounded-2xl p-8 ring-1 ring-white/10 shadow-lg 
+                    transition-all duration-300 hover:-translate-y-1 
+                    hover:shadow-[0_0_25px_rgba(213,16,12,0.4)]">
+          <div class="flex items-center gap-3 mb-5">
+            <svg class="w-7 h-7 text-[color:var(--brand-red)]">
+              <use href="assets/icons.svg#icon-whatsapp"></use>
+            </svg>
+            <h3 class="text-lg font-bold text-white">WhatsApp Us</h3>
           </div>
-          <p class="text-gray-300 leading-relaxed mb-5">
-            Talk directly with our support team for membership details or booking help.
+          <p class="text-gray-300 leading-relaxed mb-6">
+            Message us instantly on WhatsApp for memberships, class details, or quick inquiries.
           </p>
-          <a href="tel:+923057050399"
-             class="inline-block w-full text-center py-2.5 px-4 border border-[color:var(--brand-red)] text-[color:var(--brand-red)] font-bold uppercase text-sm rounded-md hover:bg-[color:var(--brand-red)] hover:text-white transition-all duration-200">
-             +92 305 7050399
+          <a href="https://wa.me/923057050399" target="_blank" rel="noopener"
+             class="block w-full text-center py-2.5 px-4 rounded-md font-bold uppercase text-sm 
+                    bg-[color:var(--brand-red)] hover:bg-green-600 transition-colors duration-200">
+            Chat on WhatsApp
           </a>
         </div>
   
-        <!-- Email -->
-        <!-- Email -->
-<div class="group bg-neutral-900/80 rounded-xl p-8 ring-1 ring-white/10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(213,16,12,0.4)]">
-    <div class="flex items-center gap-3 mb-4">
-      <svg class="w-7 h-7 text-[color:var(--brand-red)]"><use href="assets/icons.svg#icon-mail"></use></svg>
-      <h3 class="text-lg font-bold text-white">Email Us</h3>
-    </div>
-    <p class="text-gray-300 leading-relaxed mb-5">
-      For inquiries, collaborations, or support, send us an email anytime.
-    </p>
-    <a href="mailto:support@hamzafitnessclub.com"
-       class="block break-words text-center w-full py-2.5 px-3 border border-[color:var(--brand-red)] text-[color:var(--brand-red)] font-bold uppercase text-sm rounded-md hover:bg-[color:var(--brand-red)] hover:text-white transition-all duration-200">
-       support@hamzafitnessclub.com
-    </a>
-  </div>
+        <!-- 3️⃣ Email -->
+        <div class="group bg-neutral-900/80 rounded-2xl p-8 ring-1 ring-white/10 shadow-lg 
+                    transition-all duration-300 hover:-translate-y-1 
+                    hover:shadow-[0_0_25px_rgba(213,16,12,0.4)]">
+          <div class="flex items-center gap-3 mb-5">
+            <svg class="w-7 h-7 text-[color:var(--brand-red)]">
+              <use href="assets/icons.svg#icon-mail"></use>
+            </svg>
+            <h3 class="text-lg font-bold text-white">Email Us</h3>
+          </div>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            For inquiries, collaborations, or support, send us an email anytime.
+          </p>
+          <a href="mailto:support@hamzafitnessclub.com"
+             class="block w-full text-center py-2.5 px-4 rounded-md font-bold uppercase text-sm 
+                    bg-[color:var(--brand-red)] hover:bg-red-700 transition-colors duration-200">
+            Send Email
+          </a>
+        </div>
   
-  
-        <!-- Hours -->
-        <div class="group bg-neutral-900/80 rounded-xl p-8 ring-1 ring-white/10 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(213,16,12,0.4)]">
-          <div class="flex items-center gap-3 mb-4">
-            <svg class="w-7 h-7 text-[color:var(--brand-red)]"><use href="assets/icons.svg#icon-clock"></use></svg>
+        <!-- 4️⃣ Working Hours -->
+        <div class="group bg-neutral-900/80 rounded-2xl p-8 ring-1 ring-white/10 shadow-lg 
+                    transition-all duration-300 hover:-translate-y-1 
+                    hover:shadow-[0_0_25px_rgba(213,16,12,0.4)]">
+          <div class="flex items-center gap-3 mb-5">
+            <svg class="w-7 h-7 text-[color:var(--brand-red)]">
+              <use href="assets/icons.svg#icon-clock"></use>
+            </svg>
             <h3 class="text-lg font-bold text-white">Working Hours</h3>
           </div>
-          <ul class="text-gray-300 leading-relaxed space-y-2 mb-5">
+          <ul class="text-gray-300 leading-relaxed space-y-2 mb-6">
             <li><span class="font-semibold text-white">Mon – Sat:</span> 6:15–9:15 am | 4:15–10:45 pm</li>
             <li><span class="font-semibold text-white">Sunday:</span> 6:15–9:15 am | 4:15–10:45 pm</li>
             <li><span class="font-semibold text-white">Friday:</span> <span class="italic text-gray-500">Closed</span></li>
           </ul>
           <a href="/booking.html"
-             class="inline-block w-full text-center py-2.5 px-4 bg-[color:var(--brand-red)] hover:bg-red-700 font-bold uppercase text-sm rounded-md transition-colors duration-200">
-             Book a Session
+             class="block w-full text-center py-2.5 px-4 rounded-md font-bold uppercase text-sm 
+                    bg-[color:var(--brand-red)] hover:bg-red-700 transition-colors duration-200">
+            Book a Session
           </a>
         </div>
+  
       </div>
     </div>
   </section>
+  
+  
   
 
 <!-- Contact Form -->
