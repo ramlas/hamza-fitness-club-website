@@ -30,7 +30,26 @@
   <link rel="stylesheet" href="assets/hfc.css" />
   <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
 </head>
-
+<!-- API Service -->
+<script src="assets/api-service.js"></script>
+<script>
+    // Test API connection when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, testing API connection...');
+        
+        // Quick test - you can remove this in production
+        setTimeout(async () => {
+            const health = await API.checkHealth();
+            console.log('API Health:', health);
+            
+            // Load trainers for pages that need them
+            if (document.querySelector('.trainer-grid') || window.location.pathname.includes('trainers')) {
+                const trainers = await API.getTrainers();
+                console.log('Trainers loaded:', trainers);
+            }
+        }, 1000);
+    });
+</script>
 <body class="min-h-screen bg-[color:var(--brand-dark)] text-white pt-16 font-display">
 
 <!-- components/header.html -->
@@ -496,3 +515,106 @@
   <script src="assets/booking.js" defer></script>
 </body>
 </html>
+document.addEventListener('DOMContentLoaded', function() {
+  const bookingForm = document.getElementById('bookingForm');
+  
+  if (!bookingForm) return;
+  
+  // Get trainers first
+  let trainers = [];
+  
+  // Load trainers for selection
+  async function loadTrainers() {
+      try {
+          const response = await API.getTrainers();
+          if (response.success && response.data.length > 0) {
+              trainers = response.data;
+              console.log('Loaded trainers:', trainers);
+              
+              // Update trainer selection if exists
+              const trainerSelect = document.getElementById('trainer-select');
+              if (trainerSelect) {
+                  trainerSelect.innerHTML = '<option value="">Select a trainer</option>' +
+                      trainers.map(t => 
+                          `<option value="${t._id}">${t.name} - ${t.specialization[0] || 'Trainer'}</option>`
+                      ).join('');
+              }
+          }
+      } catch (error) {
+          console.error('Failed to load trainers:', error);
+      }
+  }
+  
+  loadTrainers();
+  
+  // Form submission
+  bookingForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = {
+          name: document.querySelector('[name="name"]').value,
+          email: document.querySelector('[name="email"]').value,
+          phone: document.querySelector('[name="phone"]').value,
+          date: document.querySelector('[name="date"]').value,
+          time: document.querySelector('[name="time"]').value,
+          concerns: Array.from(document.querySelectorAll('[name="concerns"]:checked'))
+              .map(cb => cb.value),
+          notes: document.querySelector('#notes').value || ''
+      };
+      
+      // Validate
+      if (!formData.name || !formData.email || !formData.phone || !formData.date || !formData.time) {
+          alert('Please fill all required fields');
+          return;
+      }
+      
+      try {
+          // 1. Create member
+          const memberData = {
+              firstName: formData.name.split(' ')[0],
+              lastName: formData.name.split(' ').slice(1).join(' ') || 'Customer',
+              email: formData.email,
+              phone: formData.phone,
+              membershipType: 'Trial',
+              notes: `Booking concerns: ${formData.concerns.join(', ')}`
+          };
+          
+          const memberResponse = await API.createMember(memberData);
+          
+          if (!memberResponse.success) {
+              throw new Error('Failed to create member');
+          }
+          
+          // 2. Create appointment
+          const [hours, minutes] = formData.time.split(':').map(Number);
+          const endTime = new Date();
+          endTime.setHours(hours, minutes + 30);
+          const endTimeStr = `${endTime.getHours().toString().padStart(2, '0')}:${endTime.getMinutes().toString().padStart(2, '0')}`;
+          
+          const appointmentData = {
+              member: memberResponse.data._id,
+              trainer: trainers[0]?._id || '657abc123def456', // Use first trainer or default
+              appointmentDate: formData.date,
+              startTime: formData.time,
+              endTime: endTimeStr,
+              duration: 30,
+              serviceType: 'Free Consultation',
+              status: 'Scheduled',
+              amount: 0,
+              notes: formData.notes
+          };
+          
+          const appointmentResponse = await API.createAppointment(appointmentData);
+          
+          if (appointmentResponse.success) {
+              alert(`✅ Appointment booked successfully!\n\nDate: ${formData.date}\nTime: ${formData.time}\nWe'll contact you at ${formData.phone}`);
+              bookingForm.reset();
+          }
+          
+      } catch (error) {
+          console.error('Booking failed:', error);
+          alert(`Booking failed: ${error.message}`);
+      }
+  });
+});

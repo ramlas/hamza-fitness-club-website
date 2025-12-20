@@ -29,7 +29,26 @@
   <link rel="stylesheet" href="assets/hfc.css" />
   <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
 </head>
-
+<!-- API Service -->
+<script src="assets/api-service.js"></script>
+<script>
+    // Test API connection when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, testing API connection...');
+        
+        // Quick test - you can remove this in production
+        setTimeout(async () => {
+            const health = await API.checkHealth();
+            console.log('API Health:', health);
+            
+            // Load trainers for pages that need them
+            if (document.querySelector('.trainer-grid') || window.location.pathname.includes('trainers')) {
+                const trainers = await API.getTrainers();
+                console.log('Trainers loaded:', trainers);
+            }
+        }, 1000);
+    });
+</script>
 <body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
 
 <!-- ✅ Unified Header -->
@@ -303,3 +322,65 @@
 
 </body>
 </html>
+// Add this to contact.html
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('section form, #contactForm');
+    
+    if (!contactForm) return;
+    
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        const formData = {
+            name: contactForm.querySelector('[name="name"]').value.trim(),
+            email: contactForm.querySelector('[name="email"]').value.trim(),
+            subject: contactForm.querySelector('[name="subject"]').value.trim() || 'General Inquiry',
+            message: contactForm.querySelector('[name="message"]').value.trim()
+        };
+        
+        // Validate
+        if (!formData.name || !formData.email || !formData.message) {
+            API.showNotification('Please fill all required fields', 'error');
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            return;
+        }
+        
+        try {
+            // Create a member record for the inquiry
+            const response = await API.createMember({
+                firstName: formData.name.split(' ')[0],
+                lastName: formData.name.split(' ').slice(1).join(' ') || 'Inquirer',
+                email: formData.email,
+                phone: '000-0000000',
+                membershipType: 'Inquiry',
+                notes: `CONTACT FORM: ${formData.subject}\n\nMessage: ${formData.message}`
+            });
+            
+            if (response.success) {
+                API.showNotification('Message sent successfully! We\'ll contact you within 24 hours.', 'success');
+                contactForm.reset();
+                
+                // Show confirmation
+                const confirmation = document.createElement('div');
+                confirmation.className = 'mt-6 p-4 bg-green-900/30 border border-green-700 rounded-lg';
+                confirmation.innerHTML = `
+                    <h4 class="font-bold text-green-400 mb-2">✓ Message Received</h4>
+                    <p class="text-sm">Thank you for contacting Hamza Fitness Club. We've received your message and will respond soon.</p>
+                `;
+                contactForm.appendChild(confirmation);
+            }
+            
+        } catch (error) {
+            API.showNotification('Failed to send message. Please try again.', 'error');
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+});

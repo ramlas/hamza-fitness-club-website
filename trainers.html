@@ -28,7 +28,26 @@
   <!-- Shared stylesheet -->
   <link rel="stylesheet" href="assets/hfc.css" />
 </head>
-
+<!-- API Service -->
+<script src="assets/api-service.js"></script>
+<script>
+    // Test API connection when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, testing API connection...');
+        
+        // Quick test - you can remove this in production
+        setTimeout(async () => {
+            const health = await API.checkHealth();
+            console.log('API Health:', health);
+            
+            // Load trainers for pages that need them
+            if (document.querySelector('.trainer-grid') || window.location.pathname.includes('trainers')) {
+                const trainers = await API.getTrainers();
+                console.log('Trainers loaded:', trainers);
+            }
+        }, 1000);
+    });
+</script>
 <body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
 
 <!-- components/header.html -->
@@ -352,3 +371,71 @@
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+// Add this to trainers.html
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        // Get trainers from API
+        const response = await API.getTrainers();
+        
+        if (response.success && response.data.length > 0) {
+            const trainersGrid = document.querySelector('#trainers .grid, .trainer-grid');
+            if (trainersGrid) {
+                // Clear static content
+                trainersGrid.innerHTML = '';
+                
+                // Add dynamic trainers
+                response.data.forEach(trainer => {
+                    const trainerCard = `
+                        <article class="bg-neutral-900 ring-1 ring-white/10 overflow-hidden group hover:scale-[1.02] transition-transform duration-300 reveal zoom-in">
+                            <div class="relative overflow-hidden h-64">
+                                <img src="images/${trainer.gender === 'Female' ? 'female' : 'male'}%20user.jpg" 
+                                     alt="${trainer.name}" 
+                                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-extrabold mb-1">${trainer.name}</h3>
+                                <p class="text-[color:var(--brand-red)] font-bold uppercase text-xs tracking-wide mb-3">
+                                    ${trainer.specialization?.[0] || 'Fitness Trainer'}
+                                </p>
+                                <p class="text-gray-300 text-sm mb-4 line-clamp-2">${trainer.bio || 'Certified fitness professional'}</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    ${trainer.specialization?.map(spec => 
+                                        `<span class="px-2 py-1 text-xs bg-neutral-800 rounded">${spec}</span>`
+                                    ).join('') || ''}
+                                </div>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-gray-400">${trainer.experience || '5'}+ years</span>
+                                    <span class="font-bold">₨${trainer.hourlyRate || '45'}/hr</span>
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                    trainersGrid.innerHTML += trainerCard;
+                });
+            }
+            
+            // Update stats
+            const statsElement = document.querySelector('#trainer-stats');
+            if (statsElement) {
+                statsElement.innerHTML = `
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">${response.data.length}</div>
+                        <div class="text-sm text-gray-400">Certified Trainers</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">${response.data.reduce((sum, t) => sum + (t.experience || 5), 0)}</div>
+                        <div class="text-sm text-gray-400">Total Years Experience</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">${new Set(response.data.flatMap(t => t.specialization || [])).size}</div>
+                        <div class="text-sm text-gray-400">Specializations</div>
+                    </div>
+                `;
+            }
+        }
+    } catch (error) {
+        console.error('Failed to load trainers:', error);
+        // Fallback content will remain visible
+    }
+});

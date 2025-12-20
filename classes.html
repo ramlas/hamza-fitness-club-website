@@ -33,7 +33,26 @@
 
 
 </head>
-
+<!-- API Service -->
+<script src="assets/api-service.js"></script>
+<script>
+    // Test API connection when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, testing API connection...');
+        
+        // Quick test - you can remove this in production
+        setTimeout(async () => {
+            const health = await API.checkHealth();
+            console.log('API Health:', health);
+            
+            // Load trainers for pages that need them
+            if (document.querySelector('.trainer-grid') || window.location.pathname.includes('trainers')) {
+                const trainers = await API.getTrainers();
+                console.log('Trainers loaded:', trainers);
+            }
+        }, 1000);
+    });
+</script>
 <body class="min-h-full bg-[color:var(--brand-dark)] text-white pt-16 font-display">
 
 <!-- Header -->
