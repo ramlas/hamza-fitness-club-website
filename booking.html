@@ -36,7 +36,7 @@
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- API Service -->
-    <script src="assets/api-service.js"></script>
+    <script src="assets/api-services.js"></script>
     <script>
       // Test API connection when page loads
       document.addEventListener("DOMContentLoaded", function () {
@@ -82,13 +82,13 @@
         console.log("🔍 DIAGNOSTIC - Checking API Service");
         console.log("1. Current URL:", window.location.href);
 
-        // Check if api-service.js exists
-        const scriptUrl = new URL("assets/api-service.js", window.location.href)
+        // Check if api-services.js exists
+        const scriptUrl = new URL("assets/api-services.js", window.location.href)
           .href;
         console.log("2. Expected API script URL:", scriptUrl);
 
         // Try to load it
-        fetch("assets/api-service.js")
+        fetch("assets/api-services.js")
           .then((response) => {
             console.log(
               "3. Fetch response:",
@@ -107,7 +107,7 @@
           .catch((err) => {
             console.error("❌ Fetch error:", err.message);
             console.log(
-              "💡 Suggestion: Create api-service.js file in assets/ folder"
+              "💡 Suggestion: Create api-services.js file in assets/ folder"
             );
           });
 
@@ -898,7 +898,7 @@
     <script src="assets/footer.js" defer></script>
 
     <script>
-      // Fallback API Service if assets/api-service.js fails to load
+      // Fallback API Service if assets/api-services.js fails to load
       if (typeof window.API === "undefined") {
         console.warn("⚠️ API not found, creating fallback API service...");
 
