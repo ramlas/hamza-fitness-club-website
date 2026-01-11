@@ -8,43 +8,63 @@ const PORT = process.env.PORT || 3000;
 
 // Enhanced CORS configuration
 app.use(cors({
-  origin: ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://localhost:5500'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
+    origin: ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://localhost:5500', 'http://localhost:3000', 'http://127.0.0.1:5500'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    credentials: true
+  }));
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Test MongoDB connection without starting server
-async function testMongoDB() {
+// MongoDB Atlas Connection
+async function connectMongoDB() {
     try {
-        console.log('Testing MongoDB connection...');
+        console.log('Connecting to MongoDB Atlas...');
         
-        // Try local MongoDB first
-        const localURI = 'mongodb://127.0.0.1:27017/hamza-fitness-club';
-        await mongoose.connect(localURI, {
+        // Get MongoDB URI from environment variable
+        const mongoURI = process.env.MONGODB_URI;
+        
+        if (!mongoURI) {
+            console.error('MONGODB_URI is not defined in environment variables');
+            throw new Error('MongoDB URI is missing');
+        }
+        
+        // Connect to MongoDB Atlas
+        await mongoose.connect(mongoURI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            serverSelectionTimeoutMS: 5000
+            serverSelectionTimeoutMS: 10000,
+            socketTimeoutMS: 45000,
         });
         
-        console.log('MongoDB Connected to:', mongoose.connection.name);
+        console.log('✅ MongoDB Atlas Connected Successfully!');
+        console.log('Database:', mongoose.connection.name);
         console.log('Host:', mongoose.connection.host);
-        console.log('Port:', mongoose.connection.port);
         
         return true;
     } catch (error) {
-        console.log('Local MongoDB connection failed:', error.message);
+        console.error('❌ MongoDB Atlas Connection Failed:', error.message);
         
-        // Try fallback to in-memory during development
-        console.log('Using in-memory database for development');
-        return false;
+        // Fallback to local MongoDB
+        try {
+            console.log('Trying local MongoDB as fallback...');
+            const localURI = 'mongodb://127.0.0.1:27017/hamza-fitness-club';
+            await mongoose.connect(localURI, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                serverSelectionTimeoutMS: 5000
+            });
+            console.log('✅ Connected to local MongoDB');
+            return true;
+        } catch (localError) {
+            console.log('⚠️  Starting in simulated mode');
+            return false;
+        }
     }
 }
-
+app.options('*', cors());
 // Import routes
 const memberRoutes = require('./routes/memberRoutes');
 const trainerRoutes = require('./routes/trainerRoutes');
@@ -112,7 +132,7 @@ app.use((err, req, res, next) => {
 
 // Start server with MongoDB check
 async function startServer() {
-    const mongoConnected = await testMongoDB();
+    const mongoConnected = await connectMongoDB();
     
     if (!mongoConnected) {
         console.log('⚠️  Starting server with simulated database mode');
@@ -129,9 +149,10 @@ async function startServer() {
     }
     
     app.listen(PORT, () => {
-        console.log(`Server running on http://localhost:${PORT}`);
-        console.log(`API Documentation: http://localhost:${PORT}/`);
-        console.log(`Health check: http://localhost:${PORT}/health`);
+        console.log(`🚀 Server running on http://localhost:${PORT}`);
+        console.log(`📚 API Documentation: http://localhost:${PORT}/`);
+        console.log(`❤️  Health check: http://localhost:${PORT}/health`);
+        console.log(`💾 Database Status: ${mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'}`);
     });
 }
 

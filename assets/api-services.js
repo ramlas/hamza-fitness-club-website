@@ -73,6 +73,28 @@ class FitnessClubAPI {
     async createClass(classData) {
         return this.request('/classes', 'POST', classData);
     }
+    async bookAppointment(formData) {
+        return this.request('/api/appointments', 'POST', {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            date: formData.date,
+            time: formData.time,
+            concerns: formData.concerns,
+            notes: formData.notes
+        });
+    }
+    
+    // Also add a health check method:
+    async checkHealth() {
+        try {
+            const response = await fetch(`${this.baseURL}/health`);
+            return await response.json();
+        } catch (error) {
+            return { status: 'disconnected', error: error.message };
+        }
+    }
 }
+
 
 window.API = new FitnessClubAPI();

@@ -1,15 +1,28 @@
 const mongoose = require('mongoose');
 
 const appointmentSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Name is required']
+  },
+  email: {
+    type: String,
+    required: [true, 'Email is required'],
+    lowercase: true
+  },
+  phone: {
+    type: String,
+    required: [true, 'Phone is required']
+  },
+  // Remove member and trainer references or make them optional
   member: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Member',
-    required: [true, 'Member reference is required']
+    required: false // Change to false since form doesn't collect member ID
   },
   trainer: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Trainer',
-    required: [true, 'Trainer reference is required']
+    type: String, // Change from ObjectId to String since you're not selecting trainers
+    default: 'Available Trainer'
   },
   appointmentDate: {
     type: Date,
@@ -17,37 +30,18 @@ const appointmentSchema = new mongoose.Schema({
   },
   startTime: {
     type: String,
-    required: [true, 'Start time is required'],
-    match: [/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, 'Please enter time in HH:MM format']
+    required: [true, 'Start time is required']
   },
   endTime: {
     type: String,
-    required: [true, 'End time is required'],
-    match: [/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, 'Please enter time in HH:MM format']
+    required: [true, 'End time is required']
   },
-  duration: {
-    type: Number,
-    required: [true, 'Duration is required'],
-    min: [15, 'Minimum duration is 15 minutes']
-  },
-  serviceType: {
-    type: String,
-    enum: ['Personal Training', 'Group Class', 'Nutrition Consultation', 'Assessment'],
-    default: 'Personal Training'
-  },
-  status: {
-    type: String,
-    enum: ['Scheduled', 'Confirmed', 'Completed', 'Cancelled', 'No Show'],
-    default: 'Scheduled'
-  },
-  amount: {
-    type: Number,
-    required: [true, 'Amount is required'],
-    min: [0, 'Amount cannot be negative']
+  concerns: {  // ADD THIS FIELD for your form data
+    type: [String],
+    default: []
   },
   notes: {
-    type: String,
-    maxlength: [500, 'Notes cannot exceed 500 characters']
+    type: String
   },
   createdAt: {
     type: Date,

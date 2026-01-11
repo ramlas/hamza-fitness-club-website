@@ -5,6 +5,14 @@ const Trainer = require('../models/Trainer');
 // @desc    Get all appointments
 // @route   GET /api/appointments
 // @access  Public
+function calculateEndTime(startTime) {
+  const [hours, minutes] = startTime.split(':').map(Number);
+  const endMinutes = (hours * 60 + minutes + 30) % 1440;
+  const endHours = Math.floor(endMinutes / 60);
+  const endMins = endMinutes % 60;
+  return `${endHours.toString().padStart(2, '0')}:${endMins.toString().padStart(2, '0')}`;
+}
+
 const getAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.find()
@@ -58,34 +66,26 @@ const getAppointment = async (req, res) => {
 // @access  Public
 const createAppointment = async (req, res) => {
   try {
-    // Check if member exists
-    const member = await Member.findById(req.body.member);
-    if (!member) {
-      return res.status(404).json({
-        success: false,
-        error: 'Member not found'
-      });
-    }
-    
-    // Check if trainer exists
-    const trainer = await Trainer.findById(req.body.trainer);
-    if (!trainer) {
-      return res.status(404).json({
-        success: false,
-        error: 'Trainer not found'
-      });
-    }
-    
-    const appointment = await Appointment.create(req.body);
-    
-    // Populate the created appointment
-    const populatedAppointment = await Appointment.findById(appointment._id)
-      .populate('member', 'firstName lastName')
-      .populate('trainer', 'name');
+    // Create appointment directly from form data
+    const appointment = await Appointment.create({
+      name: req.body.name,
+      email: req.body.email,
+      phone: req.body.phone,
+      appointmentDate: req.body.date, // Match form field name
+      startTime: req.body.time,
+      endTime: calculateEndTime(req.body.time), // You need to calculate this
+      concerns: req.body.concerns || [],
+      notes: req.body.notes || '',
+      serviceType: 'Free Consultation',
+      status: 'Scheduled',
+      amount: 0,
+      duration: 30
+    });
     
     res.status(201).json({
       success: true,
-      data: populatedAppointment
+      message: 'Appointment booked successfully',
+      data: appointment
     });
   } catch (error) {
     res.status(400).json({
