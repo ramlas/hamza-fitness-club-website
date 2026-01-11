@@ -1,591 +1,1000 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Book an Appointment | Hamza Fitness Club</title>
-  <meta name="description" content="Book an appointment at Hamza Fitness Club — tell us your goal, pick a date and a free 30-minute slot between 6–9 pm, and confirm.">
-  <meta name="theme-color" content="#d5100c" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book an Appointment | Hamza Fitness Club</title>
+    <meta
+      name="description"
+      content="Book an appointment at Hamza Fitness Club — tell us your goal, pick a date and a free 30-minute slot between 6–9 pm, and confirm."
+    />
+    <meta name="theme-color" content="#d5100c" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Tailwind (theme) -->
-  <script>
-    window.tailwind = window.tailwind || {};
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { brand: { red: '#d5100c', dark: '#0b0b0b', smoke: '#151618' } },
-          fontFamily: { display: ['Oswald','ui-sans-serif','system-ui','sans-serif'] }
+    <!-- Tailwind (theme) -->
+    <script>
+      window.tailwind = window.tailwind || {};
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { red: "#d5100c", dark: "#0b0b0b", smoke: "#151618" },
+            },
+            fontFamily: {
+              display: ["Oswald", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- API Service -->
+    <script src="assets/api-service.js"></script>
+    <script>
+      // Test API connection when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("✅ Booking page loaded");
+
+        // Check if API is loaded
+        if (typeof API === "undefined") {
+          console.error("❌ API service not loaded!");
+          return;
         }
-      }
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Global styles -->
-  <link rel="stylesheet" href="assets/hfc.css" />
-  <link rel="preload" href="assets/icons.svg" as="image" type="image/svg+xml" crossorigin>
-</head>
-<!-- API Service -->
-<script src="assets/api-service.js"></script>
-<script>
-    // Test API connection when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Page loaded, testing API connection...');
-        
-        // Quick test - you can remove this in production
+        console.log("✅ API service is available");
+
+        // Test backend connection
         setTimeout(async () => {
+          try {
+            console.log("🏥 Testing backend connection...");
             const health = await API.checkHealth();
-            console.log('API Health:', health);
-            
-            // Load trainers for pages that need them
-            if (document.querySelector('.trainer-grid') || window.location.pathname.includes('trainers')) {
-                const trainers = await API.getTrainers();
-                console.log('Trainers loaded:', trainers);
+            console.log("✅ Backend health:", health);
+          } catch (error) {
+            console.error("❌ Backend connection failed:", error.message);
+          }
+        }, 2000);
+      });
+    </script>
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="assets/hfc.css" />
+    <link
+      rel="preload"
+      href="assets/icons.svg"
+      as="image"
+      type="image/svg+xml"
+      crossorigin
+    />
+  </head>
+
+  <body
+    class="min-h-screen bg-[color:var(--brand-dark)] text-white pt-16 font-display"
+  >
+    <script>
+      (function diagnose() {
+        console.log("🔍 DIAGNOSTIC - Checking API Service");
+        console.log("1. Current URL:", window.location.href);
+
+        // Check if api-service.js exists
+        const scriptUrl = new URL("assets/api-service.js", window.location.href)
+          .href;
+        console.log("2. Expected API script URL:", scriptUrl);
+
+        // Try to load it
+        fetch("assets/api-service.js")
+          .then((response) => {
+            console.log(
+              "3. Fetch response:",
+              response.status,
+              response.statusText
+            );
+            if (response.ok) {
+              console.log("✅ File exists and is accessible");
+            } else {
+              console.error(
+                "❌ File not found or inaccessible:",
+                response.status
+              );
             }
-        }, 1000);
-    });
-</script>
-<body class="min-h-screen bg-[color:var(--brand-dark)] text-white pt-16 font-display">
+          })
+          .catch((err) => {
+            console.error("❌ Fetch error:", err.message);
+            console.log(
+              "💡 Suggestion: Create api-service.js file in assets/ folder"
+            );
+          });
 
-<!-- components/header.html -->
-<!-- ✅ Unified Header -->
-<header id="header" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-    <!-- Brand -->
-    <a href="/index.html#hero-index" class="flex items-center gap-3">
-      <img src="/images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
-      <span class="font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</span>
-    </a>
+        console.log("4. Current API object:", window.API);
+        console.log("5. API is defined?", typeof window.API !== "undefined");
+      })();
+    </script>
+    <!-- components/header.html -->
+    <!-- ✅ Unified Header -->
+    <header
+      id="header"
+      class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between"
+      >
+        <!-- Brand -->
+        <a href="/index.html#hero-index" class="flex items-center gap-3">
+          <img
+            src="/images/hfc-logo.jpg"
+            alt="Hamza Fitness Club Logo"
+            class="w-10 h-10 object-contain rounded-md"
+          />
+          <span class="font-extrabold text-white tracking-wider uppercase"
+            >Hamza Fitness Club</span
+          >
+        </a>
 
-    <!-- Desktop Nav -->
-    <nav class="hidden md:block" aria-label="Primary">
-      <ul class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
-        <li><a href="/index.html#hero-index" class="hover:text-[color:var(--brand-red)] transition">Home</a></li>
-        <li><a href="/classes.html" class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
-        <li><a href="/trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
-        <li><a href="/pricing.html" class="hover:text-[color:var(--brand-red)] transition">Membership Plans</a></li>
-        <li><a href="/aboutus.html" class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
-        <li><a href="/contact.html" class="hover:text-[color:var(--brand-red)] transition">Contact Us</a></li>
-      </ul>
-    </nav>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:block" aria-label="Primary">
+          <ul
+            class="flex items-center gap-8 uppercase tracking-wide text-sm font-bold"
+          >
+            <li>
+              <a
+                href="/index.html#hero-index"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="/classes.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Classes</a
+              >
+            </li>
+            <li>
+              <a
+                href="/trainers.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Trainers</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pricing.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Membership Plans</a
+              >
+            </li>
+            <li>
+              <a
+                href="/aboutus.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="/contact.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </nav>
 
-    <!-- Mobile Menu Button -->
-    <button data-nav-toggle class="md:hidden p-2 text-xl leading-none text-white"
-      aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+        <!-- Mobile Menu Button -->
+        <button
+          data-nav-toggle
+          class="md:hidden p-2 text-xl leading-none text-white"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          ☰
+        </button>
 
-    <!-- CTA -->
-    <a href="/booking.html" class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold">
-      Book Free Appointment
-    </a>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" data-nav-panel class="md:hidden hidden border-t border-white/10 bg-neutral-900">
-    <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
-      <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
-      <li><a href="/classes.html" class="block py-2">Classes</a></li>
-      <li><a href="/trainers.html" class="block py-2">Trainers</a></li>
-      <li><a href="/pricing.html" class="block py-2">Membership Plans</a></li>
-      <li><a href="/aboutus.html" class="block py-2">About Us</a></li>
-      <li><a href="/contact.html" class="block py-2">Contact Us</a></li>
-      <li><a href="/booking.html" class="inline-flex btn-red px-5 py-2 text-sm uppercase">Book Free Appointment</a></li>
-    </ul>
-  </div>
-</header>
-
-<!-- Header interactivity -->
-<script src="assets/header.js" defer></script>
-
-  <!-- ===== HERO ===== -->
-  <header class="relative">
-    <div class="absolute inset-0">
-      <img src="images/gym-floor.jpg" alt="Gym floor" class="h-full w-full object-cover opacity-60" />
-      <div class="absolute inset-0 bg-black/60"></div>
-    </div>
-    <div class="relative container-x px-4 lg:px-6 py-10">
-      <div class="glass rounded-xl p-6">
-        <p class="text-sm md:text-base tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-extrabold mb-1.5">
-          Book Now
-        </p>
-        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Reserve Your Appointment</h1>
-        <p class="hero-text-body mt-2">
-          Tell us your main goal, choose a date, and pick a <strong>free 30-minute slot between 6–9 pm</strong>. We’ll confirm instantly.
-        </p>
+        <!-- CTA -->
+        <a
+          href="/booking.html"
+          class="hidden md:inline-flex btn-red px-5 py-2 text-sm uppercase font-extrabold"
+        >
+          Book Free Appointment
+        </a>
       </div>
-    </div>
-  </header>
 
-  <!-- ===== BOOKING FLOW ===== -->
-  <main class="section-pad pt-10">
-    <div class="container-x px-4 lg:px-6 grid lg:grid-cols-[1.2fr_.8fr] gap-6">
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        data-nav-panel
+        class="md:hidden hidden border-t border-white/10 bg-neutral-900"
+      >
+        <ul class="px-6 py-3 space-y-2 uppercase tracking-wide text-sm">
+          <li><a href="/index.html#hero-index" class="block py-2">Home</a></li>
+          <li><a href="/classes.html" class="block py-2">Classes</a></li>
+          <li><a href="/trainers.html" class="block py-2">Trainers</a></li>
+          <li>
+            <a href="/pricing.html" class="block py-2">Membership Plans</a>
+          </li>
+          <li><a href="/aboutus.html" class="block py-2">About Us</a></li>
+          <li><a href="/contact.html" class="block py-2">Contact Us</a></li>
+          <li>
+            <a
+              href="/booking.html"
+              class="inline-flex btn-red px-5 py-2 text-sm uppercase"
+              >Book Free Appointment</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
 
-      <!-- LEFT: FORM -->
-      <form id="bookingForm" class="space-y-6" novalidate>
+    <!-- Header interactivity -->
+    <script src="assets/header.js" defer></script>
 
-        <!-- Step 1 of 3 -->
-        <section class="hfc-card hfc-card--ring bg-neutral-900 rounded-xl p-6">
-          <div class="flex items-center gap-2 text-sm md:text-base uppercase tracking-widest text-gray-400 mb-2">
-            <span class="font-black text-[color:var(--brand-red)]">Step 1</span><span>of 3</span>
-          </div>
-          <h2 class="text-xl font-bold mb-4">What’s your main goal/concern?</h2>
+    <!-- ===== HERO ===== -->
+    <header class="relative">
+      <div class="absolute inset-0">
+        <img
+          src="images/gym-floor.jpg"
+          alt="Gym floor"
+          class="h-full w-full object-cover opacity-60"
+        />
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
+      <div class="relative container-x px-4 lg:px-6 py-10">
+        <div class="glass rounded-xl p-6">
+          <p
+            class="text-sm md:text-base tracking-[0.25em] uppercase text-[color:var(--brand-red)] font-extrabold mb-1.5"
+          >
+            Book Now
+          </p>
+          <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
+            Reserve Your Appointment
+          </h1>
+          <p class="hero-text-body mt-2">
+            Tell us your main goal, choose a date, and pick a
+            <strong>free 30-minute slot between 6–9 pm</strong>. We’ll confirm
+            instantly.
+          </p>
+        </div>
+      </div>
+    </header>
 
-          <div class="grid sm:grid-cols-2 gap-3">
-            <label class="quick-btn">
-              <span class="icon-wrap">
-                <svg class="icon w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-heart"></use></svg>
-              </span>
-              <input type="checkbox" name="concerns" value="Weight Loss / Fat Loss" class="sr-only">
-              <span class="label">Weight Loss / Fat Loss</span>
-            </label>
+    <!-- ===== BOOKING FLOW ===== -->
+    <main class="section-pad pt-10">
+      <div
+        class="container-x px-4 lg:px-6 grid lg:grid-cols-[1.2fr_.8fr] gap-6"
+      >
+        <!-- LEFT: FORM -->
+        <form id="bookingForm" class="space-y-6" novalidate>
+          <!-- Step 1 of 3 -->
+          <section
+            class="hfc-card hfc-card--ring bg-neutral-900 rounded-xl p-6"
+          >
+            <div
+              class="flex items-center gap-2 text-sm md:text-base uppercase tracking-widest text-gray-400 mb-2"
+            >
+              <span class="font-black text-[color:var(--brand-red)]"
+                >Step 1</span
+              ><span>of 3</span>
+            </div>
+            <h2 class="text-xl font-bold mb-4">
+              What’s your main goal/concern?
+            </h2>
 
-            <label class="quick-btn">
-              <span class="icon-wrap">
-                <svg class="icon w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-dumbbell"></use></svg>
-              </span>
-              <input type="checkbox" name="concerns" value="Muscle Gain & Strength" class="sr-only">
-              <span class="label">Muscle Gain &amp; Strength</span>
-            </label>
-
-            <label class="quick-btn">
-              <span class="icon-wrap">
-                <svg class="icon w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-lotus"></use></svg>
-              </span>
-              <input type="checkbox" name="concerns" value="Mobility & Pain Relief" class="sr-only">
-              <span class="label">Mobility &amp; Pain Relief</span>
-            </label>
-
-            <label class="quick-btn">
-              <span class="icon-wrap">
-                <svg class="icon w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-timer"></use></svg>
-              </span>
-              <input type="checkbox" name="concerns" value="Sports Performance" class="sr-only">
-              <span class="label">Sports Performance</span>
-            </label>
-
-            <label class="quick-btn">
-              <span class="icon-wrap">
-                <svg class="icon w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-heart"></use></svg>
-              </span>
-              <input type="checkbox" name="concerns" value="General Fitness & Cardio" class="sr-only">
-              <span class="label">General Fitness &amp; Cardio</span>
-            </label>
-
-            <label class="quick-btn">
-              <span class="icon-wrap">
-                <svg class="icon w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-book"></use></svg>
-              </span>
-              <input type="checkbox" name="concerns" value="Nutrition & Habit Coaching" class="sr-only">
-              <span class="label">Nutrition &amp; Habit Coaching</span>
-            </label>
-
-            <label class="quick-btn">
-              <span class="icon-wrap">
-                <svg class="icon w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-monitor"></use></svg>
-              </span>
-              <input type="checkbox" name="concerns" value="Virtual Coaching" class="sr-only">
-              <span class="label">Virtual Coaching</span>
-            </label>
-          </div>
-
-          <div class="mt-3">
-            <label for="notes" class="mb-1 block text-xs text-gray-400">NOTES (OPTIONAL)</label>
-            <textarea id="notes" name="notes" rows="3" placeholder="Share any details, injuries, or preferences"
-                      class="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-sm placeholder-gray-500 outline-none focus:border-[color:var(--brand-red)]/60"></textarea>
-          </div>
-        </section>
-
-        <!-- Step 2 of 3 -->
-        <section class="hfc-card hfc-card--ring bg-neutral-900 rounded-xl p-6">
-          <div class="flex items-center gap-2 text-sm md:text-base uppercase tracking-widest text-gray-400 mb-2">
-            <span class="font-black text-[color:var(--brand-red)]">Step 2</span><span>of 3</span>
-          </div>
-          <h2 class="text-xl font-bold mb-4">Pick Date &amp; Time</h2>
-
-          <div class="grid sm:grid-cols-2 gap-4">
-            <!-- DATE (single clickable calendar icon opens picker) -->
-            <div>
-              <label for="date" class="mb-1 block text-xs text-gray-400">DATE</label>
-              <div class="relative">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <label class="quick-btn">
+                <span class="icon-wrap">
+                  <svg class="icon w-5 h-5" aria-hidden="true">
+                    <use href="assets/icons.svg#icon-heart"></use>
+                  </svg>
+                </span>
                 <input
-                  id="date"
-                  type="date"
-                  name="date"
-                  class="w-full rounded-md border border-white/10 bg-neutral-950 pl-10 pr-3 py-2 text-sm outline-none focus:border-[color:var(--brand-red)]/60"
+                  type="checkbox"
+                  name="concerns"
+                  value="Weight Loss / Fat Loss"
+                  class="sr-only"
+                />
+                <span class="label">Weight Loss / Fat Loss</span>
+              </label>
+
+              <label class="quick-btn">
+                <span class="icon-wrap">
+                  <svg class="icon w-5 h-5" aria-hidden="true">
+                    <use href="assets/icons.svg#icon-dumbbell"></use>
+                  </svg>
+                </span>
+                <input
+                  type="checkbox"
+                  name="concerns"
+                  value="Muscle Gain & Strength"
+                  class="sr-only"
+                />
+                <span class="label">Muscle Gain &amp; Strength</span>
+              </label>
+
+              <label class="quick-btn">
+                <span class="icon-wrap">
+                  <svg class="icon w-5 h-5" aria-hidden="true">
+                    <use href="assets/icons.svg#icon-lotus"></use>
+                  </svg>
+                </span>
+                <input
+                  type="checkbox"
+                  name="concerns"
+                  value="Mobility & Pain Relief"
+                  class="sr-only"
+                />
+                <span class="label">Mobility &amp; Pain Relief</span>
+              </label>
+
+              <label class="quick-btn">
+                <span class="icon-wrap">
+                  <svg class="icon w-5 h-5" aria-hidden="true">
+                    <use href="assets/icons.svg#icon-timer"></use>
+                  </svg>
+                </span>
+                <input
+                  type="checkbox"
+                  name="concerns"
+                  value="Sports Performance"
+                  class="sr-only"
+                />
+                <span class="label">Sports Performance</span>
+              </label>
+
+              <label class="quick-btn">
+                <span class="icon-wrap">
+                  <svg class="icon w-5 h-5" aria-hidden="true">
+                    <use href="assets/icons.svg#icon-heart"></use>
+                  </svg>
+                </span>
+                <input
+                  type="checkbox"
+                  name="concerns"
+                  value="General Fitness & Cardio"
+                  class="sr-only"
+                />
+                <span class="label">General Fitness &amp; Cardio</span>
+              </label>
+
+              <label class="quick-btn">
+                <span class="icon-wrap">
+                  <svg class="icon w-5 h-5" aria-hidden="true">
+                    <use href="assets/icons.svg#icon-book"></use>
+                  </svg>
+                </span>
+                <input
+                  type="checkbox"
+                  name="concerns"
+                  value="Nutrition & Habit Coaching"
+                  class="sr-only"
+                />
+                <span class="label">Nutrition &amp; Habit Coaching</span>
+              </label>
+
+              <label class="quick-btn">
+                <span class="icon-wrap">
+                  <svg class="icon w-5 h-5" aria-hidden="true">
+                    <use href="assets/icons.svg#icon-monitor"></use>
+                  </svg>
+                </span>
+                <input
+                  type="checkbox"
+                  name="concerns"
+                  value="Virtual Coaching"
+                  class="sr-only"
+                />
+                <span class="label">Virtual Coaching</span>
+              </label>
+            </div>
+
+            <div class="mt-3">
+              <label for="notes" class="mb-1 block text-xs text-gray-400"
+                >NOTES (OPTIONAL)</label
+              >
+              <textarea
+                id="notes"
+                name="notes"
+                rows="3"
+                placeholder="Share any details, injuries, or preferences"
+                class="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-sm placeholder-gray-500 outline-none focus:border-[color:var(--brand-red)]/60"
+              ></textarea>
+            </div>
+          </section>
+
+          <!-- Step 2 of 3 -->
+          <section
+            class="hfc-card hfc-card--ring bg-neutral-900 rounded-xl p-6"
+          >
+            <div
+              class="flex items-center gap-2 text-sm md:text-base uppercase tracking-widest text-gray-400 mb-2"
+            >
+              <span class="font-black text-[color:var(--brand-red)]"
+                >Step 2</span
+              ><span>of 3</span>
+            </div>
+            <h2 class="text-xl font-bold mb-4">Pick Date &amp; Time</h2>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <!-- DATE (single clickable calendar icon opens picker) -->
+              <div>
+                <label for="date" class="mb-1 block text-xs text-gray-400"
+                  >DATE</label
+                >
+                <div class="relative">
+                  <input
+                    id="date"
+                    type="date"
+                    name="date"
+                    class="w-full rounded-md border border-white/10 bg-neutral-950 pl-10 pr-3 py-2 text-sm outline-none focus:border-[color:var(--brand-red)]/60"
+                    required
+                  />
+                  <button
+                    type="button"
+                    id="openDate"
+                    class="absolute left-2 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
+                    aria-label="Open calendar"
+                    title="Open calendar"
+                  >
+                    <svg class="w-5 h-5 text-white/90" aria-hidden="true">
+                      <use href="assets/icons.svg#icon-calendar"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p id="dateHelp" class="mt-1 text-[11px] text-gray-400">
+                  Choose a date from the calendar.
+                </p>
+              </div>
+
+              <!-- TIME (Free 30-min slots, 6–9 pm) -->
+              <div>
+                <div class="flex items-center justify-between">
+                  <label for="time" class="mb-1 block text-xs text-gray-400"
+                    >TIME — Free 30-min</label
+                  >
+                  <button
+                    type="button"
+                    id="refreshSlots"
+                    class="text-[10px] underline text-gray-400 hover:text-white"
+                  >
+                    refresh
+                  </button>
+                </div>
+
+                <div class="relative">
+                  <svg
+                    class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/80"
+                    aria-hidden="true"
+                  >
+                    <use href="assets/icons.svg#icon-timer"></use>
+                  </svg>
+
+                  <select
+                    id="time"
+                    name="time"
+                    class="w-full rounded-md border border-white/10 bg-neutral-950 pl-10 pr-8 py-2 text-sm outline-none focus:border-[color:var(--brand-red)]/60 appearance-none"
+                    required
+                    aria-label="Choose a 30-minute time slot"
+                  >
+                    <option value="" selected disabled>
+                      Select a 30-min slot
+                    </option>
+                    <!-- JS will populate the half-hour options between 6:00–9:00 pm -->
+                  </select>
+
+                  <svg
+                    class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60"
+                    aria-hidden="true"
+                  >
+                    <use href="assets/icons.svg#icon-chevron-down"></use>
+                  </svg>
+                </div>
+
+                <p class="mt-1 text-[11px] text-gray-400">
+                  Free 30-minute appointment. Select any slot between 6:00 and
+                  9:00 pm.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Step 3 of 3 -->
+          <section
+            class="hfc-card hfc-card--ring bg-neutral-900 rounded-xl p-6"
+          >
+            <div
+              class="flex items-center gap-2 text-sm md:text-base uppercase tracking-widest text-gray-400 mb-2"
+            >
+              <span class="font-black text-[color:var(--brand-red)]"
+                >Step 3</span
+              ><span>of 3</span>
+            </div>
+            <h2 class="text-xl font-bold mb-4">Your Details</h2>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="mb-1 block text-xs text-gray-400"
+                  >FULL NAME</label
+                >
+                <input
+                  type="text"
+                  name="name"
+                  autocomplete="name"
+                  placeholder="Your name"
+                  class="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-sm placeholder-gray-500 outline-none focus:border-[color:var(--brand-red)]/60"
                   required
                 />
-                <button
-                  type="button"
-                  id="openDate"
-                  class="absolute left-2 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
-                  aria-label="Open calendar"
-                  title="Open calendar"
-                >
-                  <svg class="w-5 h-5 text-white/90" aria-hidden="true">
-                    <use href="assets/icons.svg#icon-calendar"></use>
-                  </svg>
-                </button>
               </div>
-              <p id="dateHelp" class="mt-1 text-[11px] text-gray-400">
-                Choose a date from the calendar.
-              </p>
-            </div>
-
-            <!-- TIME (Free 30-min slots, 6–9 pm) -->
-            <div>
-              <div class="flex items-center justify-between">
-                <label for="time" class="mb-1 block text-xs text-gray-400">TIME — Free 30-min</label>
-                <button type="button" id="refreshSlots" class="text-[10px] underline text-gray-400 hover:text-white">refresh</button>
-              </div>
-
-              <div class="relative">
-                <svg class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/80" aria-hidden="true">
-                  <use href="assets/icons.svg#icon-timer"></use>
-                </svg>
-
-                <select
-                  id="time" name="time"
-                  class="w-full rounded-md border border-white/10 bg-neutral-950 pl-10 pr-8 py-2 text-sm outline-none focus:border-[color:var(--brand-red)]/60 appearance-none"
+              <div>
+                <label class="mb-1 block text-xs text-gray-400">PHONE</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  inputmode="tel"
+                  autocomplete="tel"
+                  placeholder="03xx xxxxxxx"
+                  class="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-sm placeholder-gray-500 outline-none focus:border-[color:var(--brand-red)]/60"
                   required
-                  aria-label="Choose a 30-minute time slot"
-                >
-                  <option value="" selected disabled>Select a 30-min slot</option>
-                  <!-- JS will populate the half-hour options between 6:00–9:00 pm -->
-                </select>
+                />
+              </div>
+              <div class="sm:col-span-2">
+                <label class="mb-1 block text-xs text-gray-400">EMAIL</label>
+                <input
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  class="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-sm placeholder-gray-500 outline-none focus:border-[color:var(--brand-red)]/60"
+                  required
+                />
+              </div>
+            </div>
 
-                <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" aria-hidden="true">
-                  <use href="assets/icons.svg#icon-chevron-down"></use>
-                </svg>
+            <!-- Policies + Submit -->
+            <div class="mt-4 flex items-start gap-3">
+              <input id="agree" type="checkbox" required class="mt-1" />
+              <label for="agree" class="text-sm text-gray-300">
+                I agree to the
+                <a href="#" class="underline">cancellation policy</a> and
+                <a href="#" class="underline">terms</a>.
+              </label>
+            </div>
+
+            <button type="submit" class="mt-4 btn-red w-full">
+              Confirm Appointment
+            </button>
+            <p
+              id="formErrors"
+              class="text-sm text-red-400 mt-2"
+              role="alert"
+              aria-live="polite"
+            ></p>
+          </section>
+        </form>
+
+        <!-- RIGHT: SUMMARY -->
+        <aside class="space-y-5">
+          <div
+            class="overflow-hidden rounded-xl hfc-card hfc-card--ring bg-neutral-900"
+          >
+            <div
+              class="px-6 py-3 bg-[color:var(--brand-red)] text-neutral-900 font-bold text-base md:text-lg"
+            >
+              Summary
+            </div>
+            <div class="p-6 text-base space-y-3">
+              <div>
+                <span class="text-gray-400 block mb-1">Concern(s)</span>
+                <ul id="sConcerns" class="list-disc list-inside space-y-1">
+                  <li class="text-gray-400">—</li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-400">Date</span>
+                <strong id="sDate">—</strong>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-400">Time</span>
+                <strong id="sTime">—</strong>
+              </div>
+              <hr class="border-white/10 my-2.5" />
+              <!-- Replace this row in the Summary -->
+              <div class="flex items-center justify-between">
+                <span class="text-gray-400">Free Consultation</span>
+                <strong id="sPrice">Free</strong>
               </div>
 
-              <p class="mt-1 text-[11px] text-gray-400">
-                Free 30-minute appointment. Select any slot between 6:00 and 9:00 pm.
+              <p class="text-[13px] text-gray-400">
+                You’ll pay at the club for any training sessions you book after
+                the consultation.
               </p>
             </div>
           </div>
-        </section>
 
-        <!-- Step 3 of 3 -->
-        <section class="hfc-card hfc-card--ring bg-neutral-900 rounded-xl p-6">
-          <div class="flex items-center gap-2 text-sm md:text-base uppercase tracking-widest text-gray-400 mb-2">
-            <span class="font-black text-[color:var(--brand-red)]">Step 3</span><span>of 3</span>
-          </div>
-          <h2 class="text-xl font-bold mb-4">Your Details</h2>
-
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label class="mb-1 block text-xs text-gray-400">FULL NAME</label>
-              <input type="text" name="name" autocomplete="name" placeholder="Your name"
-                     class="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-sm placeholder-gray-500 outline-none focus:border-[color:var(--brand-red)]/60"
-                     required />
-            </div>
-            <div>
-              <label class="mb-1 block text-xs text-gray-400">PHONE</label>
-              <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="03xx xxxxxxx"
-                     class="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-sm placeholder-gray-500 outline-none focus:border-[color:var(--brand-red)]/60"
-                     required />
-            </div>
-            <div class="sm:col-span-2">
-              <label class="mb-1 block text-xs text-gray-400">EMAIL</label>
-              <input type="email" name="email" autocomplete="email" placeholder="you@example.com"
-                     class="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-sm placeholder-gray-500 outline-none focus:border-[color:var(--brand-red)]/60"
-                     required />
+          <div class="rounded-xl hfc-card hfc-card--ring bg-neutral-900 p-6">
+            <h3 class="font-bold mb-2">Need help?</h3>
+            <div class="space-y-2.5 text-sm">
+              <a
+                href="tel:+923057050399"
+                class="inline-flex items-center gap-2"
+              >
+                <svg class="w-4 h-4" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-phone"></use>
+                </svg>
+                +92 305 7050399
+              </a>
+              <a
+                href="mailto:support@hamzafitnessclub.com"
+                class="inline-flex items-center gap-2"
+              >
+                <svg class="w-4 h-4" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-mail"></use>
+                </svg>
+                support@hamzafitnessclub.com
+              </a>
+              <p class="text-gray-400">
+                Cancel up to 12 hours before your appointment.
+              </p>
             </div>
           </div>
+        </aside>
+      </div>
+    </main>
 
-          <!-- Policies + Submit -->
-          <div class="mt-4 flex items-start gap-3">
-            <input id="agree" type="checkbox" required class="mt-1">
-            <label for="agree" class="text-sm text-gray-300">
-              I agree to the <a href="#" class="underline">cancellation policy</a> and <a href="#" class="underline">terms</a>.
-            </label>
-          </div>
-
-          <button type="submit" class="mt-4 btn-red w-full">Confirm Appointment</button>
-          <p id="formErrors" class="text-sm text-red-400 mt-2" role="alert" aria-live="polite"></p>
-        </section>
-      </form>
-
-      <!-- RIGHT: SUMMARY -->
-      <aside class="space-y-5">
-        <div class="overflow-hidden rounded-xl hfc-card hfc-card--ring bg-neutral-900">
-          <div class="px-6 py-3 bg-[color:var(--brand-red)] text-neutral-900 font-bold text-base md:text-lg">Summary</div>
-          <div class="p-6 text-base space-y-3">
-            <div>
-              <span class="text-gray-400 block mb-1">Concern(s)</span>
-              <ul id="sConcerns" class="list-disc list-inside space-y-1">
-                <li class="text-gray-400">—</li>
-              </ul>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-gray-400">Date</span> <strong id="sDate">—</strong>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-gray-400">Time</span> <strong id="sTime">—</strong>
-            </div>
-            <hr class="border-white/10 my-2.5">
-            <!-- Replace this row in the Summary -->
-            <div class="flex items-center justify-between">
-              <span class="text-gray-400">Free Consultation</span>
-              <strong id="sPrice">Free</strong>
-            </div>
-
-            <p class="text-[13px] text-gray-400">You’ll pay at the club for any training sessions you book after the consultation.</p>
-          </div>
-        </div>
-
-        <div class="rounded-xl hfc-card hfc-card--ring bg-neutral-900 p-6">
-          <h3 class="font-bold mb-2">Need help?</h3>
-          <div class="space-y-2.5 text-sm">
-            <a href="tel:+923057050399" class="inline-flex items-center gap-2">
-              <svg class="w-4 h-4" aria-hidden="true"><use href="assets/icons.svg#icon-phone"></use></svg>
-              +92 305 7050399
-            </a>
-            <a href="mailto:support@hamzafitnessclub.com" class="inline-flex items-center gap-2">
-              <svg class="w-4 h-4" aria-hidden="true"><use href="assets/icons.svg#icon-mail"></use></svg>
-              support@hamzafitnessclub.com
-            </a>
-            <p class="text-gray-400">Cancel up to 12 hours before your appointment.</p>
-          </div>
-        </div>
-      </aside>
-
-    </div>
-  </main>
-
-  <footer id="footer" class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
-  
-      <!-- Brand + Newsletter -->
-      <section class="md:col-span-5">
-        <div class="flex items-center gap-3 mb-4">
-          <img src="images/hfc-logo.jpg" alt="Hamza Fitness Club Logo" class="w-10 h-10 object-contain rounded-md" />
-          <h2 class="text-2xl font-extrabold text-white tracking-wider uppercase">Hamza Fitness Club</h2>
-        </div>
-        <p class="mb-5 text-gray-400 leading-relaxed">
-          Hamza Fitness Club is your destination for strength, dedication, and transformation.
-          Join our community today!
-        </p>
-  
-        <form id="newsletter-form" class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3" novalidate>
-          <label for="newsletter-email" class="sr-only">Email</label>
-          <input
-            id="newsletter-email"
-            name="email"
-            type="email"
-            placeholder="you@example.com"
-            required
-            class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400
-                   focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
-          />
-          <button
-            type="submit"
-            class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
-          >
-            Sign Up
-          </button>
-          <!-- Inline feedback (toggle via JS if you want) -->
-          <p id="newsletter-msg" class="col-span-full text-[13px] text-gray-400"></p>
-        </form>
-      </section>
-  
-      <!-- Our Studio -->
-      <nav class="md:col-span-2">
-        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
-          Our Studio
-        </h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/aboutus.html"          class="hover:text-[color:var(--brand-red)] transition">About Us</a></li>
-          <li><a href="trainers.html" class="hover:text-[color:var(--brand-red)] transition">Trainers</a></li>
-          <li><a href="classes.html"  class="hover:text-[color:var(--brand-red)] transition">Classes</a></li>
-          <li><a href="pricing.html"  class="hover:text-[color:var(--brand-red)] transition">Pricing</a></li>
-        </ul>
-      </nav>
-  
-      <!-- Support -->
-      <nav class="md:col-span-2">
-        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
-          Support
-        </h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/booking.html" class="hover:text-[color:var(--brand-red)] transition">Book Free Appointment</a></li>
-        </ul>
-      </nav>
-  
-      <!-- Contact + Hours -->
-      <section id="contact" class="md:col-span-3">
-        <h3 class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1">
-          Get in Touch
-        </h3>
-  
-        <address class="not-italic space-y-3 text-sm">
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
-              <use href="assets/icons.svg#icon-map-pin"></use>
-            </svg>
-            <a
-              href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
-              target="_blank" rel="noopener"
-              class="hover:text-[color:var(--brand-red)] transition"
+    <footer
+      id="footer"
+      class="bg-[color:var(--brand-dark)] border-t border-white/10 text-gray-300"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12"
+      >
+        <!-- Brand + Newsletter -->
+        <section class="md:col-span-5">
+          <div class="flex items-center gap-3 mb-4">
+            <img
+              src="images/hfc-logo.jpg"
+              alt="Hamza Fitness Club Logo"
+              class="w-10 h-10 object-contain rounded-md"
+            />
+            <h2
+              class="text-2xl font-extrabold text-white tracking-wider uppercase"
             >
-              Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan
-            </a>
+              Hamza Fitness Club
+            </h2>
           </div>
-  
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
-              <use href="assets/icons.svg#icon-mail"></use>
-            </svg>
-            <a href="mailto:support@hamzafitnessclub.com" class="underline hover:text-[color:var(--brand-red)]">
-              support@hamzafitnessclub.com
-            </a>
-          </div>
-  
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
-              <use href="assets/icons.svg#icon-phone"></use>
-            </svg>
-            <a href="tel:+923057050399" class="hover:text-[color:var(--brand-red)]">+92 305 7050399</a>
-          </div>
-        </address>
-  
-        <!-- Socials -->
-        <ul class="flex items-center gap-3 mt-5">
-          <li>
-            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Facebook">
-              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-facebook"></use></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="Instagram">
-              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-instagram"></use></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="X (Twitter)">
-              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-x"></use></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition" aria-label="YouTube">
-              <svg class="w-5 h-5" aria-hidden="true"><use href="assets/icons.svg#icon-youtube"></use></svg>
-            </a>
-          </li>
-        </ul>
-  
-        <!-- Hours -->
-        <div class="mt-6">
-          <h4 class="font-semibold text-white mb-3 border-b border-white/10 pb-1">Hours</h4>
-          <dl id="hours" class="space-y-1 text-sm leading-relaxed">
-            <div class="flex justify-between items-start gap-4">
-              <dt class="font-semibold text-white">Monday – Saturday</dt>
-              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
-            </div>
-        
-            <div class="flex justify-between items-start gap-4">
-              <dt class="font-semibold text-white">Sunday</dt>
-              <dd class="text-gray-300 text-right">6:15–9:15 am<br class="sm:hidden"/>4:15–10:45 pm</dd>
-            </div>
-        
-            <div class="flex justify-between items-start gap-4">
-              <dt class="font-semibold text-white">Friday</dt>
-              <dd class="text-gray-500 italic text-right">Closed</dd>
-            </div>
-          </dl>
-        </div>
-        
-        
-      </section>
-    </div>
-  
-    <div class="border-t border-white/10 text-center text-sm text-gray-400 py-6">
-      © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
-      All rights reserved. Designed by
-      <span class="text-[color:var(--brand-red)] font-bold">Ramla & Pakeeza</span>.
-    </div>
-  </footer>
-  
-  <script src="assets/footer.js" defer></script>
+          <p class="mb-5 text-gray-400 leading-relaxed">
+            Hamza Fitness Club is your destination for strength, dedication, and
+            transformation. Join our community today!
+          </p>
 
-  <!-- Scripts -->
-  <script src="assets/booking.js" defer></script>
-  <script> 
-    // In booking.html, replace the entire form submit event listener with:
-document.addEventListener('DOMContentLoaded', function() {
-    const bookingForm = document.getElementById('bookingForm');
-    
-    if (!bookingForm) return;
-    
-    // Form submission
-    bookingForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Show loading state
-        const submitBtn = bookingForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Booking...';
-        submitBtn.disabled = true;
-        
-        // Get form values
-        const formData = {
-            name: document.querySelector('[name="name"]').value.trim(),
-            email: document.querySelector('[name="email"]').value.trim(),
-            phone: document.querySelector('[name="phone"]').value.trim(),
-            date: document.querySelector('[name="date"]').value,
-            time: document.querySelector('[name="time"]').value,
-            concerns: Array.from(document.querySelectorAll('[name="concerns"]:checked'))
-                .map(cb => cb.value),
-            notes: document.querySelector('#notes').value.trim() || ''
-        };
-        
-        // Validate
-        if (!formData.name || !formData.email || !formData.phone || !formData.date || !formData.time) {
-            alert('Please fill all required fields');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            return;
-        }
-        
-        if (formData.concerns.length === 0) {
-            alert('Please select at least one goal/concern');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            return;
-        }
-        
-        try {
-            // Send booking to backend
-            const response = await API.bookAppointment(formData);
-            
-            if (response.success) {
-                // Success message with details
-                alert(`✅ Appointment booked successfully!\n\n📅 Date: ${formData.date}\n⏰ Time: ${formData.time}\n📱 We'll contact you at ${formData.phone}\n📧 Confirmation sent to ${formData.email}`);
-                
-                // Reset form
-                bookingForm.reset();
-                updateSummary();
-                populateSlots();
-                
-                // Log to console for debugging
-                console.log('Booking successful:', response.data);
-            } else {
-                throw new Error(response.error || 'Booking failed');
+          <form
+            id="newsletter-form"
+            class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-3"
+            novalidate
+          >
+            <label for="newsletter-email" class="sr-only">Email</label>
+            <input
+              id="newsletter-email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              class="px-3 py-2 rounded-md bg-neutral-800 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-red)]"
+            />
+            <button
+              type="submit"
+              class="btn-red px-5 py-2 text-sm uppercase font-extrabold rounded-md justify-self-start sm:justify-self-auto"
+            >
+              Sign Up
+            </button>
+            <!-- Inline feedback (toggle via JS if you want) -->
+            <p
+              id="newsletter-msg"
+              class="col-span-full text-[13px] text-gray-400"
+            ></p>
+          </form>
+        </section>
+
+        <!-- Our Studio -->
+        <nav class="md:col-span-2">
+          <h3
+            class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1"
+          >
+            Our Studio
+          </h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="/aboutus.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="trainers.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Trainers</a
+              >
+            </li>
+            <li>
+              <a
+                href="classes.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Classes</a
+              >
+            </li>
+            <li>
+              <a
+                href="pricing.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Pricing</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Support -->
+        <nav class="md:col-span-2">
+          <h3
+            class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1"
+          >
+            Support
+          </h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="/booking.html"
+                class="hover:text-[color:var(--brand-red)] transition"
+                >Book Free Appointment</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Contact + Hours -->
+        <section id="contact" class="md:col-span-3">
+          <h3
+            class="text-white font-semibold tracking-wide uppercase text-sm mb-3 border-b-2 border-[color:var(--brand-red)] inline-block pb-1"
+          >
+            Get in Touch
+          </h3>
+
+          <address class="not-italic space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+                <use href="assets/icons.svg#icon-map-pin"></use>
+              </svg>
+              <a
+                href="https://maps.google.com/?q=Chowk,+Khatam-e-Nabuwat+Plaza,+Millat+Rd,+Green+Town,+Faisalabad,+38000,+Pakistan"
+                target="_blank"
+                rel="noopener"
+                class="hover:text-[color:var(--brand-red)] transition"
+              >
+                Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town,
+                Faisalabad, 38000, Pakistan
+              </a>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+                <use href="assets/icons.svg#icon-mail"></use>
+              </svg>
+              <a
+                href="mailto:support@hamzafitnessclub.com"
+                class="underline hover:text-[color:var(--brand-red)]"
+              >
+                support@hamzafitnessclub.com
+              </a>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-white/80 shrink-0" aria-hidden="true">
+                <use href="assets/icons.svg#icon-phone"></use>
+              </svg>
+              <a
+                href="tel:+923057050399"
+                class="hover:text-[color:var(--brand-red)]"
+                >+92 305 7050399</a
+              >
+            </div>
+          </address>
+
+          <!-- Socials -->
+          <ul class="flex items-center gap-3 mt-5">
+            <li>
+              <a
+                href="#"
+                class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition"
+                aria-label="Facebook"
+              >
+                <svg class="w-5 h-5" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition"
+                aria-label="Instagram"
+              >
+                <svg class="w-5 h-5" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-instagram"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition"
+                aria-label="X (Twitter)"
+              >
+                <svg class="w-5 h-5" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-x"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 bg-neutral-900 hover:bg-neutral-800 transition"
+                aria-label="YouTube"
+              >
+                <svg class="w-5 h-5" aria-hidden="true">
+                  <use href="assets/icons.svg#icon-youtube"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+
+          <!-- Hours -->
+          <div class="mt-6">
+            <h4
+              class="font-semibold text-white mb-3 border-b border-white/10 pb-1"
+            >
+              Hours
+            </h4>
+            <dl id="hours" class="space-y-1 text-sm leading-relaxed">
+              <div class="flex justify-between items-start gap-4">
+                <dt class="font-semibold text-white">Monday – Saturday</dt>
+                <dd class="text-gray-300 text-right">
+                  6:15–9:15 am<br class="sm:hidden" />4:15–10:45 pm
+                </dd>
+              </div>
+
+              <div class="flex justify-between items-start gap-4">
+                <dt class="font-semibold text-white">Sunday</dt>
+                <dd class="text-gray-300 text-right">
+                  6:15–9:15 am<br class="sm:hidden" />4:15–10:45 pm
+                </dd>
+              </div>
+
+              <div class="flex justify-between items-start gap-4">
+                <dt class="font-semibold text-white">Friday</dt>
+                <dd class="text-gray-500 italic text-right">Closed</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+      </div>
+
+      <div
+        class="border-t border-white/10 text-center text-sm text-gray-400 py-6"
+      >
+        © 2025 <span class="text-white font-semibold">Hamza Fitness Club</span>.
+        All rights reserved. Designed by
+        <span class="text-[color:var(--brand-red)] font-bold"
+          >Ramla & Pakeeza</span
+        >.
+      </div>
+    </footer>
+
+    <script src="assets/footer.js" defer></script>
+
+    <script>
+      // Fallback API Service if assets/api-service.js fails to load
+      if (typeof window.API === "undefined") {
+        console.warn("⚠️ API not found, creating fallback API service...");
+
+        window.API = {
+          baseURL: "http://localhost:3000/api",
+
+          async checkHealth() {
+            try {
+              const response = await fetch("http://localhost:3000/health", {
+                method: "GET",
+                mode: "cors",
+              });
+              return await response.json();
+            } catch (error) {
+              return {
+                status: "disconnected",
+                error: error.message,
+                message: "Backend server not running",
+              };
             }
-            
-        } catch (error) {
-            console.error('Booking failed:', error);
-            alert(`❌ Booking failed: ${error.message}\n\nPlease try again or call us at +92 305 7050399`);
-        } finally {
-            // Reset button
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-});
-  </script>
-</body>
+          },
+
+          async bookAppointment(formData) {
+            try {
+              const response = await fetch(
+                "http://localhost:3000/api/appointments",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(formData),
+                  mode: "cors",
+                }
+              );
+
+              if (!response.ok) {
+                throw new Error(
+                  `HTTP ${response.status}: ${await response.text()}`
+                );
+              }
+
+              return await response.json();
+            } catch (error) {
+              throw error;
+            }
+          },
+
+          async getAppointments() {
+            return this._request("/appointments");
+          },
+
+          async getTrainers() {
+            return this._request("/trainers");
+          },
+
+          async getMembers() {
+            return this._request("/members");
+          },
+
+          async getClasses() {
+            return this._request("/classes");
+          },
+
+          async _request(endpoint, method = "GET", data = null) {
+            const url = `${this.baseURL}${endpoint}`;
+
+            const options = {
+              method: method,
+              headers: {
+                "Content-Type": "application/json",
+              },
+              mode: "cors",
+            };
+
+            if (data) {
+              options.body = JSON.stringify(data);
+            }
+
+            const response = await fetch(url, options);
+
+            if (!response.ok) {
+              throw new Error(
+                `HTTP ${response.status}: ${await response.text()}`
+              );
+            }
+
+            return await response.json();
+          },
+        };
+
+        console.log("✅ Fallback API service created");
+      }
+    </script>
+
+    <!-- Scripts -->
+    <script src="assets/booking.js"></script>
+  </body>
 </html>

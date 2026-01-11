@@ -1,26 +1,58 @@
+// routes/appointmentRoutes.js
 const express = require('express');
 const router = express.Router();
-const {
-  getAppointments,
-  getAppointment,
-  createAppointment,
-  updateAppointment,
-  deleteAppointment
-} = require('../controllers/appointmentController');
+const Appointment = require('../models/Appointment');
 
-// GET /api/appointments
-router.get('/', getAppointments);
+// Create new appointment
+router.post('/', async (req, res) => {
+    try {
+        console.log('📝 Creating appointment:', req.body);
+        
+        const appointment = new Appointment({
+            name: req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+            date: req.body.date,
+            time: req.body.time,
+            concerns: req.body.concerns || [],
+            notes: req.body.notes || '',
+            status: 'pending'
+        });
 
-// GET /api/appointments/:id
-router.get('/:id', getAppointment);
+        await appointment.save();
+        
+        console.log('✅ Appointment saved:', appointment._id);
+        
+        res.status(201).json({
+            success: true,
+            message: 'Appointment booked successfully',
+            data: appointment
+        });
+        
+    } catch (error) {
+        console.error('❌ Appointment creation error:', error);
+        res.status(500).json({
+            success: false,
+            error: error.message || 'Failed to book appointment'
+        });
+    }
+});
 
-// POST /api/appointments
-router.post('/', createAppointment);
-
-// PUT /api/appointments/:id
-router.put('/:id', updateAppointment);
-
-// DELETE /api/appointments/:id
-router.delete('/:id', deleteAppointment);
+// Get all appointments
+router.get('/', async (req, res) => {
+    try {
+        const appointments = await Appointment.find().sort({ date: 1, time: 1 });
+        res.json({
+            success: true,
+            count: appointments.length,
+            data: appointments
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
 
 module.exports = router;
